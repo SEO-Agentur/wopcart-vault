@@ -1,0 +1,223 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Frequently asked questions</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"large"} -->
+<p class="has-large-font-size">Fees, plans, domains, payments and data, answered briefly.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Pricing and fees</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Does WopCart take a percentage of my sales?</summary><!-- wp:paragraph -->
+<p>On the free plan, yes: 2% of each transaction, retained as a platform fee through Stripe Connect. On a paid plan, WopCart takes nothing, and your payment provider's fees are your only transaction cost.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Why does the free plan route payments through WopCart?</summary><!-- wp:paragraph -->
+<p>The plugin is GPL, so a fee written into the code could simply be removed. Settling free-plan payments through WopCart's Stripe Connect platform is what makes the 2% fee collectable, and it is why no features need to be held back.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Are any features limited on the free plan?</summary><!-- wp:paragraph -->
+<p>No. There are no locked features and no limits on products. The plan only decides how payments are routed.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Who is the merchant of record on the free plan?</summary><!-- wp:paragraph -->
+<p>You are. Charges are created directly on your connected Stripe account.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Are paid plans yearly or one-time?</summary><!-- wp:paragraph -->
+<p>Both. Each plan is available yearly or as a one-time lifetime plan, in US dollars: 1 production domain for $50 per year or $80 lifetime, 10 for $99 or $150, and 100 for $200 or $280. EU consumers pay VAT on top at checkout. See <a href="/pricing/">pricing</a>.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Plans and domains</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What counts as a domain?</summary><!-- wp:paragraph -->
+<p>Each production site where you save your plan key uses one domain slot.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Do staging and local sites count?</summary><!-- wp:paragraph -->
+<p>No. Local and staging sites do not use a slot. By default, up to 3 of them can be active on one key at the same time.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>How do I move my plan to another domain?</summary><!-- wp:paragraph -->
+<p>Remove the old domain in your wopcart.com account, or remove the key from the old site's settings, then save the key on the new site.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Can I upgrade or downgrade?</summary><!-- wp:paragraph -->
+<p>Yes. Yearly upgrades take effect immediately and the prorated difference is charged at once. Lifetime upgrades cost the difference between the two lifetime prices. Downgrades of a yearly plan take effect at your next renewal.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Do you refund plan changes?</summary><!-- wp:paragraph -->
+<p>No. Plan changes are not refunded or credited. See <a href="/plan-changes-refunds/">plan changes, domains and refunds</a>.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Can I get my money back for a new plan?</summary><!-- wp:paragraph -->
+<p>Yes. You can withdraw from any plan purchase, yearly or lifetime, within 14 days for a full refund. Your plan key is then revoked and your sites return to the free plan. After 14 days, plans are not refunded.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What happens when my plan ends?</summary><!-- wp:paragraph -->
+<p>A cancelled yearly plan ends when the paid year is over; a lifetime plan does not expire. When a plan ends, the store returns to the free plan. Features keep working, and payments are routed through WopCart's Stripe Connect platform with the 2% fee.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What if wopcart.com is unreachable?</summary><!-- wp:paragraph -->
+<p>A site on a paid plan keeps its plan for up to 14 days while the plan check cannot reach wopcart.com.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Payments</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Which gateways can I use on the free plan?</summary><!-- wp:paragraph -->
+<p>Stripe and Apple Pay. PayPal, Authorize.net and 2Checkout provide no way to collect a platform fee, so they are available on paid plans, where you use your own credentials.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Does Apple Pay need anything special?</summary><!-- wp:paragraph -->
+<p>Your site must use HTTPS, and the domain has to be registered with Stripe once. There is a button for that under Settings → Payments.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Can I test without real payments?</summary><!-- wp:paragraph -->
+<p>Yes. Test mode routes every gateway to its sandbox, and nothing is charged.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Data and privacy</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What does the plan check send?</summary><!-- wp:paragraph -->
+<p>Only if you have saved a plan key: the site address, the key and the plugin version. Nothing about your customers or your sales. With no key stored, no plan request is made.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Which outside services can the plugin contact?</summary><!-- wp:paragraph -->
+<p><!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Stripe</strong> (or your own gateway on a paid plan) at the moment of purchase</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>ipapi.co</strong>, to get a country from the buyer's IP address, when EU VAT is enabled</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>VIES</strong>, the European Commission's service, when a buyer enters a VAT number</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>An <strong>exchange rate provider</strong> when multi-currency is enabled (no personal data)</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The <strong>Anthropic Claude API</strong> if you turn on AI recommendations (catalog and cart only)</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Does WopCart help with GDPR?</summary><!-- wp:paragraph -->
+<p>WopCart registers data export and erasure handlers with WordPress's privacy tools. Erasure anonymizes personal data while keeping the financial records that tax law requires. It also suggests privacy policy text for the services you switch on, which you should review before publishing.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What happens to my data if I uninstall?</summary><!-- wp:paragraph -->
+<p>Nothing, unless you ask for it. Data removal is off by default; turn on <strong>Delete all store data on uninstall</strong> under Settings → Advanced if you want the tables removed. Files you sold are never deleted.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Using the plugin</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What are the requirements?</summary><!-- wp:paragraph -->
+<p>WordPress 6.4 or later and PHP 8.1 or later.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Can I customize the templates?</summary><!-- wp:paragraph -->
+<p>Yes. Copy any file from the plugin's <code>templates/</code> folder into <code>yourtheme/wopcart/</code> and it takes precedence. The storefront CSS uses <code>--wopcart-*</code> custom properties, so most restyling needs only a variable.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Does it work with Elementor and the block editor?</summary><!-- wp:paragraph -->
+<p>Yes. WopCart includes 8 Elementor widgets and 7 blocks, plus shortcodes.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Can I sell physical products?</summary><!-- wp:paragraph -->
+<p>WopCart is built for digital products and has no shipping features.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"textColor":"contrast","backgroundColor":"accent-1","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Still have a question? Start with the guide</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Install the plugin, choose a plan and publish your first product with the getting started guide.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->

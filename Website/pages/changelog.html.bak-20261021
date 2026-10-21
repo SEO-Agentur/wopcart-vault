@@ -1,0 +1,893 @@
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-page-hero","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-page-hero"><!-- wp:group {"className":"wc-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap"><!-- wp:paragraph {"className":"wc-eyebrow"} -->
+<p class="wc-eyebrow">Changelog</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">What changed in WopCart.</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-lead"} -->
+<p class="wc-lead">Release notes for the WopCart plugin, newest first. Each release lists what was added, changed and fixed.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-section wc-section--white","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-section wc-section--white"><!-- wp:group {"className":"wc-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap"><!-- wp:group {"tagName":"article","anchor":"unreleased","className":"wc-release","layout":{"type":"default"}} -->
+<article id="unreleased" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">Unreleased</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">In progress, not released yet</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist wc-checklist--open"} -->
+<ul class="wp-block-list wc-checklist wc-checklist--open"><!-- wp:list-item -->
+<li>Free plan via Stripe Connect</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-4-0","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-4-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.4.0</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">RELEASE_DATE · Two editions</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The plugin ships Stripe and Apple Pay. PayPal, Authorize.net, Mollie and 2Checkout are no longer part of it; they come with WopCart Direct, the add-on that lets a store charge through its own gateway accounts.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The plan key is gone, and with it the settings section and the card that went with it. Nothing in the plugin is switched off or limited by a key any more.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Uninstalling no longer deletes credentials or settings that belong to an add-on. It removes what this plugin created and writes the rest back.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Payment forms offer the gateways that are actually installed. The old list named 2Checkout under a name it never registered under, so that gateway was never offered on a form.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Removed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Removed with the plan: the filters wopcart_free_plan_gateways, wopcart_plan_api_base, wopcart_plan_endpoint and wopcart_plan_{action}_endpoint.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-3-1","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-3-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.3.1</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">RELEASE_DATE · Platform code moves out</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The code that only ever runs on WopCart&#x27;s own payment platform no longer ships with the plugin. It moved into a separate plugin that is installed only there.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The two database tables that belonged to that code, and were created on every store without ever being used, are removed on update. A store that is the platform keeps them, and a table that still holds rows is kept and reported rather than dropped.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The scheduled task that delivered platform events is removed from stores that are not the platform.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-3-0","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-3-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.3.0</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">RELEASE_DATE · Extension points</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Extension points so a separate add-on can supply a store&#x27;s own gateway credentials: filters for the Stripe secret and publishable key, a neutral question whether a store transacts with its own credentials, a filterable list of settings kept out of the autoloaded option, and hooks for integration cards, connection tests, system status rows, the privacy policy text and gateway scripts. Nothing in the plugin behaves differently because of them.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Plugin::supports() so an add-on can check whether the installed plugin is new enough for it.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A page for extension authors in the developer documentation, describing the seams an add-on may rely on.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>wopcart_settings_saved now also receives the settings as they were before the save, so a listener can react to what actually changed.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Connect::is_paid_plan() is now Connect::uses_own_credentials(); the old name and the wopcart_is_paid_plan filter keep working as aliases.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A store that is neither connected to Stripe nor holds its own key now gets a single error, and an unconnected store is told to connect under Settings → Payments instead of reading that Stripe is not configured.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-2-4","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-2-4" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.2.4</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">RELEASE_DATE · Packaging and readme</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The plugin package no longer contains the drop-in updater template for merchants; it is handed out with the licensing SDK instead, because a plugin in the WordPress.org directory may not carry code that hooks WordPress&#x27;s update mechanism.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The readme was rewritten for the WordPress.org directory: a shorter description that is no longer cut off in the listing, the detail moved into the FAQ, and a section describing every external service the plugin can contact, when it is contacted and what it receives.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Review pagination, cart quantities and the product list of a content restriction clean their input in a form code analysis recognises. Behaviour is unchanged, except that a negative page number in a review link is treated as page 1 again.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-2-3","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-2-3" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.2.3</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">18 September 2026 · Cart, checkout and invoice fixes</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Security</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Discount codes with a minimum order no longer make the cart calculate itself in a loop until the page fails.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Prices, sale prices, price options, sign-up fees, currency overrides, discounts and payment form amounts can no longer be negative, and a discount can never push a line below zero.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Order status changes are checked against the states they may come from, so a redelivered payment notification can no longer turn a refunded order back into a paid one.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A cancelled or expired subscription stops granting its bundle products and its downloads.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Country headers such as CF-IPCountry are only used when the store opts in with the wopcart_trusted_country_headers filter, so a visitor can no longer choose their own tax country.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Checkout no longer refuses an order when the billing country and the country behind the visitor&#x27;s address differ. Both are recorded, the difference is flagged on the order, and the strict refusal is now a setting that is off by default.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>An order whose billing country and detected country differ is marked on the order screen, in the order list and in a &quot;Location evidence&quot; table under the VAT report.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A discount set to &quot;never&quot; on subscriptions is now refused on subscription lines instead of behaving like &quot;first payment only&quot;.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>New &quot;Store notification address&quot; setting for notices about sales and refund requests; it falls back to the From address.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Authorize.net card fields appear at checkout again; they were being stripped from the page, so every card was refused.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>2Checkout subscriptions end when the paid period does and say so, instead of reporting a cancellation the provider never performed, and a renewal no longer revives a cancelled subscription.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>PayPal and Authorize.net recognise the first subscription charge, so it is no longer booked as a renewal (or missed entirely after a trial).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A second PayPal part refund of the same amount is no longer silently skipped, and changing a plan&#x27;s interval or trial no longer reuses the old PayPal plan.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Product prices copied into a manual invoice or quote are converted correctly when prices include tax, so VAT is no longer added twice.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>An order can no longer receive two invoice numbers when a webhook and a click arrive together.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A paid proforma whose invoice number could not be issued stays repairable and can be issued from the invoice screen.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Invoice and quote numbers and the retention period follow the store&#x27;s timezone, so a document issued just after midnight is no longer numbered into the previous year.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>An invoice prefix of &quot;Q&quot; no longer shares its counter with quotes.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Quote numbering keeps counting where it left off after the update.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A receipt is only recorded as sent once it has been sent, including plan upgrade receipts, so a failed receipt is sent again.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Renewal, trial and licence emails show their dates again, and an unlimited licence no longer reads &quot;1 of 0&quot;.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Importing discounts keeps the fields the file does not contain and reports rejected rows.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The discount editor keeps products outside the first 200, keeps a scheduled code&#x27;s dates, and gained description, categories and the &quot;never&quot; option.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Settings: a multiple choice list can be emptied again, saving keeps the tab you were on, and an unknown tab falls back to General.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The content restriction box keeps products beyond the first 200 when a post is saved.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-2-2","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-2-2" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.2.2</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">Not released on its own · shipped inside 1.2.3</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Block themes: WopCart provides a Single Product template without the post byline, post navigation or comments. A theme&#x27;s own template or a Site Editor copy still takes precedence; turn it off with the wopcart_register_product_block_template filter.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Downloads are saved under the file&#x27;s own name when the product file label has no file extension. A label such as &quot;WopCart plugin (zip)&quot; was saved without .zip and could not be opened.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Checkout: changing the country refreshes every amount, including the line price, the VAT rate label, the total to pay now, the renewal note and the pay button.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Checkout: when an order is refused, the form keeps what the buyer entered.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Checkout: the location mismatch message names the detected country and the billing country.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Checkout and cart: renewal amounts use the same basis as the displayed prices.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-2-1","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-2-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.2.1</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">17 September 2026 · Security release</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Security</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Stripe returns and webhooks accept a Checkout Session only for the order it was created for, with matching currency and a sufficient amount.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Apple Pay payments can no longer be reused for another order.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Stripe and PayPal webhooks only complete orders paid with that gateway and matching the payment; PayPal captures must cover the order total.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Order completion and fulfilment run once even when the webhook and the buyer’s return arrive together, and licences are unique per order line.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A signed-in buyer who enters another person’s email at checkout no longer gains access to that person’s orders, licences or subscriptions. Their order is filed under their own account and keeps the billing email they entered. Links from earlier versions that do not belong to the account are removed on update and recorded so they can be restored.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Verified reviews only come from the buyer’s own account or the email review link, and review messages no longer reveal who bought a product.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Gateway and webhook secrets are no longer printed in admin pages, are stored outside the autoloaded settings, and only administrators can change them.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>REST API routes require the capability that matches their data, API keys follow the user’s capabilities, and failed key attempts are rate limited.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Discount codes are rate limited on the REST cart, and unknown, inactive and expired codes get the same message in the cart and in payment forms.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Licensing API rate limits are atomic and count per address and per key. Update packages are only delivered to activated sites; a site that checks for updates is activated automatically while the licence has a free seat. Signed responses carry freshness data that the SDKs check.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>GitHub release webhooks can no longer be replayed to publish pulled versions or unpublish releases.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Zapier keys are accepted only in the X-WopCart-Key header, and Zapier targets are checked against internal network addresses.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Product file paths are confined strictly to the uploads folder, including media library attachments.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The protected download folder’s rules work on Apache 2.4, and System status checks them with a real request.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Webhook delivery logs are deleted after 30 days, and privacy erasure now covers webhook deliveries, licences and quotes.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Privacy erasure also anonymises orders placed with the erased email that are filed under another customer record.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>New Taxes setting to turn off remote IP geolocation.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The free local/staging environment limit is capped at 10, and 0 now means none. Stores that had 0 (unlimited) are moved to 10.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Customer records follow a user's email change, so a changed account email no longer separates a customer from their purchases.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Bundle licences share their site limit across all products in the bundle; one site uses one seat.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Refund webhooks from PayPal, Authorize.net and 2Checkout are counted once, and Authorize.net refunds made in its dashboard are recorded (requires the Transaction Details API).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>CSV exports also neutralise cells that start with | or with whitespace before a formula.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-2-0","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-2-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.2.0</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">15 September 2026 · Review requests and safer subscription checkout</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>SEO-WP integration: product and paywall schema join SEO-WP’s graph, descriptions and Open Graph tags of restricted content are guarded, and store system pages are excluded from SEO-WP sitemaps.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Review requests: ask buyers for a review in the purchase confirmation, in a separate email N days later, or both. Emails carry five one-click star links that open a short review page.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Per-product &quot;Ask buyers for reviews&quot; setting, editable and translatable subject and intro text, unsubscribe link (one-click supported) and an optional &quot;only with marketing consent&quot; setting.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Product schema includes up to 10 published reviews alongside aggregateRating, left out when an SEO plugin already outputs Product markup.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The Reviews screen shows source (site or email), a pending count and an &quot;Unconfirmed ratings&quot; view.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>&quot;Only verified buyers may review&quot; is on by default for stores that never saved the Reviews settings.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Subscriptions with different trial lengths or billing intervals can no longer be bought in one checkout.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Checkout requires a payment method that can bill subscriptions when the cart contains one.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The invoice number prefix and padding settings had no effect; invoice numbers now use them.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The Course access settings “Create accounts” and “Revoke access” showed as off before the first save although they were on.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>With SEO-WP active, breadcrumb structured data is left to SEO-WP instead of being printed twice.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>System status now checks for PHP 8.2, the version WopCart requires.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Saving a product from the pricing tab no longer resets the sign-up fee of its price options to zero.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Products set to the "E-publication rate" tax class are now taxed at the e-publication rate instead of the digital goods rate.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The checkout message for subscriptions that cannot be bought together now names billing intervals as well as trial periods.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The invoice.credited webhook event is now sent when a credit note is issued for an order invoice.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The API key "write" scope now describes what it allows: refunding orders and cancelling subscriptions.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Authorize.net is no longer offered for subscription checkouts it would bill wrongly (sign-up fees, first-payment discounts, introductory prices, several subscriptions, or one-off items alongside a subscription).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>PayPal is no longer offered when today's charge would differ from what PayPal bills, and PayPal sign-up fees now match the order exactly, tax included.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>PayPal and Mollie are no longer offered for carts with more than one subscription.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>2Checkout is no longer offered for subscriptions with a free trial, a sign-up fee, a first-payment discount or an introductory price.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Link scanners in email programs can never publish a review; star ratings stay unpublished until the buyer presses Submit.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-1-2","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-1-2" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.1.2</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">14 September 2026 · Invoice payment fixes</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>“Start over” for PayPal, Mollie and 2Checkout invoice payments once the gateway reports no payment or the attempt window has passed.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Invoice payment actions are rate-limited.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The invoice payment page no longer locks the customer out while an earlier payment attempt is open. It offers “Continue to payment” or “Start over”.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Stripe Checkout sessions for invoices expire with the payment page’s attempt window, and a new session is never created while an earlier one can still be paid.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A completed Stripe payment is confirmed when the invoice page is opened, so a missed webhook cannot leave a paid invoice unpaid.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-1-1","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-1-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.1.1</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">14 September 2026 · Bug fixes</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Payment form submissions failed because field names were rendered incorrectly.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Upgrading a subscription plan could be refused by Stripe after an earlier failed attempt.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The Webhooks screen under Integrations returned “not allowed”.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>EU VAT validation kept showing as unavailable on the Status page after it recovered.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-1-0","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-1-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.1.0</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">14 September 2026</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>Payment forms:</strong> a block-based form builder with 17 templates for payments, donations, sign-ups, events, surveys, contact and bookings. Fixed, tiered or custom amounts, one-time or recurring, goals with progress bars, entries with CSV export.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Integrations hub:</strong> switch services on and off and configure them in one place, including Mailchimp, Brevo, MailerLite, ActiveCampaign, FluentCRM, Zapier, Make, n8n, Slack, Discord, Telegram, Twilio SMS, Google Sheets, Google Analytics 4 and Meta Conversions API. Marketing and analytics respect consent. Guided step-by-step setup with a connection test, a test event and plain-language errors; connectors not yet confirmed against live accounts are marked Beta.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Memberships:</strong> levels with WordPress roles, access rules for pages, blocks and menu items, member shortcodes, MemberPress compatibility and a setting for paused subscriptions.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Invoices:</strong> EU-compliant invoice details, payment links, resend, void by cancellation credit note, activity history and reminders before, on and after the due date.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Cart:</strong> a cart page and a setting for where buyers go after adding to cart (default: checkout).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Multilingual and page builders:</strong> WPML and Polylang, Divi modules, Bricks elements and more Elementor widgets.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Design:</strong> a new admin dashboard with period comparison, and a redesigned checkout, cart and confirmation with layout and accent colour settings.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Physical products can only be paid with gateways that support shipping.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Once-only coupons are refused on recurring payment forms.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Requires PHP 8.2 or newer.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>EU VAT number validation (VIES) was always reported as unavailable on some servers.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Discount codes on subscriptions paid with Stripe are now charged exactly as shown. Fixed-amount codes are refused for Stripe subscriptions; percentage codes work.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Subscription sign-up fees are now charged with Stripe and PayPal.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Changing a yearly plan could fail.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Invoice numbering, credit notes for orders without an invoice, and reminder timing.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Security hardening for permissions, webhook address checks and retry queues.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-0-0","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-0-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.0.0</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">14 September 2026 · Initial release</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Added</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>Checkout and payments:</strong> Stripe checkout, Mollie, discounts and bulk coupons, net and gross price display with unit prices.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Subscriptions:</strong> recurring plans with dunning and a cancellation flow.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Software licensing:</strong> license keys with domain activations and signed license checks.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Tax and invoicing:</strong> EU VAT with VIES validation and reverse charge, OSS-ready invoices, PDF invoices and credit notes, manual invoices with payment links, quotes and refund requests.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Catalog:</strong> physical products and shipping, variants, product categories and permalinks.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Integrations and automation:</strong> LMS access for LearnDash, Tutor LMS and LifterLMS, webhooks with automation presets, MCP and AI abilities.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Security:</strong> anti-spam protection.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Nothing yet. This is the first release.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Nothing yet. This is the first release.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-final","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-final"><!-- wp:group {"className":"wc-wrap wc-cta-inner","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap wc-cta-inner"><!-- wp:heading -->
+<h2 class="wp-block-heading">Curious what comes next?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"wc-btn"} -->
+<div class="wp-block-button wc-btn"><a class="wp-block-button__link wp-element-button" href="/roadmap/">View the roadmap <span class="wc-arrow" aria-hidden="true">→</span></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->

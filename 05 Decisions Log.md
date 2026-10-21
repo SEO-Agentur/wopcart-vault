@@ -191,3 +191,11 @@ Updates solange WopCart angeboten wird. Die Fassung auf `/pricing/` und
 Die Dokumentation ist jetzt ein eigenes Repository (`SEO-Agentur/wopcart-vault`, privat),
 weil sie Betriebswissen enthält: VPS-Adresse, Containernamen, Ausroll-Abläufe. Geheimnisse
 stehen nicht darin und bleiben in `/opt/wopcart/.env`. Siehe [[Deployment/Git-Repositories]].
+
+## Fremde Plugin-Namen werden doppelt gehakt — DECIDED 2026-10-21
+Das Toolkit hat sich von SEO-WP zu Seooptimierung Toolkit umbenannt und Namensraum wie
+Filterpräfix mitgenommen, worauf WopCarts Anbindung stillschweigend aufhörte zu greifen.
+Statt nur die neuen Namen einzusetzen, hakt 1.4.1 **beide** Präfixe und erkennt **beide**
+Konstanten: ein Filter auf einen Haken, der nie feuert, kostet nichts, und eine
+Installation, die das Toolkit noch nicht aktualisiert hat, verliert nichts. Dieselbe Regel
+gilt künftig für Yoast, Rank Math und AIOSEO. Siehe [[Components/SEO und strukturierte Daten]].

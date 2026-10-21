@@ -98,3 +98,35 @@ in `Website/pages` und `Website/parts`.
 - `/pro/` soll auf `/direct/` weiterleiten.
 - `manifest.json` trägt für die sieben Seiten jetzt `design: true` und aktualisierte
   SEO-Texte. Der Importlauf selbst ist nicht nötig, `push-pages.sh` genügt.
+
+## Zweiter Durchgang, 2026-10-21 nachmittags
+
+Nach einer Durchsicht durch den Nutzer kamen dazu:
+
+- **`/faq/` und `/software-licensing/`** im Markendesign neu geschrieben. Die FAQ ist nach
+  Themen in Karten geordnet (Gebühren und Editionen, Lizenzen und Domains, Zahlungen und
+  Produkte, Daten und Datenschutz), die Lizenzseite hat Schrittliste, Karten, ein
+  Code-Beispiel für den Updater und drei Fragen.
+  Dabei korrigiert: die FAQ behauptete noch „WopCart is built for digital products and has
+  no shipping features" — derselbe Fehler wie auf `/why-wopcart/`.
+- **Produktseite** (`product-wopcart.html`, Beitrag 14): verkaufte noch den „WopCart Plan"
+  mit Plan-Schlüssel und dem Satz „no second plugin to install". Jetzt verkauft sie
+  **WopCart Direct**, im Design, mit den drei Größen, der Domainzählung und dem Kleingedruckten.
+  Der Beitragstitel wandert von „WopCart" auf „WopCart Direct"; dafür trägt die Datei in
+  der ersten Zeile eine Direktive `<!-- wc:title WopCart Direct -->`, die `push-pages.php`
+  ausliest.
+- **Roadmap**: „Free plan via Stripe Connect" unter *In progress* las sich so, als seien
+  Stripe-Zahlungen noch nicht fertig. Jetzt steht unter *Shipped* „Stripe checkout and
+  Apple Pay, live and in use" samt WopCart Direct, und unter *In progress* die Abrechnung
+  über Connect mit dem ausdrücklichen Hinweis, dass die Zahlungen selbst längst laufen.
+  Dazu die Verzeichnis-Aufnahme bei WordPress.org.
+- **Changelog**: Eintrag 1.4.1 ergänzt, und die vier Platzhalter `RELEASE_DATE` (1.2.4,
+  1.3.0, 1.3.1, 1.4.0) auf den 21. Oktober 2026 gesetzt, weil alle vier mit diesem Rollout
+  live gehen. Verschiebt sich der Rollout, einmal `sed -i '' 's/21 October 2026/…/'`.
+- **`05-design-pages.php`** deckt jetzt auch `faq`, `software-licensing` und alle
+  Produktseiten samt Produktarchiv ab.
+- **`push-pages.sh`** kennt Produkte (`product:wopcart`) und Titel-Direktiven; die
+  Standardliste umfasst alle elf Seiten, das Produkt und das Menü.
+
+Nicht angefasst, weil nicht benannt: `/features/` und `/paywall-memberships/` tragen
+weiterhin kein Design, obwohl das Docs-Menü auf sie zeigt.

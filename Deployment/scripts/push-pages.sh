@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Publish page content and the header navigation from the vault to wopcart.com.
 #
-#   bash push-pages.sh                       # the seven redesigned pages + header
+#   bash push-pages.sh                       # every redesigned page, the product and the header
 #   bash push-pages.sh pricing docs          # only these slugs, no header
+#   bash push-pages.sh product:wopcart       # only the product
 #
 # Each replaced page is backed up inside the web container as
 # /tmp/wc-pages/<slug>.bak.html, the header as header.bak.html.
@@ -13,7 +14,7 @@ WEB=/Users/cyrusbadde/projects/plugins/digital-cart-vault/Website
 KEY=~/.ssh/seowebsitesbuilder_vps
 HOST=root@187.77.74.66
 
-DEFAULT=(pricing docs integrations why-wopcart support eu-vat plan-changes-refunds)
+DEFAULT=(pricing docs integrations why-wopcart support eu-vat plan-changes-refunds faq software-licensing roadmap changelog product:wopcart)
 if [ "$#" -gt 0 ]; then
 	SLUGS=("$@")
 	WITH_HEADER=0
@@ -24,8 +25,17 @@ fi
 
 STAGE=$(mktemp -d)
 for slug in "${SLUGS[@]}"; do
-	[ -f "$WEB/pages/$slug.html" ] || { echo "fehlt: $WEB/pages/$slug.html"; exit 1; }
-	cp "$WEB/pages/$slug.html" "$STAGE/"
+	case "$slug" in
+		product:*)
+			# Product content lives beside the page folder, named product-<slug>.html.
+			src="$WEB/product-${slug#product:}.html"
+			;;
+		*)
+			src="$WEB/pages/$slug.html"
+			;;
+	esac
+	[ -f "$src" ] || { echo "fehlt: $src"; exit 1; }
+	cp "$src" "$STAGE/"
 	echo "$slug" >> "$STAGE/slugs.txt"
 done
 [ "$WITH_HEADER" = 1 ] && cp "$WEB/parts/header.html" "$STAGE/"
@@ -42,6 +52,10 @@ docker exec wopcart-web chown -R www-data:www-data /tmp/wc-pages
 docker exec -u www-data wopcart-web php /tmp/wc-pages/push-pages.php
 echo
 for p in $(cat /tmp/wc-pages/slugs.txt); do
-	echo "$p: HTTP $(curl -s -o /dev/null -w "%{http_code}" https://wopcart.com/$p/)"
+	case "$p" in
+		product:*) url="https://wopcart.com/products/${p#product:}/" ;;
+		*)         url="https://wopcart.com/$p/" ;;
+	esac
+	echo "$p: HTTP $(curl -s -o /dev/null -w "%{http_code}" "$url")"
 done
 rm -rf /tmp/wc-pages'

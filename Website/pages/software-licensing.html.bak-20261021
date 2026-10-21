@@ -1,0 +1,223 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Software licensing for WordPress plugins and themes</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"large"} -->
+<p class="has-large-font-size">Sell license keys with activation limits and deliver updates to your customers' WordPress dashboards from your own store. Included in the free plugin.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">How it works</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>On the product's Licensing tab, turn on <strong>Issue license keys for this product</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Set the number of sites per license, or a different number for each price option. Use 0 for unlimited.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Choose a license length in days, or make the license lifetime.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Choose the file that is your installable zip as the update package and enter the current version.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Add the WopCart updater class to the plugin or theme you sell.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Buyers receive a key, activate it inside your software and get updates while their license is current.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Activation limits that fit real workflows</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Activation limits per product or per price option, such as Single Site, 5 Sites and Unlimited</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Local and staging installs do not use a seat. By default, up to 3 can be active per license, and you can change the cap.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Customers can remove an activation from their account page, for example after moving to a new domain</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>After a subscription downgrade, extra activations are released at renewal, and the customer chooses which sites stay</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Updates from your own store</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Version, changelog, required WordPress and PHP versions and "tested up to" shown in the customer's updates screen</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Upload a new version of the package file and customers are offered the update</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Drop-in updater class for plugins and themes</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>An expired license stops updates, not the software</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Emails before and after a license expires</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Add the updater to your plugin's main file:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code>new WopCart_Updater( array( 'store_url' =&gt; 'https://your-store.com', 'item_id' =&gt; 123, 'file' =&gt; __FILE__, 'version' =&gt; '1.4.2', 'license' =&gt; $license_key ) );</code></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For a theme, pass <code>'type' =&gt; 'theme'</code> and set <code>'slug'</code> to the theme directory.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">A licensing API built for public endpoints</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>REST routes to activate, deactivate and check a license, and to check the latest version</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A form-post endpoint that follows the convention many existing WordPress updaters use, so switching can be a change of URL</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Rate limiting per address and per key</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Keys compared in constant time, with stable machine-readable error codes</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Upgrades between tiers</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>One-off licenses:</strong> customers pay the difference between the two list prices and keep the same key</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Subscriptions:</strong> upgrades are charged at once with proration, and downgrades take effect at the next renewal</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Plan changes do not create refunds or credits</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Manage licenses</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>A Licenses screen in the WordPress admin</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Customers see their keys and activations in their account</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>WP-CLI commands: <code>wp wopcart licenses</code> and <code>wp wopcart license-extend</code></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Licensing questions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Do I need a paid plan to sell license keys?</summary><!-- wp:paragraph -->
+<p>No. Software licensing is in the free plugin. Paid plans change only the platform fee and which gateways you can use.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Does an expired license disable my customer's software?</summary><!-- wp:paragraph -->
+<p>No. An expired license stops updates. The installed software keeps working.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Do staging sites use up activations?</summary><!-- wp:paragraph -->
+<p>No. Local and staging installs are recognized by their address and do not use a seat, up to a cap of 3 per license by default.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"textColor":"contrast","backgroundColor":"accent-1","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Sell your first plugin license</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Install the plugin, choose a plan and publish your first product with the getting started guide.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->

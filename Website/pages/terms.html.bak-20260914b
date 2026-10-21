@@ -1,0 +1,209 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"textColor":"contrast","backgroundColor":"accent-2","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-2-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:paragraph -->
+<p><strong>DRAFT, NOT FOR PUBLICATION.</strong> This terms of service document requires review by a qualified lawyer. Replace every field in [SQUARE BRACKETS] and remove this notice before publishing.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Terms of Service</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"accent-4","fontSize":"small"} -->
+<p class="has-accent-4-color has-text-color has-small-font-size">Last updated: [DATE OF PUBLICATION]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">1. Scope and provider</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>These terms apply to WopCart plans and services offered on wopcart.com by WopCart.com, operated by C. Badde, sole trader, Triq il-Marfa, Bay Blue 2, MLH9065 Mellieha, Malta, VAT MT24104415 ("we"). They apply to consumers and businesses unless a section says otherwise. [COUNSEL: CONFIRM WHETHER TO SELL TO CONSUMERS, BUSINESSES OR BOTH]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">2. Definitions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Plugin:</strong> the WopCart WordPress plugin.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Free plan:</strong> use of the Plugin without a plan key, with payments routed through our Stripe Connect platform.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Paid plan:</strong> a yearly subscription that provides a plan key.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Plan key:</strong> the key that switches a site to a paid plan.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Domain slot:</strong> one production domain on which a plan key is active.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Platform fee:</strong> the share of each transaction retained on the free plan.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">3. The Plugin and the GPL</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The Plugin is licensed under the GNU General Public License, version 2 or later. Nothing in these terms limits your rights under that license. These terms govern plans, plan keys and our services, not the license of the Plugin's code.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">4. Free plan and platform fee</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On the free plan, payments in your store are settled through our Stripe Connect platform and charged to your own connected Stripe account. We retain a platform fee of 2% of each transaction. Stripe's processing fees are charged separately by Stripe. Available gateways: Stripe and Apple Pay. You are the merchant of record and responsible toward your customers, including for taxes, refunds and chargebacks. Your use of Stripe is also subject to Stripe's agreements [LINK TO STRIPE CONNECTED ACCOUNT AGREEMENT: VERIFY]. [COUNSEL: REVIEW FEE CHANGE MECHANISM AND NOTICE PERIOD]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">5. Paid plans</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>A paid plan removes the platform fee and allows the use of your own gateway accounts (Stripe, PayPal, Authorize.net, 2Checkout; Apple Pay through Stripe). The Plugin's features are the same on all plans.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"hasFixedLayout":true} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Plan</th><th>Price per year</th><th>Production domains</th><th>WopCart platform fee</th></tr></thead><tbody><tr><td>Single</td><td>€89</td><td>1</td><td>0%</td></tr><tr><td>Studio</td><td>€179</td><td>3</td><td>0%</td></tr><tr><td>Agency</td><td>€349</td><td>7</td><td>0%</td></tr><tr><td>Pro</td><td>€499</td><td>12</td><td>0%</td></tr><tr><td>Enterprise</td><td>€699</td><td>20</td><td>0%</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">6. Prices and payment</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Prices are in euros per year. [CONFIRM: PRICES INCLUDE / EXCLUDE VAT]. Payment is due at purchase and at each renewal. [ACCEPTED PAYMENT METHODS]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">7. Term, renewal and cancellation</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>A paid plan runs for one year from purchase. [CONFIRM: IT RENEWS AUTOMATICALLY FOR ANOTHER YEAR UNLESS CANCELED BEFORE THE RENEWAL DATE; HOW TO CANCEL; RENEWAL REMINDERS] When a plan ends, the site returns to the free plan.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">8. Domains</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Each production domain where the plan key is saved uses one domain slot.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Local and staging sites do not use a slot. By default, up to 3 of them can be active on one key at the same time.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Local sites include <code>localhost</code>, private IP addresses and addresses ending in <code>.local</code> or <code>.test</code>. Staging sites include subdomains such as <code>staging.</code>, <code>dev.</code> or <code>test.</code> and common hosting staging domains.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>You can remove a domain in your wopcart.com account to free its slot and use the key on another site.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Removing the plan key from a site's settings also releases that site's slot.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>[COUNSEL: STATE WHETHER A PLAN MAY BE USED FOR CLIENT SITES, AND ANY RULES ON TRANSFERRING PLAN KEYS]</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">9. Plan changes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Upgrades</strong> take effect immediately. The prorated difference is charged at once.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Downgrades</strong> take effect at your next renewal. You keep your current plan until then.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Plan changes are <strong>not refunded or credited</strong>.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">10. Right of withdrawal</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Consumers in the EU generally have a right to withdraw from distance contracts within 14 days. A plan key is digital content delivered immediately after payment. At checkout, you expressly agree to immediate delivery and acknowledge that you lose your right of withdrawal once delivery has started. [COUNSEL: ADD WITHDRAWAL INFORMATION AND MODEL WITHDRAWAL FORM WHERE REQUIRED, AND CONFIRM TREATMENT OF RENEWALS]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">11. Availability of the plan check</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Sites on a paid plan confirm their plan with wopcart.com about twice a day. If wopcart.com cannot be reached, a site keeps its paid plan for up to 14 days. [COUNSEL: AVAILABILITY COMMITMENTS, IF ANY]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">12. Your obligations</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You provide accurate account and billing information and use plans in line with the law and these terms. [COUNSEL: DRAFT PERMITTED-USE RULES FOR PLAN KEYS WITHOUT RESTRICTING GPL RIGHTS]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">13. Warranty and liability</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[COUNSEL: DRAFT WARRANTY AND LIMITATION OF LIABILITY CLAUSES, RESPECTING MANDATORY CONSUMER LAW]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">14. Data protection</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We process personal data as described in our <a href="/privacy-policy/">privacy policy</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">15. Changes to these terms</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[COUNSEL: DRAFT PROCEDURE AND NOTICE PERIOD FOR CHANGES]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">16. Governing law and jurisdiction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[GOVERNING LAW]. For consumers, this choice does not remove the protection of mandatory provisions of the law of the country where they live. [PLACE OF JURISDICTION FOR BUSINESS CUSTOMERS]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">17. Final provisions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If any provision is invalid, the remaining provisions stay in effect. Contact: info@wopcart.com.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->

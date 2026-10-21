@@ -1,0 +1,287 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">WopCart pricing</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"large"} -->
+<p class="has-large-font-size">Every feature is in the free plugin. You choose how payments are routed: through WopCart at 2% per sale, or through your own gateway accounts at 0%.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Free plan and paid plans compared</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Availability:</strong> the free plan opens together with Stripe Connect onboarding, which is not live yet. Until then, WopCart is available on the paid plans below.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"hasFixedLayout":true} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th></th><th>Free plan</th><th>Paid plans</th></tr></thead><tbody><tr><td>Features</td><td>All features</td><td>All features</td></tr><tr><td>WopCart platform fee</td><td>2% per transaction</td><td>0%</td></tr><tr><td>Payment processing fees</td><td>Charged by Stripe</td><td>Charged by your payment provider</td></tr><tr><td>Gateways</td><td>Stripe and Apple Pay</td><td>Stripe, PayPal, Authorize.net, 2Checkout and Apple Pay</td></tr><tr><td>How payments are routed</td><td>Through WopCart's Stripe Connect platform, charged to your connected Stripe account</td><td>Directly to your own gateway accounts</td></tr><tr><td>Plan key</td><td>Not needed</td><td>One key per plan, covering its domains</td></tr><tr><td>Price</td><td>Free</td><td>From €89 per year</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Paid plans</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Billed yearly in euros. Every plan includes all features, a 0% WopCart fee and your own gateway accounts. Plans differ only in the number of production domains.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"hasFixedLayout":true} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Plan</th><th>Price per year</th><th>Production domains</th><th>WopCart platform fee</th></tr></thead><tbody><tr><td>Single</td><td>€89</td><td>1</td><td>0%</td></tr><tr><td>Studio</td><td>€179</td><td>3</td><td>0%</td></tr><tr><td>Agency</td><td>€349</td><td>7</td><td>0%</td></tr><tr><td>Pro</td><td>€499</td><td>12</td><td>0%</td></tr><tr><td>Enterprise</td><td>€699</td><td>20</td><td>0%</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"accent-5"} -->
+<div class="wp-block-column has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Single</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>€89</strong> per year</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>1 production domain</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>0% WopCart fee, all features, your own gateway accounts</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#wopcart-buy-single">Buy Single</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"accent-5"} -->
+<div class="wp-block-column has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Studio</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>€179</strong> per year</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>3 production domains</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>0% WopCart fee, all features, your own gateway accounts</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#wopcart-buy-studio">Buy Studio</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"accent-5"} -->
+<div class="wp-block-column has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Agency</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>€349</strong> per year</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>7 production domains</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>0% WopCart fee, all features, your own gateway accounts</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#wopcart-buy-agency">Buy Agency</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"accent-5"} -->
+<div class="wp-block-column has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Pro</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>€499</strong> per year</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>12 production domains</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>0% WopCart fee, all features, your own gateway accounts</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#wopcart-buy-pro">Buy Pro</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"backgroundColor":"accent-5"} -->
+<div class="wp-block-column has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Enterprise</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>€699</strong> per year</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>20 production domains</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>0% WopCart fee, all features, your own gateway accounts</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#wopcart-buy-enterprise">Buy Enterprise</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:paragraph {"textColor":"accent-4","fontSize":"small"} -->
+<p class="has-accent-4-color has-text-color has-small-font-size">VAT is calculated at checkout where it applies.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">How domains are counted</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Each production domain where the plan key is saved uses one domain slot.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Local and staging sites do not use a slot. By default, up to 3 of them can be active on one key at the same time.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Local sites include <code>localhost</code>, private IP addresses and addresses ending in <code>.local</code> or <code>.test</code>. Staging sites include subdomains such as <code>staging.</code>, <code>dev.</code> or <code>test.</code> and common hosting staging domains.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>You can remove a domain in your wopcart.com account to free its slot and use the key on another site.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Removing the plan key from a site's settings also releases that site's slot.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Changing plans</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Upgrades</strong> take effect immediately. The prorated difference is charged at once.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Downgrades</strong> take effect at your next renewal. You keep your current plan until then.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Plan changes are <strong>not refunded or credited</strong>.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Read the details on <a href="/plan-changes-refunds/">plan changes, domains and refunds</a>.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">What you pay in total</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Free plan:</strong> the 2% WopCart platform fee plus Stripe's processing fees.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Paid plan:</strong> the yearly plan price plus your payment provider's processing fees. WopCart takes nothing from your transactions.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Pricing questions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Are any features locked on the free plan?</summary><!-- wp:paragraph -->
+<p>No. There are no locked features and no limits on products. The plan only decides how payments are routed.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>Why is the free plan limited to Stripe and Apple Pay?</summary><!-- wp:paragraph -->
+<p>PayPal, Authorize.net and 2Checkout provide no way to collect a platform fee, so they are available on paid plans, where you use your own credentials.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What happens when my plan ends?</summary><!-- wp:paragraph -->
+<p>The store returns to the free plan. Features keep working, and payments are routed through WopCart's Stripe Connect platform with the 2% fee.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details -->
+
+<!-- wp:details -->
+<details class="wp-block-details"><summary>What if the plan check cannot reach wopcart.com?</summary><!-- wp:paragraph -->
+<p>A site on a paid plan keeps its plan for up to 14 days while wopcart.com is unreachable, so an outage on our side does not add a fee to your sales.</p>
+<!-- /wp:paragraph --></details>
+<!-- /wp:details --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"textColor":"contrast","backgroundColor":"accent-1","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Try every feature on the free plan</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Install the plugin, choose a plan and publish your first product with the getting started guide.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->

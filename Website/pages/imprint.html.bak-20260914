@@ -1,0 +1,79 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"textColor":"contrast","backgroundColor":"accent-2","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-2-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:paragraph -->
+<p><strong>DRAFT, NOT FOR PUBLICATION.</strong> This imprint requires review by a qualified lawyer. Replace every field in [SQUARE BRACKETS] and remove this notice before publishing.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Imprint</h1>
+<!-- /wp:heading -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Service provider</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[COMPANY NAME] [LEGAL FORM]<br>[STREET AND NUMBER]<br>[POSTAL CODE] [CITY]<br>[COUNTRY]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Represented by</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[NAME(S) OF MANAGING DIRECTOR(S) OR OWNER]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Contact</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Email: [CONTACT EMAIL]<br>Phone: [PHONE NUMBER]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Commercial register</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Register court: [REGISTER COURT]<br>Registration number: [REGISTRATION NUMBER]<br>[DELETE THIS SECTION IF NOT REGISTERED]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">VAT identification number</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>VAT identification number under [APPLICABLE PROVISION]: [VAT ID]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Responsible for content</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[NAME AND ADDRESS, ONLY IF REQUIRED IN YOUR JURISDICTION]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Supervisory authority and professional regulations</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[IF APPLICABLE, OTHERWISE DELETE]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Consumer dispute resolution</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[CHOOSE ONE: We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board. / We take part in dispute resolution proceedings before: NAME AND ADDRESS OF THE BOARD]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"accent-4","fontSize":"small"} -->
+<p class="has-accent-4-color has-text-color has-small-font-size">Last updated: [DATE]</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->

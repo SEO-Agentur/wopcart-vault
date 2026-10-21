@@ -1,0 +1,391 @@
+<title>WopCart Sicherheitsaudit 1.2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F3F5F4; --paper:#FFFFFF; --ink:#16201D; --muted:#5A6863; --rule:#DCE3E0; --accent:#0E9F7A;
+  --crit:#B3261E; --crit-bg:#FBE9E7; --high:#C2530F; --high-bg:#FDEEE3; --med:#8A6A00; --med-bg:#FBF3D6;
+  --low:#2F62A8; --low-bg:#E6EEF9; --info:#5E6B67; --info-bg:#ECEFEE; --code-bg:#EEF2F0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F1513; --paper:#161E1B; --ink:#E4ECE8; --muted:#97A6A0; --rule:#28332F; --accent:#3FD1A6;
+    --crit:#FF8A80; --crit-bg:#3A1714; --high:#FFA66B; --high-bg:#3A2314; --med:#E8C25A; --med-bg:#332A0F;
+    --low:#8DB5F2; --low-bg:#172437; --info:#A9B5B1; --info-bg:#202926; --code-bg:#1E2825;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F1513; --paper:#161E1B; --ink:#E4ECE8; --muted:#97A6A0; --rule:#28332F; --accent:#3FD1A6;
+  --crit:#FF8A80; --crit-bg:#3A1714; --high:#FFA66B; --high-bg:#3A2314; --med:#E8C25A; --med-bg:#332A0F;
+  --low:#8DB5F2; --low-bg:#172437; --info:#A9B5B1; --info-bg:#202926; --code-bg:#1E2825;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:15px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;padding-inline:20px;padding-block:40px 64px}
+.wrap{max-width:980px;margin:0 auto;display:grid;gap:36px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:2rem;font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.25rem;font-weight:600}
+h3{font-size:1.02rem;font-weight:600}
+p{margin:0}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.84em}
+code{background:var(--code-bg);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.eyebrow{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+header{display:grid;gap:12px}
+.lead{color:var(--muted);max-width:68ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.85rem;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:500}
+
+.tally{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--rule);background:var(--paper);border-radius:6px;overflow:hidden}
+.tally button{all:unset;cursor:pointer;padding:14px 16px;display:grid;gap:2px;border-right:1px solid var(--rule);position:relative}
+.tally button:last-child{border-right:0}
+.tally button::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--c)}
+.tally button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.tally button[aria-pressed="true"]{background:var(--cb)}
+.tally .n{font-size:1.8rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--c);line-height:1.1}
+.tally .l{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.hint{font-size:.8rem;color:var(--muted);margin-top:8px}
+
+.order{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:20px 22px;display:grid;gap:12px}
+.order ol{margin:0;padding-left:1.3em;display:grid;gap:8px}
+.order li::marker{color:var(--accent);font-weight:600}
+.ids{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--muted)}
+
+.group{display:grid;gap:12px}
+.group-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+.group-head .count{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.finding{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--c);border-radius:4px;padding:16px 20px;display:grid;gap:10px}
+.fhead{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:500;color:var(--c);background:var(--cb);padding:2px 8px;border-radius:3px;white-space:nowrap}
+.fhead h3{flex:1 1 360px}
+.area{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.loc{font-size:.82rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 8px}
+.row{display:grid;grid-template-columns:110px 1fr;gap:4px 16px}
+.row dt{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.row dd{margin:0;max-width:72ch}
+.ok{font-size:.78rem;color:var(--accent);font-weight:500}
+.crit{--c:var(--crit);--cb:var(--crit-bg)} .high{--c:var(--high);--cb:var(--high-bg)} .med{--c:var(--med);--cb:var(--med-bg)} .low{--c:var(--low);--cb:var(--low-bg)} .info{--c:var(--info);--cb:var(--info-bg)}
+
+details.sound{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:14px 20px}
+details.sound summary{cursor:pointer;font-weight:600}
+details.sound ul{margin:12px 0 0;padding-left:1.2em;display:grid;gap:6px;color:var(--ink)}
+.scope{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.scope div{border-top:2px solid var(--rule);padding-top:8px;font-size:.88rem}
+.scope b{display:block;font-weight:600;margin-bottom:2px}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+@media (max-width:640px){
+  .tally{grid-template-columns:repeat(3,1fr)}
+  .tally button:nth-child(3){border-right:0}
+  .tally button:nth-child(-n+3){border-bottom:1px solid var(--rule)}
+  .row{grid-template-columns:1fr}
+  h1{font-size:1.6rem}
+}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Security Audit · WopCart Plugin</p>
+  <h1>WopCart Sicherheitsaudit 1.2.0</h1>
+  <p class="lead">Statische Code-Prüfung des Plugins in Version 1.2.0: Rechte, Zahlungen, Lizenzen, Einschleusung, Dateien, Secrets und Datenschutz. Jeder Fund wurde entlang des echten Code-Pfads nachvollzogen; die zwei schwersten zusätzlich von Hand gegengeprüft.</p>
+  <div class="meta">
+    <span>Stand <b>15. September 2026</b></span>
+    <span>Code <b class="mono">main @ e6ed2b6</b></span>
+    <span>Methode <b>Code-Review, nur lesend</b></span>
+    <span>wopcart.com <b>Stripe-Testmodus</b></span>
+  </div>
+</header>
+
+<section>
+  <div class="tally" role="group" aria-label="Nach Schweregrad filtern">
+    <button class="crit" data-f="crit" aria-pressed="false"><span class="n">1</span><span class="l">Kritisch</span></button>
+    <button class="high" data-f="high" aria-pressed="false"><span class="n">2</span><span class="l">Hoch</span></button>
+    <button class="med" data-f="med" aria-pressed="false"><span class="n">7</span><span class="l">Mittel</span></button>
+    <button class="low" data-f="low" aria-pressed="false"><span class="n">12</span><span class="l">Niedrig</span></button>
+    <button class="info" data-f="info" aria-pressed="false"><span class="n">5</span><span class="l">Hinweis</span></button>
+  </div>
+  <p class="hint">Auf einen Schweregrad klicken, um nur diese Funde zu zeigen. Nochmal klicken zeigt wieder alle.</p>
+</section>
+
+<section class="order">
+  <h2>Empfohlene Reihenfolge</h2>
+  <ol>
+    <li><strong>Vor dem Stripe-Livegang:</strong> Zahlungen fälschungssicher machen. <span class="ids">K1 · H2 · M1 · M2</span></li>
+    <li><strong>Kundendaten schützen:</strong> Konto-Übernahme und gefälschte verifizierte Bewertungen schließen. <span class="ids">H1 · M7</span></li>
+    <li><strong>Secrets und Missbrauch:</strong> Gateway-Schlüssel aus dem HTML, Rate-Limits für Rabattcodes und Lizenz-API, Update-Downloads an Aktivierungen binden. <span class="ids">M6 · M5 · M4 · M3</span></li>
+    <li><strong>Aufräumen</strong> mit der nächsten Minor-Version. <span class="ids">N1–N12 · I1–I5</span></li>
+  </ol>
+</section>
+
+<section class="group crit" data-sev="crit">
+  <div class="group-head"><h2>Kritisch</h2><span class="count">1 Fund</span></div>
+
+  <article class="finding crit">
+    <div class="fhead"><span class="tag">K1</span><h3>Stripe-Rückkehrlink schaltet eine Bestellung mit der bezahlten Sitzung einer anderen frei</h3><span class="area">Zahlungen</span></div>
+    <div class="loc"><code>src/Gateways/Stripe.php:596-610</code><code>Stripe.php:623-660</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd><code>handle_return()</code> lädt die Checkout-Session aus <code>?session_id=</code> und schließt die Bestellung ab, ohne zu prüfen, dass die Session zu dieser Bestellung gehört (gespeicherte <code>stripe_session_id</code>, <code>metadata.order_id</code>, Betrag, Währung). Nur der Order-Key der Bestellung wird geprüft.</dd>
+      <dt>Angriff</dt><dd>Käufer bezahlt Bestellung A über 1 $ und erhält <code>cs_A</code>. Er legt Bestellung B über 1.000 $ an, bricht ab und ruft den Rückkehrlink von B mit <code>session_id=cs_A</code> auf. B wird „bezahlt“: Lizenzen, Downloads, Mitgliedschaften. Formular-Bestellungen genauso.</dd>
+      <dt>Behebung</dt><dd>Session-ID muss der gespeicherten der Bestellung entsprechen (oder <code>metadata.order_id</code> + Order-Key); zusätzlich <code>amount_total</code> und Währung gegen die Bestellung prüfen. Die Rechnungs-Zahlung (<code>reconcile_session()</code>) macht das bereits richtig.</dd>
+    </dl>
+    <span class="ok">Von Hand im Code bestätigt</span>
+  </article>
+</section>
+
+<section class="group high" data-sev="high">
+  <div class="group-head"><h2>Hoch</h2><span class="count">2 Funde</span></div>
+
+  <article class="finding high">
+    <div class="fhead"><span class="tag">H1</span><h3>Eingeloggter Nutzer übernimmt den Kundendatensatz eines Gastkäufers über die Checkout-E-Mail</h3><span class="area">Rechte</span></div>
+    <div class="loc"><code>src/Repository/CustomerRepository.php:100-116, 192-196</code><code>src/Checkout/OrderBuilder.php:75-91</code><code>src/Forms/FormOrderBuilder.php:49-65</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Beim Anlegen der (noch unbezahlten) Bestellung wird der Kunde per E-Mail aus dem Formular gesucht. Hat der Datensatz noch keinen WordPress-Nutzer, wird die ID des eingeloggten Nutzers eingetragen, ohne Abgleich mit dessen Konto-E-Mail. <code>current()</code> sucht danach zuerst per Nutzer-ID. Name und Adresse des Opfers werden dabei mit den eingegebenen Werten überschrieben.</dd>
+      <dt>Angriff</dt><dd>Beliebiges Kundenkonto, Checkout mit <code>wopcart_email=opfer@example.com</code>, Zahlung abbrechen. Danach zeigt „Mein Konto“ die Bestellungen, Download-Links, Lizenzen, Rechnungen und Angebote des Opfers; der Angreifer kann dessen Abos kündigen, Erstattungen anfordern und Aktivierungen entfernen.</dd>
+      <dt>Behebung</dt><dd><code>user_id</code> nur verknüpfen, wenn die Konto-E-Mail der Kunden-E-Mail entspricht, oder für eingeloggte Käufer die Konto-E-Mail erzwingen. In <code>current()</code> Treffer mit abweichender E-Mail verwerfen. Bereits falsch verknüpfte Datensätze bereinigen.</dd>
+    </dl>
+    <span class="ok">Von Hand im Code bestätigt</span>
+  </article>
+
+  <article class="finding high">
+    <div class="fhead"><span class="tag">H2</span><h3>Eine bezahlte Apple-Pay-Zahlung lässt sich für beliebig viele Bestellungen wiederverwenden</h3><span class="area">Zahlungen</span></div>
+    <div class="loc"><code>src/Gateways/ApplePay.php:120-165</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd><code>process()</code> akzeptiert jeden PaymentIntent mit Status „succeeded“ und passendem Betrag/Währung. Nicht geprüft wird, ob er schon eine andere Bestellung bezahlt hat oder an diese gebunden ist.</dd>
+      <dt>Angriff</dt><dd>Die Intent-ID steht im Client-Secret der AJAX-Antwort. Nach einer echten Zahlung wird der Checkout mit derselben <code>wopcart_payment_token</code> erneut abgeschickt, für jeden Warenkorb mit gleichem Betrag. Kein Apple-Gerät nötig.</dd>
+      <dt>Behebung</dt><dd>Intent ablehnen, wenn er schon als Transaktion einer Bestellung gespeichert ist; beim Erzeugen Warenkorb/Bestellung in die Metadaten schreiben und beim Absenden prüfen; den Intent atomar beanspruchen.</dd>
+    </dl>
+  </article>
+</section>
+
+<section class="group med" data-sev="med">
+  <div class="group-head"><h2>Mittel</h2><span class="count">7 Funde</span></div>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M1</span><h3>Abschluss und Freischaltung sind nicht atomar: doppelte Lizenzen, Abos und Belege möglich</h3><span class="area">Zahlungen</span></div>
+    <div class="loc"><code>src/Model/Order.php:502</code><code>src/Checkout/Fulfillment.php:49-53</code><code>LicenseManager.php:242</code><code>SubscriptionManager.php:61</code><code>Install/Schema.php:210-232</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Statuswechsel und das „fulfilled“-Flag werden gelesen und dann geschrieben. Treffen Stripe- oder PayPal-Webhook und Käufer-Rückkehr gleichzeitig ein, feuern beide den Abschluss. Die Lizenztabelle hat keinen eindeutigen Schlüssel pro Bestellposition. Mollie hat bereits eine Sperre.</dd>
+      <dt>Behebung</dt><dd>Statuswechsel als bedingtes <code>UPDATE … WHERE status &lt;&gt; 'complete'</code>, Freischaltung nur bei betroffener Zeile; UNIQUE-Schlüssel <code>(order_item_id, product_id)</code> für Lizenzen.</dd>
+    </dl>
+  </article>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M2</span><h3>Stripe- und PayPal-Webhooks sind nicht an diesen Shop gebunden</h3><span class="area">Zahlungen</span></div>
+    <div class="loc"><code>src/Gateways/Stripe.php:858</code><code>src/Gateways/PayPal.php:904</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Bestellungen werden nur über die fortlaufende Nummer gefunden; die mitgesendeten Werte <code>site</code> und <code>order_key</code>, Gateway sowie Betrag werden ignoriert.</dd>
+      <dt>Angriff</dt><dd>Nutzen zwei Shops ein Stripe- oder PayPal-Konto, schaltet eine Zahlung in Shop A die offene Bestellung mit gleicher Nummer in Shop B frei. Nummern sind vorhersagbar.</dd>
+      <dt>Behebung</dt><dd>Site, Order-Key, Gateway, Betrag und Währung vor dem Abschluss prüfen, auch im PayPal-Handler <code>PAYMENT.CAPTURE.COMPLETED</code>.</dd>
+    </dl>
+  </article>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M3</span><h3>Update-Downloads ignorieren Aktivierung und Seat-Limit</h3><span class="area">Lizenzen</span></div>
+    <div class="loc"><code>src/Licensing/Updates.php:81-110, 277-295, 344-386</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Für einen Download-Link reicht ein gültiger Schlüssel; die Seite, für die er ausgestellt wird, wählt der Aufrufer. Weder beim Ausstellen noch beim Download wird eine aktive Aktivierung verlangt.</dd>
+      <dt>Angriff</dt><dd>Ein veröffentlichter 1-Site-Schlüssel liefert auf beliebig vielen Rechnern Updates, bis die Lizenz abläuft oder gesperrt wird. Deaktivieren der Seite hilft nicht.</dd>
+      <dt>Behebung</dt><dd>Link nur bei aktiver Aktivierung für die URL ausstellen und beim Download die Site gegen die Aktivierung prüfen; Downloads pro Schlüssel zählen.</dd>
+    </dl>
+  </article>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M4</span><h3>Lizenz-API: Rate-Limit nicht atomar, nur pro IP, und <code>/license/version</code> gar nicht begrenzt</h3><span class="area">Lizenzen</span></div>
+    <div class="loc"><code>src/Licensing/Api.php:499-547</code><code>src/Licensing/Updates.php:64-113</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Eigener Transient-Zähler statt des atomaren <code>RateLimiter</code>; parallele Anfragen kommen durch. Hinter Cloudflare/Proxy ohne <code>wopcart_ip_server_keys</code> teilen sich alle Kunden einen Zähler, ein Angreifer sperrt Aktivierungen für alle. Die Versionsabfrage schreibt bei jedem Aufruf in die Datenbank und verrät den Status eines Schlüssels.</dd>
+      <dt>Behebung</dt><dd><code>RateLimiter::hit('license_api', …)</code> mit zusätzlichem Zähler pro Schlüssel und IPv6-/64-Gruppierung, auch für <code>/license/version</code>; <code>touch()</code> höchstens stündlich schreiben; Proxy-Einstellung für Lizenz-Shops dokumentieren.</dd>
+    </dl>
+  </article>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M5</span><h3>REST-Warenkorb umgeht das Rate-Limit für Rabattcodes; Meldungen verraten existierende Codes</h3><span class="area">Missbrauch</span></div>
+    <div class="loc"><code>src/Rest/Routes.php:94-108, 417-432</code><code>src/Cart/Cart.php:541-548</code><code>src/Discounts/DiscountEngine.php:39-93</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Die Limits für Rabattcodes und „In den Warenkorb“ hängen nur an den AJAX-Aktionen. <code>POST /wopcart/v1/cart</code> braucht nur die Nonce, die auf jeder Shop-Seite steht.</dd>
+      <dt>Angriff</dt><dd>Codes in Schleife raten. „Nicht erkannt“ unterscheidet sich von „abgelaufen“, „noch nicht gültig“, „Limit erreicht“ usw.</dd>
+      <dt>Behebung</dt><dd>Gleiche <code>RateLimiter</code>-Buckets in der REST-Route; eine einheitliche Meldung für unbekannte, inaktive und noch nicht gestartete Codes.</dd>
+    </dl>
+  </article>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M6</span><h3>Gateway-Secrets stehen im HTML der Einstellungen, Shop-Manager sehen sie, und sie werden bei jedem Aufruf geladen</h3><span class="area">Secrets</span></div>
+    <div class="loc"><code>templates/admin/settings.php:91-101</code><code>templates/admin/webhook-edit.php:159</code><code>src/Install/Installer.php:148-181</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd>Stripe-Live-Secret, Webhook-Secrets, PayPal-, Authorize.net-, 2Checkout-, Claude- und Invoicing-Schlüssel stehen als <code>value="…"</code> im Quelltext. Die Rolle Shop-Manager hat <code>manage_wopcart_settings</code>. Die Werte liegen in der autoloaded Option <code>wopcart_settings</code>; Integrations-Secrets wurden bereits ausgelagert, Gateway-Secrets nicht.</dd>
+      <dt>Angriff</dt><dd>Ein Shop-Manager, eine Browser-Erweiterung oder XSS auf einer Admin-Seite liest den Live-Secret-Key; er funktioniert auch nach Entzug der Rolle weiter (Erstattungen, Kundendaten).</dd>
+      <dt>Behebung</dt><dd>Muster „•••• gespeichert / Ersetzen / Entfernen“ aus <code>IntegrationFields.php</code> übernehmen; Gateway-Secrets in eine nicht autoloaded Option; eigene Admin-Capability für Zahlungszugänge; Webhook-Secret nur einmal beim Erzeugen zeigen.</dd>
+    </dl>
+  </article>
+
+  <article class="finding med">
+    <div class="fhead"><span class="tag">M7</span><h3>„Verifizierte“ Bewertungen im Namen anderer Käufer, und Abfrage, wer was gekauft hat</h3><span class="area">Rechte</span></div>
+    <div class="loc"><code>src/Reviews/Reviews.php:70-106, 153</code><code>src/Repository/OrderRepository.php:472</code></div>
+    <dl class="row">
+      <dt>Problem</dt><dd><code>review_email</code> wird auch für eingeloggte Nutzer aus dem Formular übernommen; Kaufprüfung, <code>verified</code>, Kunden-ID und Autor-E-Mail stammen dann vom Opfer.</dd>
+      <dt>Angriff</dt><dd>Jeder Käufer (erhält standardmäßig ein Konto) schreibt „verifizierte“ Bewertungen unter fremdem Namen und erkennt an der Meldung, ob eine E-Mail das Produkt gekauft hat (5 Versuche/Stunde pro IP).</dd>
+      <dt>Behebung</dt><dd>Für eingeloggte Nutzer die Konto-E-Mail verwenden; bei Gästen nie per eingegebener E-Mail verifizieren, nur über das signierte Bewertungs-Token; einheitliche Meldung.</dd>
+    </dl>
+  </article>
+</section>
+
+<section class="group low" data-sev="low">
+  <div class="group-head"><h2>Niedrig</h2><span class="count">12 Funde</span></div>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N1</span><h3>Erstattungs-Webhooks addieren bei jeder erneuten Zustellung</h3><span class="area">Zahlungen</span></div>
+    <div class="loc"><code>PayPal.php:945</code><code>AuthorizeNet.php:703</code><code>TwoCheckout.php:347</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Wiederholte Events erhöhen den erstatteten Betrag erneut und können eine Bestellung auf „erstattet“ setzen, was den Zugang entzieht. PayPal und Authorize.net suchen zudem mit der Refund-ID statt der ursprünglichen Zahlung, Erstattungen aus dem Dashboard fehlen evtl. ganz. Stripe ist korrekt.</dd>
+    <dt>Behebung</dt><dd>Refund-IDs speichern und doppelte ignorieren oder absolute Beträge vom Anbieter übernehmen.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N2</span><h3>Zapier: Schlüssel auch als URL-Parameter, Ziel-URLs ohne SSRF-Schutz wie bei anderen Webhooks</h3><span class="area">Secrets · SSRF</span></div>
+    <div class="loc"><code>src/Integrations/Zapier/Zapier.php:274, 318, 446</code></div>
+    <dl class="row"><dt>Problem</dt><dd><code>?api_key=</code> landet in Logs und Referern. Registrierte Ziel-URLs laufen nicht durch <code>UrlGuard</code> mit DNS-Pinning; per DNS-Rebinding könnten Bestelldaten an interne HTTPS-Dienste gehen (Schlüssel nötig, keine Antwort sichtbar).</dd>
+    <dt>Behebung</dt><dd>Nur Header akzeptieren; <code>UrlGuard::check_public()</code> beim Abonnieren und <code>UrlGuard::pinned()</code> beim Zustellen.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N3</span><h3>Pfadprüfung für Produktdateien ohne abschließenden Schrägstrich; Anhänge ungeprüft</h3><span class="area">Dateien</span></div>
+    <div class="loc"><code>src/Downloads/DownloadHandler.php:207-210, 306</code><code>src/Licensing/Updates.php:471-494</code></div>
+    <dl class="row"><dt>Problem</dt><dd><code>strpos($real, $root)</code> lässt Nachbarordner wie <code>uploads-backup/</code> durch; <code>attachment_id</code> wird ohne realpath-Prüfung ausgeliefert. Nur mit Recht zum Bearbeiten von Produkten ausnutzbar.</dd>
+    <dt>Behebung</dt><dd>Gegen <code>trailingslashit($root)</code> prüfen, Anhänge durch dieselbe Prüfung, lokale Dateien optional auf <code>wopcart-protected</code> beschränken.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N4</span><h3>REST-Lesezugriff breiter als bei MCP</h3><span class="area">Rechte</span></div>
+    <div class="loc"><code>src/Rest/Routes.php:226-236</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Eine eigene Rolle mit nur <code>view_wopcart_reports</code> liest per REST alle Bestellungen, Kunden und Abos. Standardrollen sind nicht betroffen.</dd>
+    <dt>Behebung</dt><dd>Pro Route die passende Capability prüfen (wie <code>src/Mcp/Permissions.php</code>).</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N5</span><h3>GitHub-Release-Webhook kann wiederholt eingespielt werden und flutet das Log</h3><span class="area">Lizenzen</span></div>
+    <div class="loc"><code>src/Licensing/GithubDeploy.php:205-297</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Die Signatur deckt nur den Body; die Delivery-ID ist frei wählbar. Ein mitgeschnittener Body kann eine zurückgezogene Version wieder veröffentlichen oder die aktuelle zurückziehen. Jede falsche Signatur schreibt einen Log-Eintrag, ohne Limit.</dd>
+    <dt>Behebung</dt><dd>Nach Hash des Bodys deduplizieren, ältere Events ignorieren, gelöschte Versionen nicht erneut importieren, Fehl-Logs begrenzen.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N6</span><h3>Signierte Lizenzantworten ohne Nonce wiederverwendbar; Versionsantworten ohne Frische</h3><span class="area">Lizenzen</span></div>
+    <div class="loc"><code>src/Licensing/Api.php:378-407</code><code>src/Licensing/Updates.php:115-128</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Ohne Client-Nonce kann eine alte „aktiv“-Antwort bis zu 7 Tage nach Sperrung wieder eingespielt werden; alte Versionsantworten halten Clients auf einer verwundbaren Version.</dd>
+    <dt>Behebung</dt><dd>SDKs senden immer eine Nonce und verlangen sie zurück; Versionsantworten mit Nonce, Identität und kurzer Gültigkeit.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N7</span><h3>Bundle-Plätze doppelt nutzbar (Eltern- und Kind-Schlüssel)</h3><span class="area">Lizenzen</span></div>
+    <div class="loc"><code>src/Licensing/LicenseManager.php:211-222</code><code>Api.php:422-444</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Jeder Kind-Schlüssel zählt Aktivierungen getrennt. Unbestätigt, ob Kunden die Kind-Schlüssel je sehen (im Konto ausgeblendet).</dd>
+    <dt>Behebung</dt><dd>Aktivierungen der ganzen Familie unter der Sperre des Eltern-Schlüssels zählen.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N8</span><h3>Staging-/Local-Erkennung beruht auf der vom Client gemeldeten URL</h3><span class="area">Lizenzen</span></div>
+    <div class="loc"><code>src/Licensing/LicenseKeys.php:378-406</code><code>LicenseManager.php:731-761</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Eine Produktivseite meldet sich als <code>*.test</code> und nutzt bis zu 3 Gratis-Plätze; mit Einstellung 0 unbegrenzt.</dd>
+    <dt>Behebung</dt><dd>0 nicht als „unbegrenzt“ zulassen, Obergrenze dokumentieren.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N9</span><h3>Webhook-Zustellungen speichern volle Payloads unbegrenzt; Lücken bei der DSGVO-Löschung</h3><span class="area">Datenschutz</span></div>
+    <div class="loc"><code>src/Install/Schema.php:385-400</code><code>src/Webhooks/Webhooks.php:543-553</code><code>src/Emails/Mailer.php:113</code></div>
+    <dl class="row"><dt>Problem</dt><dd>E-Mail, Name und ggf. volle Lizenzschlüssel bleiben in <code>webhook_deliveries</code>, bis der Endpunkt gelöscht wird; kein Eraser dafür, vermutlich auch nicht für Lizenz-E-Mails und Angebote. Logs speichern Empfänger-E-Mails und rohe IPs der Lizenz-API (60 Tage).</dd>
+    <dt>Behebung</dt><dd>Zustellungen nach 30 Tagen löschen oder schwärzen, Eraser ergänzen, IPs im Lizenz-Log hashen.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N10</span><h3>Besucher-IP geht an ipapi.co, auch wenn der Käufer ein Land angegeben hat</h3><span class="area">Datenschutz</span></div>
+    <div class="loc"><code>src/Tax/TaxContext.php:51</code><code>src/Support/Geo.php:113</code><code>src/Cart/Cart.php:657</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Wird für die Steuer und die automatische Währung abgefragt, in der Datenschutzerklärung erwähnt. Ist das Gratis-Kontingent aufgebraucht, fehlt der IP-Nachweis still.</dd>
+    <dt>Behebung</dt><dd>Nur abfragen, wenn nötig; Einstellung zum Abschalten der Geolokalisierung.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N11</span><h3>Geschützter Download-Ordner hängt nur an <code>.htaccess</code>; Systemstatus prüft nur, ob die Datei existiert</h3><span class="area">Dateien</span></div>
+    <div class="loc"><code>src/Install/Installer.php:287</code><code>src/Admin/SystemInfo.php:314</code></div>
+    <dl class="row"><dt>Problem</dt><dd>Apache-2.2-Syntax; auf nginx oder Caddy ohne eigene Regel ist der Ordner offen, der Status zeigt trotzdem „blockiert“. wopcart.com (Apache im Container) ist nicht betroffen.</dd>
+    <dt>Behebung</dt><dd><code>Require all denied</code> ergänzen, echten HTTP-Test im Status, nginx-/Caddy-Regeln dokumentieren, Dateien zufällig benennen.</dd></dl>
+  </article>
+
+  <article class="finding low">
+    <div class="fhead"><span class="tag">N12</span><h3>Kleinere Punkte</h3><span class="area">Missbrauch</span></div>
+    <dl class="row"><dt>Details</dt><dd>
+      Anti-Spam lässt Einsendungen durch, wenn der Captcha-Anbieter ausfällt (<code>antispam_fail_open</code>, Standard an; Rate-Limits greifen weiter) · Rabatt-Nutzungslimits können parallel überschritten werden (bewusst: markiert statt abgelehnt) · „Zahl, was du willst“-Formulare nutzen <code>min</code> des Felds (Standard 0) statt des Produktpreises · Apple-Pay-Intent-Endpunkt ohne Rate-Limit.
+    </dd></dl>
+  </article>
+</section>
+
+<section class="group info" data-sev="info">
+  <div class="group-head"><h2>Hinweise</h2><span class="count">5</span></div>
+
+  <article class="finding info">
+    <div class="fhead"><span class="tag">I1</span><h3>API-Key-Scopes sind nicht an Nutzerrechte gebunden (derzeit nicht erreichbar)</h3><span class="area">Rechte</span></div>
+    <div class="loc"><code>src/Rest/ApiKeys.php:56-68</code></div>
+    <dl class="row"><dt>Details</dt><dd>Es gibt keine Oberfläche, die Keys ausstellt. Bevor eine kommt: „write“ nur mit Erstattungs- bzw. Abo-Recht, Fehlversuche zählen.</dd></dl>
+  </article>
+  <article class="finding info">
+    <div class="fhead"><span class="tag">I2</span><h3>Elementor-Widgets erlauben zusätzliche Shortcodes über <code>]</code> in Attributen</h3><span class="area">Einschleusung</span></div>
+    <div class="loc"><code>src/Integrations/Elementor/Widgets/AbstractWidget.php:117-131</code></div>
+    <dl class="row"><dt>Details</dt><dd>Nur für Elementor-Bearbeiter; <code>"[]</code> wie bei Divi/Bricks entfernen.</dd></dl>
+  </article>
+  <article class="finding info">
+    <div class="fhead"><span class="tag">I3</span><h3>Download-Dateinamen erscheinen URL-kodiert</h3><span class="area">Dateien</span></div>
+    <div class="loc"><code>DownloadHandler.php:239</code><code>Updates.php:529</code></div>
+    <dl class="row"><dt>Details</dt><dd>Keine Header-Injection; <code>filename*=UTF-8''…</code> mit ASCII-Fallback verwenden.</dd></dl>
+  </article>
+  <article class="finding info">
+    <div class="fhead"><span class="tag">I4</span><h3>Ed25519-Signaturschlüssel der Lizenzantworten liegt im Klartext in <code>wp_options</code></h3><span class="area">Secrets</span></div>
+    <div class="loc"><code>src/Licensing/ResponseSigner.php:94</code></div>
+    <dl class="row"><dt>Details</dt><dd>Ein Datenbank-Leck erlaubt gefälschte „gültig“-Antworten für alle Clients. Konstante <code>WOPCART_LICENSE_SIGNING_KEYPAIR</code> empfehlen, Rotationsplan; bei ungültiger Konstante nicht still auf die Option zurückfallen.</dd></dl>
+  </article>
+  <article class="finding info">
+    <div class="fhead"><span class="tag">I5</span><h3>CSV-Formelschutz bestätigt, mit kleiner Restlücke</h3><span class="area">Einschleusung</span></div>
+    <div class="loc"><code>Admin/Exporter.php:201</code><code>Forms/CsvExport.php:34</code><code>Memberships/AdminActions.php:467</code></div>
+    <dl class="row"><dt>Details</dt><dd>Alle drei Exporte präfixieren gefährliche Zellen; Zellen mit führendem Leerzeichen oder <code>|</code> nicht.</dd></dl>
+  </article>
+</section>
+
+<details class="sound">
+  <summary>Geprüft und in Ordnung</summary>
+  <ul>
+    <li><strong>SQL:</strong> ORDER-BY-Spalten per Allowlist, IN-Listen mit Platzhaltern, LIKE mit <code>esc_like</code>. Keine Injection gefunden.</li>
+    <li><strong>XSS:</strong> Frontend-, Admin-, E-Mail- und Formular-Templates escapen durchgehend; JSON-LD mit <code>JSON_HEX_TAG</code>. PDF ohne HTML-Engine.</li>
+    <li><strong>Webhook-Signaturen eingehend:</strong> Stripe (konstante Zeit, 300 s), Authorize.net (HMAC-SHA512), 2Checkout (Hash + Betrag), PayPal (API-Prüfung), Mollie (neu laden, Betrag, Sperre).</li>
+    <li><strong>Preise:</strong> kommen nur vom Server; Rabatte nicht unter 0; Gateway-Auswahl nach Plan serverseitig erzwungen.</li>
+    <li><strong>Stripe Connect / 2 % Gebühr:</strong> Gebühr wird serverseitig neu berechnet, Coupons blockiert, Konto aus dem Token, kein offenes Relay; Ownership-Challenge einmalig, 128/256 Bit.</li>
+    <li><strong>Tokens:</strong> <code>random_bytes</code> überall; Download-, Rechnungs-, Angebots-, Bewertungs- und Recovery-Links per HMAC mit <code>hash_equals</code> und Ablauf.</li>
+    <li><strong>Admin-Aktionen:</strong> alle <code>admin_post</code>/AJAX-Handler prüfen Nonce und Capability; öffentliche AJAX-Aktionen geben keine fremden Daten heraus.</li>
+    <li><strong>Rollen:</strong> Mitgliedschafts-Capabilities per Allowlist und Hash, Administratoren geschützt; Konten aus dem Checkout sind immer <code>subscriber</code>, kein Auto-Login.</li>
+    <li><strong>Lizenzschlüssel:</strong> 128 Bit, Seat-Vergabe unter <code>GET_LOCK</code>, Upgrade-Preise serverseitig, Kunden-Deaktivierung mit Nonce und Besitzprüfung.</li>
+    <li><strong>SSRF:</strong> Webhooks und alle Integrationen (außer Zapier, N2) über <code>UrlGuard</code> mit DNS-Pinning und ohne Redirects; GitHub-Import mit Host-Allowlist.</li>
+    <li><strong>Sonstiges:</strong> kein <code>unserialize</code>/<code>eval</code>, keine offenen Redirects, Client-IP nur aus <code>REMOTE_ADDR</code>, Integrations-Secrets nicht autoloaded und maskiert, Support-Bericht ohne Secrets, Meta/GA4 nur mit Einwilligung, keine Laufzeit-Abhängigkeiten.</li>
+  </ul>
+</details>
+
+<section class="group">
+  <div class="group-head"><h2>Umfang und Grenzen</h2></div>
+  <div class="scope">
+    <div><b>Geprüft</b>Plugin-Quellcode <span class="mono">src/</span>, <span class="mono">templates/</span>, <span class="mono">client/</span>, Lizenz-SDK-Signatur, Uninstall.</div>
+    <div><b>Nicht geprüft</b>Server wopcart.com (Docker, Caddy, Datenbank), Stripe-Kontoeinstellungen, WordPress-Core und Drittanbieter-Plugins.</div>
+    <div><b>Methode</b>Statische Prüfung ohne Ausführen von Angriffen. Funde sind entlang des Code-Pfads belegt, nicht live ausgenutzt.</div>
+    <div><b>Status</b>Noch nichts behoben. Nach den Korrekturen sind Regressionstests pro Fund und ein kurzer Nachtest vorgesehen.</div>
+  </div>
+</section>
+
+<footer>WopCart · Sicherheitsaudit der Version 1.2.0 · erstellt am 15. September 2026</footer>
+</div>
+
+<script>
+(function(){
+  var buttons=[].slice.call(document.querySelectorAll('.tally button'));
+  var groups=[].slice.call(document.querySelectorAll('section[data-sev]'));
+  buttons.forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')!=='true';
+      buttons.forEach(function(x){x.setAttribute('aria-pressed','false');});
+      if(on){b.setAttribute('aria-pressed','true');}
+      groups.forEach(function(g){g.hidden=on && g.getAttribute('data-sev')!==b.getAttribute('data-f');});
+    });
+  });
+})();
+</script>

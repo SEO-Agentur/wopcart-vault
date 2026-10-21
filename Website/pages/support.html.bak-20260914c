@@ -1,0 +1,145 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Support</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"large"} -->
+<p class="has-large-font-size">How to get help with WopCart, your plan, billing and domains.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Contact us</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Email <a href="mailto:info@wopcart.com">info@wopcart.com</a>. We usually reply within 1 to 2 business days.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To help us answer quickly, please include:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>the email address of your wopcart.com account;</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>the site address (URL) your question is about;</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>your WopCart and WordPress versions, for technical questions;</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>any error message, and the steps that lead to it.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Please never send us passwords, full plan keys or card details by email.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Find answers yourself</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="/docs/">Getting started</a>: install WopCart, set up payments, create products and add your plan key.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><a href="/faq/">FAQ</a>: fees, plans, domains, payments and data.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><a href="/plan-changes-refunds/">Plan changes, domains and refunds</a>: upgrades, downgrades, staging sites and the withdrawal right.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Billing and invoices</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Your orders and invoices are in <a href="/my-account/">My account</a>. You can download each invoice there. If your billing details or VAT number were wrong on an order, email us with the order number and the correct details.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>EU business customers with a valid VAT number are charged no VAT under the reverse charge. Enter your VAT number at checkout so it can be checked with VIES.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Cancel or change your plan</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Cancel:</strong> in <a href="/my-account/">My account</a>, cancel the plan before its renewal date. It stays active until the end of the year you paid for and then does not renew.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Upgrade:</strong> takes effect immediately. The prorated difference is charged at once.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Downgrade:</strong> takes effect at your next renewal. You keep your current plan until then.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Plan changes and cancellations are not refunded or credited. You can withdraw from a plan purchase within 14 days for a full refund; the plan key is then revoked. Details are on <a href="/plan-changes-refunds/">Plan changes, domains and refunds</a>.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Plan keys and domains</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Find your plan key:</strong> it is in <a href="/my-account/">My account</a> and in your purchase email.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Move to another domain:</strong> remove the old domain in your account, or remove the key from the old site's settings, then save the key on the new site.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>All domain slots in use:</strong> free a slot as above, or upgrade to a plan with more domains.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Staging and local sites</strong> do not use a slot, up to 3 per key by default.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Site shows the free plan after saving a key:</strong> check that your server can reach wopcart.com, then save the key again. If it still fails, email us with the site address.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Bought something from a store that uses WopCart?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>WopCart is software that store owners install on their own websites. We do not sell their products and cannot see or change their orders. Each store owner is responsible for supporting their own customers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For downloads, license keys, refunds or payments from such a store, please contact that store directly. Their contact details are usually on their website and in your purchase email.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->

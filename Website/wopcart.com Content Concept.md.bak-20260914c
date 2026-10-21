@@ -1,0 +1,457 @@
+# wopcart.com Content Concept
+
+**Status:** draft for owner review · **Prepared:** 2026-09-14 · **Language:** English (American spelling)
+**Site stack:** WordPress 7.1, Twenty Twenty-Five (block theme), no SEO plugin yet
+**Deliverables:** `Website/pages/*.html` (block markup, one file per page), `Website/pages/manifest.json`, `Website/product-wopcart.html`
+
+## 0. Ground rules used for all copy
+
+- Every product claim is backed by `digital-cart/readme.txt`, the vault docs or code under `digital-cart/src` (see the claims ledger, section 12). Nothing on the site states customer counts, ratings, reviews, certifications or testimonials, because none exist to verify.
+- Spelling is American ("license", "canceled", "catalog"). The plugin UI itself uses "license" but also "cancelled"; that difference is harmless.
+- No hype words, no exclamation marks. Benefit first, then the specific mechanism.
+- The legal entity is unknown, so nothing names a company, address or VAT ID. Legal pages are drafts with `[BRACKETED]` fields.
+- **Primary CTA "Download free" links to `/docs/`** because the WordPress.org listing does not exist yet. Once it is live, point the CTA at the WordPress.org URL and add a `SoftwareApplication` `downloadUrl`. The docs page contains the placeholder `[WOPCART DOWNLOAD LINK]`, which must be filled before launch.
+- Pricing CTAs use `#wopcart-buy-single|studio|agency|pro|enterprise` placeholders, to be replaced with real add-to-cart URLs.
+
+## 1. Target audiences and search intents
+
+| Audience | Situation | What they search | Pages that answer |
+|---|---|---|---|
+| **Plugin and theme developers** (core audience) | Sell a WordPress plugin or theme with license keys, site limits and updates; often on EDD today | "WordPress software license plugin", "WordPress plugin update server", "sell WordPress plugins license keys", "Easy Digital Downloads alternative" | software-licensing, why-wopcart, docs, pricing |
+| **EU creators and small software businesses** | Must charge the correct VAT by buyer country, handle B2B reverse charge and the withdrawal waiver | "EU VAT digital products WordPress", "VIES validation WordPress", "OSS VAT digital downloads" | eu-vat, plan-changes-refunds, features |
+| **Publishers and course or membership sites** | Want paid posts or members-only content without losing SEO | "WordPress paywall plugin", "WordPress membership subscription plugin", "restrict content after purchase WordPress" | paywall-memberships, features |
+| **Digital download sellers** (ebooks, templates, assets) | Want a light cart for files, not a full WooCommerce store | "sell digital downloads WordPress", "WordPress digital downloads plugin" | home, features, docs |
+| **Agencies** | Build stores for several clients and need several domains | "digital downloads plugin agency license", "WordPress ecommerce plugin multiple sites" | pricing (Agency/Pro/Enterprise), plan-changes-refunds |
+| **Page-builder users** | Build with Elementor or blocks | "Elementor digital downloads widget" | integrations |
+
+**Intent mix:** commercial investigation (compare, evaluate) dominates. Transactional intent sits on pricing and the product page. Informational intent goes to docs, eu-vat and the blog calendar (section 9).
+
+## 2. Keyword map
+
+Search volumes were not researched (no keyword tool data available). Validate the primary terms in Search Console or a keyword tool after launch and adjust titles if a variant has clearly more demand. Each primary keyword is assigned to exactly one page to avoid cannibalization.
+
+| URL | Primary keyword | Secondary / long-tail | Search intent |
+|---|---|---|---|
+| `/` | sell digital products WordPress | sell digital downloads WordPress; WordPress digital downloads plugin | Commercial investigation |
+| `/features/` | digital downloads plugin WordPress | WordPress subscriptions plugin; WordPress product bundles; WordPress discount codes digital products | Commercial investigation |
+| `/pricing/` | WopCart pricing | WordPress digital downloads plugin without transaction fees; WordPress ecommerce plugin platform fee | Transactional |
+| `/software-licensing/` | WordPress software license plugin | WordPress plugin update server; sell WordPress plugins with license keys; license activation limit WordPress | Commercial investigation |
+| `/paywall-memberships/` | WordPress paywall plugin | WordPress membership subscription plugin; restrict content WordPress purchase; paywall structured data WordPress | Commercial investigation |
+| `/eu-vat/` | EU VAT digital products WordPress | VIES VAT number validation WordPress; OSS VAT report WordPress; reverse charge WordPress checkout | Informational / commercial |
+| `/integrations/` | Elementor digital downloads widgets | WordPress digital downloads Zapier; WordPress store webhooks; WP-CLI ecommerce commands | Commercial investigation |
+| `/docs/` | how to sell digital downloads on WordPress | WopCart setup guide; WordPress license keys setup; sell software on WordPress tutorial | Informational / navigational |
+| `/faq/` | WopCart FAQ | Stripe Connect platform fee WordPress plugin; digital downloads plugin staging site license | Informational |
+| `/why-wopcart/` | Easy Digital Downloads alternative | EDD alternative with software licensing; EDD vs WopCart; WordPress digital downloads plugin comparison | Commercial investigation |
+| `/plan-changes-refunds/` | WopCart refund policy | right of withdrawal digital content; plugin license domain limit staging | Informational (pre-purchase) |
+| `/imprint/` | (brand, navigational) | - | Navigational / legal |
+| `/privacy-policy/` | (brand, navigational) | - | Navigational / legal |
+| `/terms/` | (brand, navigational) | - | Navigational / legal |
+
+**Blog-only terms** (section 9): "how to sell WordPress plugins", "right of withdrawal digital content", "license key activation limit staging", "EDD migration checklist".
+
+## 3. Site architecture and URL slugs
+
+```
+/                         Home (front page)
+├── /features/            Features overview            [primary nav]
+│   ├── /software-licensing/                            [linked from features, footer]
+│   ├── /paywall-memberships/                           [linked from features, footer]
+│   ├── /eu-vat/                                        [linked from features, footer]
+│   └── /integrations/                                  [linked from features, footer]
+├── /pricing/             Pricing                       [primary nav]
+│   ├── /product/wopcart/ WopCart plan product (WopCart CPT; slug to be confirmed)
+│   └── /plan-changes-refunds/                          [footer]
+├── /why-wopcart/         Comparison                    [primary nav]
+├── /docs/                Getting started               [primary nav, primary CTA target]
+├── /faq/                 FAQ                           [primary nav]
+├── /blog/                Posts (section 9)             [add to primary nav after 3 posts]
+└── Legal (footer): /imprint/ · /privacy-policy/ · /terms/   (drafts)
+```
+
+- Flat, one-level slugs for all pages (short, keyword-bearing, stable). Feature pages are not nested under `/features/` so that URLs stay short and survive a navigation change.
+- Permalinks: `/%postname%/` with trailing slash. Blog posts at `/blog/%postname%/` if you want a separate section (set the posts page to "Blog" and use a custom structure), otherwise `/%postname%/`.
+- Primary navigation (Navigation block in the TT5 header template part): Features · Pricing · Why WopCart · Docs · FAQ, plus a "Download free" button linking to `/docs/`.
+- Footer navigation: all feature pages, plan-changes-refunds, and the three legal pages (add legal links only once they are published).
+- `manifest.json` carries `in_primary_nav` and `in_footer_nav` flags for this. Because TT5 is a block theme, these become Navigation block entries, not classic menus.
+- The WopCart store pages created by the plugin (checkout, confirmation, account) exist on the site but are noindexed automatically by WopCart.
+
+## 4. Internal linking plan
+
+| From | Links to (anchor text) |
+|---|---|
+| Home | features ("See all features", "Explore features"), software-licensing ("Software licensing"), paywall-memberships ("Paywall and memberships"), pricing ("Compare plans", "See pricing"), eu-vat ("How EU VAT works in WopCart"), integrations ("All integrations"), faq ("More answers in the FAQ"), docs ("Download free") |
+| Features | eu-vat, software-licensing, paywall-memberships, integrations (descriptive anchors), docs + pricing CTAs |
+| Pricing | plan-changes-refunds ("plan changes, domains and refunds"), docs, tier buy placeholders |
+| Software licensing / Paywall / EU VAT / Integrations | docs + pricing CTAs; each hub links back to features through the nav |
+| Docs | pricing ("pricing page"), software-licensing, features, paywall-memberships, eu-vat, integrations, faq |
+| FAQ | pricing, plan-changes-refunds |
+| Why WopCart | EDD pricing page (external source, `rel="nofollow noopener"` optional), docs, features |
+| Plan changes and refunds | terms ("Terms of Service"), imprint ("imprint"). **Both targets are drafts: publish them before or together with this page, or the links will 404.** |
+| Product page | docs ("getting started guide"), plan-changes-refunds |
+| Blog posts (section 9) | each post links to its money page with the page's primary keyword as anchor, plus docs |
+
+Rules: descriptive anchors (no "click here"); every published page is reachable in two clicks from home; at most one link per target per section; add links from each new blog post back to the relevant feature page and from that feature page to the post once three or more posts exist ("Guides" list).
+
+## 5. Page specifications
+
+All pages use TT5 core blocks only. Section rhythm: hero on `accent-5` (or `cover` on `accent-3` for home), alternating plain and `accent-5` sections, a closing CTA band on `accent-1` with `contrast` text. Pages contain their own H1, so assign the TT5 template **Page No Title** (`page-no-title`, verified in the TT5 repo) to avoid a duplicate H1 from the Post Title block. Legal drafts use the default `page` template in the manifest; switch to `page-no-title` too if you prefer (their content includes an H1 after the draft notice).
+
+### Home — `/` (publish)
+
+- **SEO title** (56 chars): WopCart: Sell Digital Products and Licenses on WordPress
+- **Meta description** (142 chars): GPL WordPress plugin for downloads, subscriptions, license keys, paywalls and EU VAT. Every feature free at 2% per sale, or 0% on a paid plan.
+- **H1:** Sell digital products from WordPress, with licensing and EU VAT built in
+- **Template:** `page-no-title` · **File:** `pages/home.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-3` — blocks: buttons
+  1. What you can sell with WopCart — blocks: columns
+  1. Every feature is in the free plugin · background `accent-5` — blocks: columns, list
+  1. Pricing that follows your payments — blocks: buttons, columns, list
+  1. Built for selling to EU customers · background `contrast` — blocks: buttons, list
+  1. A paywall that search engines can read correctly — blocks: list
+  1. Fits into the tools you already use · background `accent-5` — blocks: columns
+  1. Common questions — blocks: details
+  1. Set up your first product · background `accent-1` — blocks: buttons
+
+### Features — `/features/` (publish)
+
+- **SEO title** (58 chars): WopCart Features: Downloads, Subscriptions, Licensing, VAT
+- **Meta description** (150 chars): Cart, checkout, subscriptions, license keys, expiring download links, paywalls, bundles, discounts, multi-currency, EU VAT and invoices in one plugin.
+- **H1:** WopCart features
+- **Template:** `page-no-title` · **File:** `pages/features.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-5` — blocks: buttons
+  1. Selling — blocks: columns, list
+  1. Growing revenue · background `accent-5` — blocks: columns, list
+  1. Selling internationally — blocks: columns, list
+  1. Software and paid content · background `accent-5` — blocks: columns, list
+  1. Running the store — blocks: columns, list
+  1. Start selling with WopCart · background `accent-1` — blocks: buttons
+
+### Pricing — `/pricing/` (publish)
+
+- **SEO title** (56 chars): WopCart Pricing: Free at 2% per Sale or 0% From €89/Year
+- **Meta description** (152 chars): Every feature is free with a 2% platform fee via Stripe. Paid plans from €89/year remove the WopCart fee and unlock PayPal, Authorize.net and 2Checkout.
+- **H1:** WopCart pricing
+- **Template:** `page-no-title` · **File:** `pages/pricing.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead · background `accent-5`
+  1. Free plan and paid plans compared — blocks: buttons, table
+  1. Paid plans · background `accent-5` — blocks: buttons, columns, table
+  1. How domains are counted — blocks: list
+  1. Changing plans · background `accent-5` — blocks: list
+  1. What you pay in total
+  1. Pricing questions · background `accent-5` — blocks: details
+  1. Try every feature on the free plan · background `accent-1` — blocks: buttons
+
+### Software Licensing — `/software-licensing/` (publish)
+
+- **SEO title** (56 chars): WordPress Software Licensing and Update Server | WopCart
+- **Meta description** (146 chars): Sell WordPress plugins and themes with license keys, activation limits per price option, free staging activations and updates from your own store.
+- **H1:** Software licensing for WordPress plugins and themes
+- **Template:** `page-no-title` · **File:** `pages/software-licensing.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-5` — blocks: buttons
+  1. How it works — blocks: list
+  1. Activation limits that fit real workflows · background `accent-5` — blocks: list
+  1. Updates from your own store — blocks: list
+  1. A licensing API built for public endpoints · background `accent-5` — blocks: list
+  1. Upgrades between tiers — blocks: list
+  1. Manage licenses · background `accent-5` — blocks: list
+  1. Licensing questions — blocks: details
+  1. Sell your first plugin license · background `accent-1` — blocks: buttons
+
+### Paywall and Memberships — `/paywall-memberships/` (publish)
+
+- **SEO title** (49 chars): WordPress Paywall and Membership Plugin | WopCart
+- **Meta description** (148 chars): Gate posts and pages behind a purchase or subscription. Restricted text stays out of REST, feeds and SEO descriptions, with paywall structured data.
+- **H1:** A WordPress paywall and membership plugin that stays SEO-safe
+- **Template:** `page-no-title` · **File:** `pages/paywall-memberships.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-5` — blocks: buttons
+  1. Ways to restrict content — blocks: list
+  1. Memberships with subscriptions · background `accent-5` — blocks: list
+  1. What stays hidden — blocks: list
+  1. Structured data for paywalled content · background `accent-5` — blocks: list
+  1. Paywall questions — blocks: details
+  1. Put your first post behind a paywall · background `accent-1` — blocks: buttons
+
+### EU VAT — `/eu-vat/` (publish)
+
+- **SEO title** (50 chars): EU VAT for Digital Products on WordPress | WopCart
+- **Meta description** (146 chars): Per-country VAT rates, VIES validation, reverse charge with invoice wording, location evidence and a per-country VAT report for OSS, in WordPress.
+- **H1:** EU VAT for digital products sold from WordPress
+- **Template:** `page-no-title` · **File:** `pages/eu-vat.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-5` — blocks: buttons
+  1. VAT rates by country — blocks: list
+  1. Evidence of the customer's location · background `accent-5`
+  1. VAT numbers and the reverse charge — blocks: list
+  1. Invoices and credit notes · background `accent-5` — blocks: list
+  1. Reports for your OSS return — blocks: list
+  1. Digital content and the right of withdrawal · background `accent-5`
+  1. Currencies and personal data — blocks: list
+  1. VAT questions · background `accent-5` — blocks: details
+  1. Sell to EU customers with the right VAT · background `accent-1` — blocks: buttons
+
+### Integrations — `/integrations/` (publish)
+
+- **SEO title** (57 chars): WopCart Integrations: Elementor, Zapier, Webhooks, WP-CLI
+- **Meta description** (141 chars): 8 Elementor widgets, 7 blocks, Zapier triggers, signed webhooks, a REST API, WP-CLI commands and support for Yoast SEO, Rank Math and AIOSEO.
+- **H1:** WopCart integrations
+- **Template:** `page-no-title` · **File:** `pages/integrations.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-5` — blocks: buttons
+  1. Payment gateways — blocks: table
+  1. Elementor · background `accent-5` — blocks: columns, list
+  1. Block editor and shortcodes
+  1. Zapier · background `accent-5` — blocks: list
+  1. Webhooks — blocks: list
+  1. REST API · background `accent-5`
+  1. WP-CLI — blocks: list
+  1. SEO plugins · background `accent-5` — blocks: list
+  1. Invoicing and AI — blocks: list
+  1. For theme and plugin developers · background `accent-5` — blocks: list
+  1. Start selling with WopCart · background `accent-1` — blocks: buttons
+
+### Getting Started — `/docs/` (publish)
+
+- **SEO title** (41 chars): Getting Started With WopCart: Setup Guide
+- **Meta description** (148 chars): Install WopCart, choose the free or paid plan, create a product with price options, attach files per option, enable license keys and add a plan key.
+- **H1:** Getting started with WopCart
+- **Template:** `page-no-title` · **File:** `pages/docs.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead · background `accent-5`
+  1. Before you start — blocks: list
+  1. 1. Install and activate · background `accent-5` — blocks: list
+  1. 2. Configure your store — blocks: list
+  1. 3. Set up payments · background `accent-5` — blocks: list
+  1. 4. Create a product — blocks: list
+  1. 5. Add price options · background `accent-5` — blocks: list
+  1. 6. Attach files to price options — blocks: list
+  1. 7. Enable software licensing · background `accent-5` — blocks: list
+  1. 8. Add your plan key (paid plans) — blocks: list
+  1. 9. Test a purchase · background `accent-5` — blocks: list
+  1. Next steps — blocks: list
+
+### FAQ — `/faq/` (publish)
+
+- **SEO title** (42 chars): WopCart FAQ: Fees, Plans, Domains and Data
+- **Meta description** (148 chars): Answers on the 2% free-plan fee, paid plans, gateways, domain slots, staging sites, plan changes, what data leaves your site, GDPR and uninstalling.
+- **H1:** Frequently asked questions
+- **Template:** `page-no-title` · **File:** `pages/faq.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead · background `accent-5`
+  1. Pricing and fees — blocks: details
+  1. Plans and domains · background `accent-5` — blocks: details
+  1. Payments — blocks: details
+  1. Data and privacy · background `accent-5` — blocks: details, list
+  1. Using the plugin — blocks: details
+  1. Still have a question? Start with the guide · background `accent-1` — blocks: buttons
+
+### Why WopCart — `/why-wopcart/` (publish)
+
+- **SEO title** (47 chars): Easy Digital Downloads Alternative: Why WopCart
+- **Meta description** (145 chars): How WopCart compares on fees, licensing and EU VAT, using its own features and the Easy Digital Downloads pricing page as checked on 14 Sep 2026.
+- **H1:** An Easy Digital Downloads alternative with licensing in the free plugin
+- **Template:** `page-no-title` · **File:** `pages/why-wopcart.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead, CTA buttons · background `accent-5` — blocks: buttons
+  1. What WopCart offers — blocks: list
+  1. Compared with Easy Digital Downloads · background `accent-5` — blocks: table
+  1. When another tool may fit better — blocks: list
+  1. Check it yourself · background `accent-5` — blocks: buttons
+  1. Compare plans · background `accent-1` — blocks: buttons
+
+### Plan Changes, Domains and Refunds — `/plan-changes-refunds/` (publish)
+
+- **SEO title** (47 chars): WopCart Plan Changes, Domains and Refund Policy
+- **Meta description** (143 chars): How upgrades, downgrades, domain slots and staging sites work on WopCart plans, why plan changes are not refunded, and the EU withdrawal right.
+- **H1:** Plan changes, domains and refunds
+- **Template:** `page-no-title` · **File:** `pages/plan-changes-refunds.html`
+- **Layout (top to bottom):**
+  1. Hero: H1, lead · background `accent-5`
+  1. In short — blocks: list
+  1. Upgrading · background `accent-5`
+  1. Downgrading
+  1. No refunds or credits for plan changes · background `accent-5`
+  1. When a plan ends
+  1. Domains and staging sites · background `accent-5` — blocks: list
+  1. Digital content and your right of withdrawal
+  1. Questions · background `accent-5`
+
+### Imprint — `/imprint/` (draft)
+
+- **SEO title** (17 chars): Imprint | WopCart
+- **Meta description** (123 chars): Legal information about the operator of wopcart.com, including contact details, registration and VAT identification number.
+- **H1:** Imprint
+- **Template:** `page` · **File:** `pages/imprint.html`
+- **Layout (top to bottom):**
+  1. Draft notice · background `accent-2`
+  1. Main content: H1, then H2 sections: Service provider; Represented by; Contact; Commercial register; VAT identification number; Responsible for content; Supervisory authority and professional regulations; Consumer dispute resolution
+
+### Privacy Policy — `/privacy-policy/` (draft)
+
+- **SEO title** (24 chars): Privacy Policy | WopCart
+- **Meta description** (141 chars): How wopcart.com and the WopCart plan check process personal data: hosting, Cloudflare, email via Brevo, payments via Stripe, and your rights.
+- **H1:** Privacy policy
+- **Template:** `page` · **File:** `pages/privacy-policy.html`
+- **Layout (top to bottom):**
+  1. Draft notice · background `accent-2`
+  1. Main content: H1, then H2 sections: 1. Controller; 2. Data protection officer; 3. Overview; 4. Hosting and server logs; 5. WordPress, customer accounts and cookies; 6. Cloudflare; 7. Email delivery through Brevo; 8. Purchases, payments and tax records; 9. Merchants using the free plan (Stripe Connect); 10. Plan check from WopCart installations; 11. Recipients; 12. Transfers outside the EU/EEA; 13. How long we keep data; 14. Your rights; 15. Automated decision-making; 16. Changes — blocks: list
+
+### Terms of Service — `/terms/` (draft)
+
+- **SEO title** (26 chars): Terms of Service | WopCart
+- **Meta description** (136 chars): Terms for WopCart plans, the free-plan platform fee, domain limits, renewals, plan changes and the withdrawal right for digital content.
+- **H1:** Terms of Service
+- **Template:** `page` · **File:** `pages/terms.html`
+- **Layout (top to bottom):**
+  1. Draft notice · background `accent-2`
+  1. Main content: H1, then H2 sections: 1. Scope and provider; 2. Definitions; 3. The Plugin and the GPL; 4. Free plan and platform fee; 5. Paid plans; 6. Prices and payment; 7. Term, renewal and cancellation; 8. Domains; 9. Plan changes; 10. Right of withdrawal; 11. Availability of the plan check; 12. Your obligations; 13. Warranty and liability; 14. Data protection; 15. Changes to these terms; 16. Governing law and jurisdiction; 17. Final provisions — blocks: list, table
+
+### WopCart plan product — `/product/wopcart/` (URL to be confirmed)
+
+- **SEO title** (51 chars): WopCart Plan: 0% Platform Fee and Your Own Gateways
+- **Meta description** (143 chars): A yearly WopCart plan removes the 2% platform fee and unlocks your own Stripe, PayPal, Authorize.net and 2Checkout accounts on 1 to 20 domains.
+- **File:** `product-wopcart.html` (product description; the product template supplies the H1 and add-to-cart)
+- **Layout:** What a plan unlocks → Plans (tier table) → How domains are counted → Plan changes → Immediate delivery → If your plan ends
+
+
+## 6. Structured data plan
+
+WopCart already outputs `Product` JSON-LD on product pages and paywall markup on restricted posts, and it merges into the graph of Yoast SEO, Rank Math or AIOSEO when one is active. The site-level schema below comes from the SEO plugin.
+
+| Page | Schema | Notes |
+|---|---|---|
+| All | `WebSite`, `Organization` (name "WopCart", url, logo), `BreadcrumbList` | **No address, legalName, vatID or founder until the entity is known.** No `sameAs` until profiles exist. |
+| Home, Pricing | `SoftwareApplication`: `name` WopCart, `applicationCategory` "BusinessApplication", `operatingSystem` "WordPress", `offers` = `Offer` price 0 EUR (free plan) + `AggregateOffer` lowPrice 89 highPrice 699 EUR | **No `aggregateRating` or `review`**: none exist. Add `downloadUrl` once WordPress.org is live. |
+| Product `/product/wopcart/` | `Product` (output by WopCart from the price options) | Check in the Rich Results Test after tiers are created as price options. |
+| Docs | `TechArticle` with `dateModified` | Google retired HowTo rich results in 2023; do not rely on HowTo. |
+| FAQ, and FAQ sections on other pages | `FAQPage` optional | Google shows FAQ rich results only for well-known government and health sites since 2023, so expect no rich result. It is still valid markup and useful for AI answer engines. Mark up only questions visible on the page. |
+| Why WopCart | `WebPage` + `Article` with `datePublished`/`dateModified` | The date matters for the dated comparison. |
+| Paywall-memberships, EU VAT, Licensing, Integrations | `WebPage` (default) | — |
+| Blog posts | `BlogPosting` with author | Author entity needs a real person or the organization. |
+| Legal pages | none beyond defaults | noindex drafts; once published, index is fine. |
+
+## 7. Technical SEO checklist
+
+**SEO plugin recommendation: Rank Math (free).** WopCart integrates with Yoast SEO, Rank Math and AIOSEO equally (`src/Seo/StructuredData.php`, `src/Seo/SystemPages.php`). Rank Math's free version includes a schema generator (needed for `SoftwareApplication` on home and pricing), per-page robots settings, a redirection manager and 404 monitor, which Yoast only offers in its premium tier. Yoast SEO is an equally supported alternative if you prefer it. Install only one.
+
+Before launch:
+- [ ] Settings → Reading: front page = "Home", posts page = "Blog"; "Discourage search engines" **off** on production only.
+- [ ] Permalinks `/%postname%/`; one canonical host (choose `https://wopcart.com` or `www`, 301 the other).
+- [ ] HTTPS everywhere, HSTS through Cloudflare once stable.
+- [ ] Import pages, assign `page-no-title` to content pages, set the draft status of the legal pages, and set `noindex` on drafts.
+- [ ] Rank Math: titles and descriptions from `manifest.json`; Organization knowledge graph without address fields; `SoftwareApplication` schema on home and pricing; breadcrumbs on.
+- [ ] XML sitemap submitted to Google Search Console and Bing Webmaster Tools; verify both properties (DNS TXT through Cloudflare).
+- [ ] Confirm WopCart has set noindex on checkout, confirmation and account pages and removed them from the sitemap (view source and check the sitemap).
+- [ ] `robots.txt`: allow everything except `/wp-admin/` (keep `admin-ajax.php` allowed); reference the sitemap. Decide separately whether to allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot); allowing them supports visibility in AI answers.
+- [ ] **Cloudflare caching:** bypass cache for `/checkout/`, `/account/`, the confirmation page, `wp-login.php`, `/wp-admin/`, `/wp-json/`, and any request with WordPress login or WopCart cart or currency cookies. Never cache the plan API `/wp-json/wopcart/v1/plan/*`.
+- [ ] Cloudflare: turn off Rocket Loader for checkout pages (it can interfere with the Stripe and Apple Pay scripts); keep Email Obfuscation off on docs pages that show code.
+- [ ] Open Graph image (1200×630) for the site default and for pricing; the pages contain no images, so social shares need this.
+- [ ] Favicon and site icon (Site Editor → Site Identity).
+- [ ] Core Web Vitals: TT5 plus core blocks is light. Keep Manrope self-hosted (TT5 default), don't add a page builder to marketing pages, and check PageSpeed Insights on home, pricing and docs.
+- [ ] Heading check: exactly one H1 per page (with `page-no-title`), no skipped levels.
+- [ ] 404 template: add links to docs, pricing and FAQ.
+- [ ] Accessibility: TT5 contrast on `accent-5` and `accent-1` backgrounds is fine; the `accent-3` cover uses white text. Verify buttons on `accent-1`.
+- [ ] Language: `en-US` in Settings → General → Site Language. No hreflang needed.
+- [ ] Publish imprint, privacy policy and terms (after legal review) **before** taking payments, and link them in the footer.
+- [ ] `llms.txt` (optional): short Markdown summary linking features, pricing, docs and FAQ.
+- [ ] After launch: monitor Search Console coverage and queries weekly for 8 weeks, and fix any "Duplicate without user-selected canonical" issues on WopCart product archives.
+
+## 8. Page production notes
+
+- Blocks used: group (as `<section>`), columns, column, heading, paragraph, list and list-item, buttons, button, table, details, and one cover (home hero, solid `accent-3` preset color, no image). Separator and spacer were not needed.
+- Every file passed a validation script: balanced block comments, valid attribute JSON, wrapper and color/size/alignment classes matching the attributes, padding styles matching the attributes, and balanced HTML.
+- Preset slugs used: colors `base`, `contrast`, `accent-1`, `accent-2`, `accent-3`, `accent-4`, `accent-5`; spacing `40`, `60`, `70`; font sizes `small`, `large`, `xx-large`. All verified in `WordPress/twentytwentyfive` `theme.json` (trunk) on 2026-09-14.
+- Import: paste each file into the Code editor of a new page (or insert via `wp post create --post_content="$(cat file)"`), then switch to the Visual editor and confirm no block shows "unexpected content".
+
+## 9. Content calendar: 8 follow-up blog posts
+
+| # | Target date | Working title | Primary keyword | Intent | Links to |
+|---|---|---|---|---|---|
+| 1 | 2026-09-29 | How to sell digital downloads on WordPress: a practical setup | sell digital downloads WordPress | Informational | docs, features, pricing |
+| 2 | 2026-10-13 | Add license keys and automatic updates to your WordPress plugin | WordPress plugin license key system | Informational | software-licensing, docs |
+| 3 | 2026-10-27 | EU VAT on digital products: OSS, VIES and reverse charge for WordPress sellers | EU VAT digital products | Informational | eu-vat |
+| 4 | 2026-11-10 | Paywalls and SEO: gating WordPress content without looking like cloaking | paywall SEO structured data | Informational | paywall-memberships |
+| 5 | 2026-11-24 | Site limits for plugin licenses: how to handle staging and local installs | license activation limit staging site | Informational | software-licensing, plan-changes-refunds |
+| 6 | 2026-12-08 | Moving off Easy Digital Downloads: a planning checklist | Easy Digital Downloads migration | Commercial investigation | why-wopcart, docs. **No migration tool exists in WopCart: frame it as a manual checklist and do not imply an importer.** |
+| 7 | 2027-01-12 | The EU right of withdrawal for digital content: what the checkout consent does | right of withdrawal digital content | Informational | eu-vat, plan-changes-refunds (counsel review) |
+| 8 | 2027-01-26 | Building a membership site with WordPress subscriptions and restricted content | WordPress membership subscription plugin | Commercial investigation | paywall-memberships, features |
+
+Cadence: every two weeks, with a holiday gap. Each post is 1,200–2,000 words, with an FAQ section, one internal link to its money page with the exact primary keyword as anchor, and an updated date shown on the page.
+
+## 10. Comparative advertising notes
+
+- Legal frame (EU): comparative advertising is allowed if it is not misleading, compares goods meeting the same needs, **objectively compares material, relevant, verifiable and representative features** (price may be one), does not discredit the competitor or misuse its trademark, and creates no confusion (Directive 2006/114/EC, Art. 4; national implementations apply). **Have counsel review `/why-wopcart/` before publishing.**
+- Naming Easy Digital Downloads or WooCommerce is acceptable only with facts a reader can check. Every competitor statement on the site must carry **source URL + date checked**; keep a PDF or screenshot of the source page on file for each date.
+- **What was verified for this concept (2026-09-14, https://easydigitaldownloads.com/pricing/):** "No Platform Fees" appears in the plan cards for All Access, Professional and Extended, and not for Personal. "Software Licensing & API" and "Multi-Vendor Marketplace Commissions & Payouts" and "Physical Product Shipping" appear for All Access and Professional, not Extended or Personal. Supported sites: All Access 3, Professional 2, Extended 1, Personal 1. Prices were shown as discounted offers ("normally €999.00 → €349.65 / year", "€599.00 → €209.65", "€399.00 → €159.60", "€199.00 → €79.60").
+- **Because of the promotional pricing, the site does not quote EDD prices.** Note that at these sale prices, EDD Personal (€79.60) is cheaper than WopCart Single (€89), so a "cheaper than EDD" claim would be false today.
+- **Stale claims in the plugin's `readme.txt`** (not edited, per instruction): "EDD charges 3% on its free and Personal plans", "fee-free on a plan costing €199.50 per year" and "Professional plan at €299.50 per year". The 2026-08-17 figures in the vault (`Reference/EDD Comparison.md`) no longer match the live page, and "3%" does not appear in the pricing page text. Update the readme before the WordPress.org submission, or remove the price references there.
+- WooCommerce: the site does not compare prices or features with WooCommerce. Its costs depend on the extensions chosen, so no representative comparison is possible without a defined bundle and dated sources.
+- Re-verify competitor facts quarterly and before any edit to `/why-wopcart/`; update the "checked on" date each time.
+- Include a non-affiliation and trademark notice (already on the page).
+
+## 11. Legal review items (counsel)
+
+1. `/plan-changes-refunds/`: plain-language policy (no refunds or credits for plan changes, upgrade proration, downgrade at renewal, withdrawal waiver explanation, "statutory rights unaffected" sentence, "business customers" not mentioned). **Mark: must be reviewed by counsel before publishing.**
+2. `/terms/`: every `[COUNSEL: …]` field; auto-renewal and cancellation rules, VAT-inclusive pricing, client-site use, and terms that govern the plan key without restricting GPL rights (the decisions log also flags a lawyer check of the licensing approach).
+3. `/privacy-policy/`: controller or processor role on Stripe Connect for free-plan merchants' buyer data; transfer mechanisms (Cloudflare, Stripe, ipapi.co, Brevo); cookie list after a scan; retention periods; whether EU VAT, abandoned cart emails and AI recommendations are enabled on wopcart.com itself.
+4. `/imprint/`: all fields. The EU Online Dispute Resolution platform was discontinued in July 2025, so do not add the old ODR link.
+5. `/why-wopcart/`: comparative advertising check (section 10).
+6. Checkout withdrawal consent text in the plugin (`src/Checkout/Checkout.php`): confirm the wording meets the Consumer Rights Directive for the plan purchase.
+7. The free-plan disclosure that 2% is retained as a Stripe Connect application fee must stay prominent (pricing, FAQ, docs); it is also a WordPress.org guideline issue.
+
+## 12. Claims ledger (feature → evidence)
+
+| Claim on site | Evidence |
+|---|---|
+| Free plan 2% platform fee through Stripe Connect; Stripe and Apple Pay only on free | `src/Gateways/Connect.php` (`DEFAULT_FEE_BPS = 200`), `src/Gateways/Registry.php`, readme FAQ |
+| Paid plan unlocks own gateway credentials (Stripe, PayPal, Authorize.net, 2Checkout; Apple Pay through Stripe) | `src/Admin/Settings.php` (`requires_paid_plan` sections), `src/Gateways/*.php` |
+| Plan key under Settings → Payments → "Using your own payment accounts"; about twice-daily check; sends key, site, version; no request without key; 14-day grace | `src/Platform/Plan.php` (`CACHE_TTL` 12h, `GRACE` 14 days, `DEFAULT_BASE`), `src/Platform/Server.php`, readme |
+| Local and staging sites don't use a seat, default cap 3; patterns | `src/Licensing/LicenseKeys.php` (`LOCAL_PATTERNS`, `STAGING_PATTERNS`, `free_environment_limit()` default 3) |
+| Customer removes activations from account | `src/Licensing/AccountActions.php` |
+| Upgrade immediate with proration, downgrade at renewal, no refund or credit, customer chooses kept sites | `src/Subscriptions/PlanChange.php` |
+| One-off license upgrade pays list price difference, same key | `src/Licensing/Upgrade.php` |
+| Withdrawal waiver at checkout, on by default, timestamp stored | `src/Checkout/Checkout.php`, `src/Admin/Settings.php` (`require_withdrawal_waiver`) |
+| Licensing: activation limits per price option, lifetime or days, update server fields, API routes activate/deactivate/check/version, form-post compatibility, rate limiting, expiry stops updates, expiry emails | `src/Licensing/*`, `src/Admin/ProductMeta.php`, `templates/emails/license-expir*.php`, decisions log |
+| Drop-in updater for plugins and themes | `client/class-wopcart-updater.php` |
+| Signed download links, 1-hour default TTL, access period, download limit, files per price option | `src/Downloads/DownloadHandler.php`, `Access.php`, `FileRules.php` |
+| Paywall: REST, excerpts, feeds, SEO descriptions; shortcodes; any or all mode; teaser | `src/Restriction/ContentRestriction.php`, `src/Seo/StructuredData.php` |
+| `isAccessibleForFree` and `hasPart` cssSelector; Yoast, Rank Math, AIOSEO; noindex and sitemap exclusion | `src/Seo/Paywall.php`, `StructuredData.php`, `SystemPages.php` |
+| Product schema from base-currency prices | `src/Seo/ProductSchema.php` |
+| Memberships = subscriptions + restriction; lapse ends access; grace period | `src/Downloads/Access.php`, `Settings.php` (`subscription_grace_days`) |
+| Subscriptions: intervals, trials, charges count | `src/Model/Price.php`, `ProductMeta.php` |
+| Bundles | `src/Bundles/Bundles.php` |
+| Discounts: percent or flat, products, start and end dates, max uses, per-customer limit | `src/Discounts/Discount.php` |
+| Multi-currency: rates, geolocation detection, switcher, per-currency overrides, rounding | `src/Currency/*`, `Settings.php`, `ProductMeta.php` |
+| EU VAT: rates, tax classes, evidence (billing and IP country), VIES toggle, reverse charge Article 196 wording, VAT-per-country report | `src/Tax/*`, `src/Invoices/Invoice.php`, `src/Reports/Reports.php` |
+| Invoices sequential, snapshot, credit notes; InvoicesGenerator connector | `src/Invoices/*`, `src/Integrations/InvoicesGenerator/Connector.php`, decisions log |
+| Reviews verified buyer, moderation and auto-approve | `src/Reviews/Reviews.php` |
+| Abandoned cart: sequence steps with delays, discount code, signed restore link, stop after days | `src/AbandonedCart/Recovery.php`, `Settings.php` |
+| 8 Elementor widgets (names) | `src/Integrations/Elementor/Widgets/` |
+| 7 blocks | `src/Frontend/Blocks.php` |
+| Zapier triggers (7) | `src/Integrations/Zapier/Zapier.php` |
+| Webhooks: 5 events, HMAC signature | `src/Webhooks/Webhooks.php` |
+| REST API with hashed keys | `src/Rest/ApiKeys.php`, `Routes.php` |
+| WP-CLI commands (8) | `src/Cli/Commands.php` |
+| GDPR export and erasure, anonymization; uninstall keeps data | `src/Privacy/Privacy.php`, readme, decisions log |
+| AI recommendations (Claude), optional, monthly cap | `src/Ai/*`, readme |
+| CSV exports | `src/Admin/Exporter.php` |
+| Requirements WP 6.4+, PHP 8.1+ | readme header |
+| Services contacted (Stripe, ipapi.co, VIES, exchangerate.host, Anthropic) | readme "What data leaves my site" |
+
+## 13. Open decisions for the owner
+
+1. **Stripe Connect onboarding is not in the code.** Nothing writes the `stripe_connect_account` option and there is no connect button (vault #131). The site describes the free plan as the decided model, but the free plan cannot take payments until onboarding ships. Do not launch the "Download free" path before it exists, and add the concrete connect steps to `/docs/` step 3.
+2. **Download location** for the plugin zip until WordPress.org approves the listing (`[WOPCART DOWNLOAD LINK]` in docs).
+3. **Plan tier enforcement:** `src/Platform/Plan.php` still describes packages as "1, 5 or unlimited sites". The server takes the site count from the licence's activation limit, so create the five tiers as price options with Sites per price option 1/3/7/12/20 and check that the comment and any UI copy match.
+4. **VAT display on pricing:** are €89–€699 VAT-inclusive (required for B2C display in the EU) or net? The pricing page currently says only "VAT is calculated at checkout where it applies".
+5. **Auto-renewal and cancellation** mechanics for plans (terms section 7).
+6. **Refunds for first purchases** (outside plan changes): policy not defined; the site only states the no-refund rule for plan changes and the withdrawal waiver.
+7. **Client-site use** of Agency, Pro and Enterprise plans (terms section 8).
+8. **Product URL** for the plan product (`/product/wopcart/` assumed, unconfirmed) and the real add-to-cart URLs for the five `#wopcart-buy-*` placeholders.
+9. **Which WopCart features are enabled on wopcart.com itself** (EU VAT with IP lookup, abandoned cart emails, AI recommendations): this changes the privacy policy.
+10. **readme.txt** competitor figures are stale (section 10), and "Tested up to: 6.8" is behind the WordPress 7.1 the site runs.
+11. **Author and E-E-A-T:** a named person or team for the blog and an About page, once the entity is public.

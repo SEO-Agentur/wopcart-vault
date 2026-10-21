@@ -1,0 +1,185 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"textColor":"contrast","backgroundColor":"accent-2","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-2-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:paragraph -->
+<p><strong>DRAFT, NOT FOR PUBLICATION.</strong> This privacy policy requires review by a qualified lawyer. Replace every field in [SQUARE BRACKETS] and remove this notice before publishing.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Privacy policy</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"accent-4","fontSize":"small"} -->
+<p class="has-accent-4-color has-text-color has-small-font-size">Last updated: [DATE]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">1. Controller</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[COMPANY NAME] [LEGAL FORM], [STREET AND NUMBER], [POSTAL CODE] [CITY], [COUNTRY]. Email: [PRIVACY CONTACT EMAIL].</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">2. Data protection officer</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[NAME AND CONTACT OF DATA PROTECTION OFFICER, OR DELETE IF NONE IS APPOINTED]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">3. Overview</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>This policy covers the website wopcart.com, purchases of WopCart plans, customer accounts, and the plan check that WopCart installations send to wopcart.com. We process personal data on the following legal bases under the GDPR: performance of a contract (Art. 6(1)(b)), legal obligations such as tax record keeping (Art. 6(1)(c)), legitimate interests (Art. 6(1)(f)) and, where we ask for it, consent (Art. 6(1)(a)). [COUNSEL: CONFIRM LEGAL BASES PER PROCESSING ACTIVITY]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">4. Hosting and server logs</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The website is hosted by [HOSTING PROVIDER, ADDRESS]. When you visit, the server processes your IP address, date and time, requested URL, referrer and browser user agent to deliver the site and keep it secure. Log files are kept for [NUMBER] days. Legal basis: Art. 6(1)(f) GDPR. [DATA PROCESSING AGREEMENT WITH HOST: CONFIRM]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">5. WordPress, customer accounts and cookies</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The site runs on WordPress with the WopCart plugin. If you create an account or buy a plan, we process your name, email address, password (stored as a hash), billing address, orders, invoices, plan keys and the domains activated on them. Legal basis: Art. 6(1)(b) GDPR.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We use cookies that are needed for the site to work, such as WordPress login cookies and cookies that keep your cart and chosen currency. [LIST EXACT COOKIE NAMES AND LIFETIMES AFTER A COOKIE SCAN] Legal basis: [APPLICABLE PROVISION FOR STRICTLY NECESSARY COOKIES, e.g. § 25(2) TDDDG] and Art. 6(1)(f) GDPR.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">6. Cloudflare</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We use Cloudflare for [DNS / CDN / SECURITY: CONFIRM SERVICES]. Provider: Cloudflare, Inc. [VERIFY ADDRESS]. Cloudflare processes your IP address and request data to deliver and protect the site, and may set security cookies such as <code>__cf_bm</code>. [CONFIRM]. Data may be transferred to the USA; [STATE TRANSFER MECHANISM, e.g. EU-US DATA PRIVACY FRAMEWORK CERTIFICATION AND/OR STANDARD CONTRACTUAL CLAUSES: VERIFY]. Legal basis: Art. 6(1)(f) GDPR. Privacy policy: https://www.cloudflare.com/privacypolicy/</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">7. Email delivery through Brevo</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Emails from the site, such as receipts, invoices, plan keys, password resets [AND ABANDONED CART REMINDERS, IF ENABLED], are sent through the SMTP service of Brevo [LEGAL ENTITY AND ADDRESS: VERIFY]. Brevo processes your email address, name, the email content and delivery data. [DATA PROCESSING AGREEMENT: CONFIRM] Legal basis: Art. 6(1)(b) GDPR. Privacy policy: https://www.brevo.com/legal/privacypolicy/</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">8. Purchases, payments and tax records</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Plan purchases are paid through Stripe [STRIPE CONTRACTING ENTITY AND ADDRESS: VERIFY]. Stripe receives the amount, currency, your email address, billing details and payment details, and processes them under its own privacy policy: https://stripe.com/privacy. We do not store full card numbers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For EU VAT, we store your billing country and a country derived from your IP address as location evidence. To get that country, your IP address is sent to ipapi.co [CONFIRM THAT EU VAT IS ENABLED ON WOPCART.COM]. If you enter a VAT number, it is checked with the European Commission's VIES service. When you agree to immediate delivery at checkout, we store the time of that consent as evidence.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Orders and invoices are kept for [NUMBER] years to meet tax and accounting obligations. Legal basis: Art. 6(1)(b) and (c) GDPR.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">9. Merchants using the free plan (Stripe Connect)</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If you use the WopCart plugin on the free plan, payments in your store are created through our Stripe Connect platform on your connected Stripe account. We process your connected account identifier, its status and the platform fees for each transaction. For each payment, Stripe receives the amount, currency, the buyer's email address and billing country. [COUNSEL: DETERMINE OUR ROLE (CONTROLLER, JOINT CONTROLLER OR PROCESSOR) FOR BUYER DATA AND WHETHER A DATA PROCESSING AGREEMENT WITH MERCHANTS IS NEEDED]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">10. Plan check from WopCart installations</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>When a plan key is saved in a WopCart installation, that installation contacts wopcart.com to activate the site on the plan, and then checks the plan about twice a day. Each request contains the plan key, the site address (URL) and the plugin version. Our server also processes the IP address of the requesting server, including for rate limiting. No data about the merchant's customers or sales is sent. Without a stored plan key, no request is made.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Purpose: confirming the plan and counting the domains it is used on. Legal basis: Art. 6(1)(b) GDPR. Activation records are kept [RETENTION PERIOD: CONFIRM].</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">11. Recipients</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>[HOSTING PROVIDER]: hosting</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Cloudflare: DNS, content delivery and security</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Brevo: email delivery</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Stripe: payment processing</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>ipapi.co: IP-based country lookup for VAT evidence [CONFIRM]</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>European Commission (VIES): VAT number validation</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>[TAX ADVISOR / ACCOUNTANT, IF APPLICABLE]</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">12. Transfers outside the EU/EEA</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[LIST EACH TRANSFER AND ITS SAFEGUARD: VERIFY FOR CLOUDFLARE, STRIPE, IPAPI.CO AND BREVO SUBPROCESSORS]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">13. How long we keep data</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We keep personal data only as long as needed for the purposes above or as required by law. [ADD SPECIFIC PERIODS PER CATEGORY]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">14. Your rights</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You have the right to access, rectify and erase your data, to restrict processing, to data portability, to object to processing based on legitimate interests, and to withdraw consent at any time with effect for the future. To exercise these rights, contact [PRIVACY CONTACT EMAIL]. You can also lodge a complaint with a supervisory authority, for example [COMPETENT SUPERVISORY AUTHORITY].</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">15. Automated decision-making</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>[CONFIRM: We do not use automated decision-making, including profiling, within the meaning of Art. 22 GDPR.] [IF AI PRODUCT RECOMMENDATIONS ARE ENABLED ON WOPCART.COM, DESCRIBE THE TRANSFER OF CATALOG AND CART DATA TO ANTHROPIC]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">16. Changes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We may update this policy when our services or the law change. The current version is always on this page.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->

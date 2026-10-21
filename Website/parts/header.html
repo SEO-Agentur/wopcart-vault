@@ -5,19 +5,41 @@
 <!-- /wp:html -->
 
 <!-- wp:group {"className":"wc-nav-right","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
-<div class="wp-block-group wc-nav-right"><!-- wp:navigation {"overlayMenu":"mobile","ariaLabel":"Primary","className":"wc-menu","layout":{"type":"flex","justifyContent":"right","flexWrap":"nowrap"}} -->
-<!-- wp:navigation-link {"label":"Features","url":"/#features","kind":"custom","isTopLevelLink":true} /-->
-
-<!-- wp:navigation-link {"label":"Checkout","url":"/#checkout","kind":"custom","isTopLevelLink":true} /-->
+<div class="wp-block-group wc-nav-right"><!-- wp:navigation {"overlayMenu":"mobile","ariaLabel":"Primary","className":"wc-menu","showSubmenuIcon":true,"openSubmenusOnClick":false,"layout":{"type":"flex","justifyContent":"right","flexWrap":"nowrap"}} -->
+<!-- wp:navigation-link {"label":"Features","url":"/features/","kind":"custom","isTopLevelLink":true} /-->
 
 <!-- wp:navigation-link {"label":"Pricing","url":"/pricing/","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Docs","url":"/docs/","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-submenu {"label":"Docs","url":"/docs/","kind":"custom","isTopLevelItem":true} -->
+<!-- wp:navigation-link {"label":"Getting started","url":"/docs/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Software licensing","url":"/software-licensing/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Paywall and memberships","url":"/paywall-memberships/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"EU VAT","url":"/eu-vat/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Integrations","url":"/integrations/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"FAQ","url":"/faq/","kind":"custom"} /-->
+<!-- /wp:navigation-submenu -->
+
+<!-- wp:navigation-submenu {"label":"Help","url":"/support/","kind":"custom","isTopLevelItem":true} -->
+<!-- wp:navigation-link {"label":"Support","url":"/support/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Why WopCart","url":"/why-wopcart/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Changes, domains and refunds","url":"/plan-changes-refunds/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Changelog","url":"/changelog/","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"Roadmap","url":"/roadmap/","kind":"custom"} /-->
+<!-- /wp:navigation-submenu -->
 <!-- /wp:navigation -->
 
 <!-- wp:buttons {"className":"wc-nav-cta"} -->
 <div class="wp-block-buttons wc-nav-cta"><!-- wp:button {"className":"wc-btn"} -->
-<div class="wp-block-button wc-btn"><a class="wp-block-button__link wp-element-button" href="/#pricing">Get WopCart <span class="wc-arrow" aria-hidden="true">→</span></a></div>
+<div class="wp-block-button wc-btn"><a class="wp-block-button__link wp-element-button" href="/pricing/">Get WopCart <span class="wc-arrow" aria-hidden="true">→</span></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

@@ -1,0 +1,307 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Getting started with WopCart</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"large"} -->
+<p class="has-large-font-size">Set up your store and publish your first digital product. Most steps take a few minutes.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Before you start</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>WordPress 6.4 or later</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>PHP 8.1 or later</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>HTTPS, which Apple Pay requires</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Download: the WopCart zip is included with every <a href="/pricing/">plan</a> and available in your account after purchase. A free download from the WordPress.org plugin directory is in preparation.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">1. Install and activate</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>In WordPress, go to <strong>Plugins → Add New Plugin → Upload Plugin</strong> and upload the WopCart zip. You can also upload the <code>wopcart</code> folder to <code>/wp-content/plugins/</code>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Activate the plugin.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>The checkout, confirmation and account pages are created for you. If you delete one, create a new page and select it in the settings.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">2. Configure your store</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>Go to <strong>WopCart → Settings → General</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Enter your store name and store country. The store country decides which tax rules apply to you as the seller.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Set your base currency and check the pages selected under <strong>Pages</strong>.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">3. Set up payments</h2>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Free plan</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On the free plan, payments are settled through WopCart's Stripe Connect platform and charged to your own connected Stripe account. You do not enter gateway API keys, and 2% of each transaction is retained as the WopCart platform fee. Stripe and Apple Pay are available.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Paid plan</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Add your plan key first (step 8). The fields for your own accounts then appear under <strong>WopCart → Settings → Payments</strong>:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Stripe:</strong> publishable and secret keys for test and live mode, and the webhook signing secret. Without the signing secret, webhooks are rejected and renewals are not recorded.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>PayPal:</strong> client ID and secret for sandbox and live, and the webhook ID.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Authorize.net</strong> and <strong>2Checkout:</strong> the credentials from your account.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">For both plans</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Choose your enabled gateways and default gateway under <strong>Active gateways</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Turn on <strong>Test mode</strong> while you set up. It routes every gateway to its sandbox.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>To offer Apple Pay, turn on <strong>Show the Apple Pay button</strong>. Your site needs HTTPS, and the domain must be registered with Stripe once.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">4. Create a product</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>Go to <strong>WopCart → Products</strong> and add a new product with a title and description.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>In the <strong>Product Data</strong> panel, choose the <strong>Product type</strong>: a standard product or a bundle of other products.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Choose a <strong>Tax class</strong>: standard rate for digital goods, reduced rate, e-publication rate or not taxable.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">5. Add price options</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>On the <strong>Pricing</strong> tab, enter a <strong>Price</strong>. Leave it empty or at zero for a free product.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>To sell tiers such as Single Site, 5 Sites and Unlimited, or monthly and yearly plans, turn on <strong>Offer several price options</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>For each option, enter a label and price and choose <strong>One-off</strong> or <strong>Recurring</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>For recurring options, set the billing interval (every set number of days, weeks, months or years), an optional <strong>Trial (days)</strong> and the number of <strong>Charges</strong> (0 bills until the customer cancels).</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>To set fixed prices in other currencies instead of converted ones, use the <strong>Currencies</strong> tab.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">6. Attach files to price options</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>On the <strong>Files</strong> tab, click <strong>Add file</strong>, choose the file and enter a download name.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Tick the price options that include this file. If you tick none, every option includes it.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Buyers get signed download links on the confirmation page, in the receipt and in their account. Links are valid for one hour by default; change this and set download limits under <strong>WopCart → Settings → Downloads</strong>.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">7. Enable software licensing</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>On the <strong>Licensing</strong> tab, turn on <strong>Issue license keys for this product</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Set <strong>Sites per license</strong>, or <strong>Sites per price option</strong> for tiers. 0 means unlimited. Local and staging installs do not use a seat.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Set a <strong>License length (days)</strong> or choose <strong>Lifetime license (never expires)</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Under <strong>Update server</strong>, enter the slug, plugin basename, current version, required WordPress and PHP versions, "tested up to" and changelog, and choose the <strong>Update package</strong>: the file that is your installable zip.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Copy <code>class-wopcart-updater.php</code> from the plugin's <code>client</code> folder into your product and set it up with your store URL, product ID, version and the customer's license key.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Store-wide licensing options, including the cap on free local and staging activations, are under <strong>WopCart → Settings → Licensing</strong>. <a href="/software-licensing/">More about software licensing</a>.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">8. Add your plan key (paid plans)</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>Buy a plan on the <a href="/pricing/">pricing page</a>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Copy the plan key from your wopcart.com account.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Go to <strong>WopCart → Settings → Payments</strong> and paste the key into <strong>Plan key</strong> under <strong>Using your own payment accounts</strong>. Save.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Saving activates this site on your plan and uses one domain slot, unless it is a local or staging site. The fields for your own gateway accounts appear.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>The plan is confirmed again about twice a day. Each check sends the site address, the key and the plugin version, and nothing about your customers or sales. Removing the key releases the slot and returns the site to the free plan.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">9. Test a purchase</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li>With test mode on, buy your product using your gateway's test card or sandbox account.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Check the confirmation page, the receipt email, the download link and, if enabled, the license key in the account page.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Turn test mode off when you are ready to sell.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Next steps</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="/features/">All features</a></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><a href="/paywall-memberships/">Paywall and memberships</a></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><a href="/eu-vat/">EU VAT settings</a></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><a href="/integrations/">Integrations and developer tools</a></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><a href="/faq/">Frequently asked questions</a></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>To change how store pages look, copy any file from the plugin's <code>templates/</code> folder to <code>yourtheme/wopcart/</code>.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->

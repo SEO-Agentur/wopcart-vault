@@ -1,0 +1,25 @@
+<!-- wp:group {"align":"full","className":"wc-header","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull wc-header"><!-- wp:group {"className":"wc-wrap wc-nav","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group wc-wrap wc-nav"><!-- wp:html -->
+<a class="wc-brand" href="/" aria-label="WopCart home"><svg viewBox="0 0 230 250" aria-hidden="true" focusable="false"><path d="M38 60h150l-14 119H52L38 60Z" fill="#102A2E"/><path d="M75 75V53c0-27 18-43 38-43s38 16 38 43v22" fill="none" stroke="#102A2E" stroke-width="16"/><path d="M67 104h25l15 49 18-37h20l18 37 15-49h25l-28 72h-22l-18-35-18 35H95l-28-72Z" fill="#18C99A"/><circle cx="74" cy="205" r="10" fill="#18C99A"/><circle cx="158" cy="205" r="10" fill="#18C99A"/></svg><span class="wc-brand-name">Wop<span>Cart</span><small>.com</small></span></a>
+<!-- /wp:html -->
+
+<!-- wp:group {"className":"wc-nav-right","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
+<div class="wp-block-group wc-nav-right"><!-- wp:navigation {"overlayMenu":"mobile","ariaLabel":"Primary","className":"wc-menu","layout":{"type":"flex","justifyContent":"right","flexWrap":"nowrap"}} -->
+<!-- wp:navigation-link {"label":"Features","url":"/#features","kind":"custom","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Checkout","url":"/#checkout","kind":"custom","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Pricing","url":"/pricing/","kind":"custom","isTopLevelLink":true} /-->
+
+<!-- wp:navigation-link {"label":"Docs","url":"/docs/","kind":"custom","isTopLevelLink":true} /-->
+<!-- /wp:navigation -->
+
+<!-- wp:buttons {"className":"wc-nav-cta"} -->
+<div class="wp-block-buttons wc-nav-cta"><!-- wp:button {"className":"wc-btn"} -->
+<div class="wp-block-button wc-btn"><a class="wp-block-button__link wp-element-button" href="/#pricing">Get WopCart <span class="wc-arrow" aria-hidden="true">→</span></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->

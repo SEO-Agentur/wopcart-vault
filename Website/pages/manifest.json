@@ -31,10 +31,11 @@
     "menu_order": 20,
     "in_primary_nav": true,
     "in_footer_nav": true,
-    "seo_title": "WopCart Pricing: Free at 2% per Sale or 0% From $50/Year",
-    "meta_description": "Every feature is free with a 2% fee via Stripe. Paid plans from $50/year or $80 lifetime remove the WopCart fee and unlock PayPal, Authorize.net and 2Checkout.",
-    "excerpt": "WopCart is free with a 2% platform fee per sale, or 0% on a paid plan from $50 per year or $80 lifetime that unlocks your own gateway accounts.",
-    "template": "page-no-title"
+    "seo_title": "WopCart Pricing: Free at 2% per Sale, or 0% With Direct",
+    "meta_description": "Every feature is in the free plugin at 2% per sale. WopCart Direct, from $50 a year or $80 once, brings your own gateway accounts and a 0% platform fee.",
+    "excerpt": "WopCart is free with a 2% platform fee per sale. The paid WopCart Direct add-on brings your own gateway accounts and removes the fee.",
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "software-licensing",
@@ -68,9 +69,10 @@
     "in_primary_nav": false,
     "in_footer_nav": true,
     "seo_title": "EU VAT for Digital Products on WordPress | WopCart",
-    "meta_description": "Per-country VAT rates, VIES validation, reverse charge with invoice wording, location evidence and a per-country VAT report for OSS, in WordPress.",
+    "meta_description": "Per-country VAT rates, VIES validation, reverse charge with invoice wording, location evidence and per-country VAT figures for OSS, in WordPress.",
     "excerpt": "WopCart applies EU VAT rates by country, validates VAT numbers with VIES, applies the reverse charge and keeps evidence, invoices and credit notes.",
-    "template": "page-no-title"
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "integrations",
@@ -79,10 +81,11 @@
     "menu_order": 60,
     "in_primary_nav": false,
     "in_footer_nav": true,
-    "seo_title": "WopCart Integrations: Elementor, Zapier, Webhooks, WP-CLI",
-    "meta_description": "8 Elementor widgets, 7 blocks, Zapier triggers, signed webhooks, a REST API, WP-CLI commands and support for Yoast SEO, Rank Math and AIOSEO.",
-    "excerpt": "WopCart works with Elementor, the block editor, Zapier, webhooks, WP-CLI, the major SEO plugins and five payment gateways.",
-    "template": "page-no-title"
+    "seo_title": "WopCart Integrations: Gateways, Elementor, Zapier, WP-CLI",
+    "meta_description": "Stripe and Apple Pay free, PayPal, Mollie, Authorize.net and 2Checkout with Direct, plus Elementor, blocks, Divi, Bricks, Zapier, webhooks and WP-CLI.",
+    "excerpt": "WopCart works with five payment gateways, three page builders, the block editor, Zapier, webhooks, WP-CLI and the major SEO plugins.",
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "docs",
@@ -92,9 +95,10 @@
     "in_primary_nav": true,
     "in_footer_nav": true,
     "seo_title": "Getting Started With WopCart: Setup Guide",
-    "meta_description": "Install WopCart, choose the free or paid plan, create a product with price options, attach files per option, enable license keys and add a plan key.",
-    "excerpt": "Step-by-step setup: install WopCart, set up payments, create a product with price options, files and license keys, and add your plan key.",
-    "template": "page-no-title"
+    "meta_description": "Install WopCart, configure your store, set up payments, create a product with price options and files, issue license keys and add the Direct add-on.",
+    "excerpt": "Step-by-step setup: install WopCart, set up payments, create a product with price options, files and license keys, and add WopCart Direct.",
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "faq",
@@ -116,21 +120,23 @@
     "in_primary_nav": true,
     "in_footer_nav": true,
     "seo_title": "Easy Digital Downloads Alternative: Why WopCart",
-    "meta_description": "How WopCart compares on fees, licensing and EU VAT, using its own features and the Easy Digital Downloads pricing page as checked on 14 Sep 2026.",
-    "excerpt": "A factual comparison of WopCart with Easy Digital Downloads on platform fees, software licensing and site limits, with sources and dates.",
-    "template": "page-no-title"
+    "meta_description": "How WopCart compares on fees, software licensing, sites and physical products, using its own features and the Easy Digital Downloads pricing page.",
+    "excerpt": "A factual comparison of WopCart with Easy Digital Downloads on fees, licensing, sites and scope, with sources and dates.",
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "plan-changes-refunds",
-    "title": "Plan Changes, Domains and Refunds",
+    "title": "Changes, Domains and Refunds",
     "status": "publish",
     "menu_order": 100,
     "in_primary_nav": false,
     "in_footer_nav": true,
-    "seo_title": "WopCart Plan Changes, Domains and Refund Policy",
-    "meta_description": "How upgrades, downgrades, domain slots and staging sites work on WopCart plans, why plan changes are not refunded, and the EU withdrawal right.",
-    "excerpt": "How WopCart plan upgrades, downgrades, domain slots and the EU right of withdrawal work, in plain language.",
-    "template": "page-no-title"
+    "seo_title": "WopCart Direct: Changes, Domains and Refund Policy",
+    "meta_description": "How upgrades, downgrades, domain slots and staging sites work for WopCart Direct, why changes are not refunded, and the 14-day EU withdrawal right.",
+    "excerpt": "How WopCart Direct upgrades, downgrades, domain slots and the EU right of withdrawal work, in plain language.",
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "support",
@@ -139,10 +145,11 @@
     "menu_order": 105,
     "in_primary_nav": false,
     "in_footer_nav": true,
-    "seo_title": "WopCart Support: Contact, Billing, Plans and Domains",
-    "meta_description": "Get help with WopCart by email, find invoices in your account, cancel or change a plan, move a plan key to another domain, and find the right contact.",
-    "excerpt": "How to get help with WopCart: contact details, billing and invoices, plan changes, plan keys and domains.",
-    "template": "page-no-title"
+    "seo_title": "WopCart Support: Contact, Billing, Licences and Domains",
+    "meta_description": "Get help with WopCart by email, find invoices in your account, cancel or change WopCart Direct, move a licence key to another domain.",
+    "excerpt": "How to get help with WopCart: contact details, billing and invoices, licence changes, keys and domains.",
+    "template": "page-no-title",
+    "design": true
   },
   {
     "slug": "imprint",

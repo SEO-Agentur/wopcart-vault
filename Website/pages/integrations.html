@@ -1,233 +1,278 @@
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading">WopCart integrations</h1>
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-page-hero","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-page-hero"><!-- wp:group {"className":"wc-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap"><!-- wp:paragraph {"className":"wc-eyebrow"} -->
+<p class="wc-eyebrow">Integrations</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">It fits the stack you already run.</h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"fontSize":"large"} -->
-<p class="has-large-font-size">Connect WopCart to payment gateways, page builders, automation tools, SEO plugins and your own code.</p>
+<!-- wp:paragraph {"className":"wc-lead"} -->
+<p class="wc-lead">Payment gateways, page builders, automation tools, SEO plugins, the command line and your own code. Everything on this page is in the free plugin unless it is marked as part of WopCart Direct.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"className":"wc-btn"} -->
+<div class="wp-block-button wc-btn"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started <span class="wc-arrow" aria-hidden="true">→</span></a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- wp:button {"className":"wc-btn wc-btn--ghost"} -->
+<div class="wp-block-button wc-btn wc-btn--ghost"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
 <!-- /wp:button --></div>
-<!-- /wp:buttons --></section>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></section>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-section wc-section--white","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-section wc-section--white"><!-- wp:group {"className":"wc-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap"><!-- wp:group {"className":"wc-section-head","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-section-head"><!-- wp:heading -->
 <h2 class="wp-block-heading">Payment gateways</h2>
 <!-- /wp:heading -->
 
-<!-- wp:table {"hasFixedLayout":true} -->
-<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Gateway</th><th>Free plan</th><th>Paid plans</th><th>Notes</th></tr></thead><tbody><tr><td>Stripe</td><td>Yes, through WopCart's Stripe Connect platform</td><td>Yes, your own account</td><td>Hosted Checkout, SCA ready</td></tr><tr><td>Apple Pay</td><td>Yes</td><td>Yes</td><td>On-page wallet button, settled through Stripe; needs HTTPS and a registered domain</td></tr><tr><td>PayPal</td><td>No</td><td>Yes, your own account</td><td></td></tr><tr><td>Authorize.net</td><td>No</td><td>Yes, your own account</td><td>On-page card form (Accept.js) and recurring billing</td></tr><tr><td>2Checkout</td><td>No</td><td>Yes, your own account</td><td></td></tr></tbody></table></figure>
-<!-- /wp:table --></section>
+<!-- wp:paragraph {"className":"wc-lead"} -->
+<p class="wc-lead">The free plugin settles through WopCart's Stripe Connect platform. WopCart Direct swaps that for your own accounts.</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">Elementor</h2>
+<!-- wp:group {"className":"wc-cards wc-cards--2","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-cards wc-cards--2"><!-- wp:group {"tagName":"article","className":"wc-card wc-card--mint","layout":{"type":"default"}} -->
+<article class="wp-block-group wc-card wc-card--mint"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">In the free plugin</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>Stripe</strong> — hosted Checkout, SCA ready, charged to your own connected Stripe account with 2% retained</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Apple Pay</strong> — on-page wallet button, settled through Stripe; needs HTTPS and a domain registered with Stripe once</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"wc-card wc-card--teal","layout":{"type":"default"}} -->
+<article class="wp-block-group wc-card wc-card--teal"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">With WopCart Direct, your own accounts</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>Stripe</strong> and <strong>Apple Pay</strong> through your own Stripe account, 0% fee</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>PayPal</strong></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Mollie</strong> — iDEAL, Bancontact and the other Mollie methods</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>Authorize.net</strong> — on-page card form with Accept.js and recurring billing</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><strong>2Checkout</strong></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></article>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"className":"wc-note"} -->
+<p class="wc-note">PayPal, Mollie, Authorize.net and 2Checkout offer no way to collect a platform fee, which is why they need your own credentials. Physical products can only be paid with gateways that support shipping.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-section","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-section"><!-- wp:group {"className":"wc-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap"><!-- wp:group {"className":"wc-section-head","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-section-head"><!-- wp:heading -->
+<h2 class="wp-block-heading">Build the pages</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-lead"} -->
+<p class="wc-lead">Blocks, widgets and shortcodes for the editor you use.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-cards","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-cards"><!-- wp:group {"tagName":"article","className":"wc-card wc-card--mint","layout":{"type":"default"}} -->
+<article class="wp-block-group wc-card wc-card--mint"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Block editor</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>8 widgets:</p>
+<p>7 blocks, each also a shortcode such as <code>[wopcart_checkout]</code>.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:columns {"align":"wide"} -->
-<div class="wp-block-columns alignwide"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li>Add to Cart</li>
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Products, Buy Button, Cart, Checkout</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Cart</li>
+<li>Recommendations, Reviews, Currency Switcher</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Checkout</li>
+<li>A product page template for block themes</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"wc-card wc-card--teal","layout":{"type":"default"}} -->
+<article class="wp-block-group wc-card wc-card--teal"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Elementor</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>8 widgets.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Add to Cart, Cart, Checkout</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Currency Switcher</li>
+<li>Product Grid, Product Price</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Currency Switcher, Recommendations, Reviews</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","className":"wc-card wc-card--slate","layout":{"type":"default"}} -->
+<article class="wp-block-group wc-card wc-card--slate"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Divi and Bricks</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Divi modules and Bricks elements for the same store parts, so a store can be built in any of the three builders.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Translations work with WPML and Polylang.</p>
+<!-- /wp:paragraph --></article>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-section wc-section--white","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-section wc-section--white"><!-- wp:group {"className":"wc-wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap"><!-- wp:group {"className":"wc-section-head","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-section-head"><!-- wp:heading -->
+<h2 class="wp-block-heading">Connect it to everything else</h2>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">Automation</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">Zapier, webhooks, Uncanny Automator</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>One event catalogue feeds every outbound channel, so a new event reaches Zapier, Automator and your own endpoints at the same time, under the same name. Signed webhooks carry an HMAC over a timestamp and the body, so your endpoint can verify the delivery came from your store.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Events</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Orders: created, completed, failed, refunded</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Subscriptions: created, renewed, renewal failed, cancelled, plan changed</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Licences: created, activated, deactivated, expired, upgraded, transferred</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Invoices issued and credit notes</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Reviews, abandoned and recovered carts, form submissions, memberships</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
-<!-- /wp:column -->
+<!-- /wp:group --></div>
+<!-- /wp:group -->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li>Product Grid</li>
+<!-- wp:group {"className":"wc-release","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">Hub</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">Services you can switch on</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>The integrations hub covers email marketing, CRM, automation, messaging, LMS, membership, affiliate and analytics services. Each one is off until you add its credentials.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>LMS access for LearnDash, Tutor LMS and LifterLMS</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Product Price</li>
+<li>Memberships with WordPress roles and MemberPress compatibility</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Recommendations</li>
+<li>Affiliate tracking through AffiliateWP and SliceWP, which calculate your partners' commissions</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Reviews</li>
+<li>InvoicesGenerator for hosted invoice PDFs, while WopCart keeps the numbering</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Anthropic's Claude API for optional product recommendations, off until you add a key</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></section>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">Block editor and shortcodes</h2>
+<!-- wp:group {"className":"wc-release","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">SEO</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>7 blocks: Products, Buy Button, Cart, Checkout, Recommendations, Reviews and Currency Switcher. Each is also available as a shortcode, for example <code>[wopcart_checkout]</code>.</p>
-<!-- /wp:paragraph --></section>
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">Yoast, Rank Math, AIOSEO, SEO-WP</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">Zapier</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Triggers:</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li>Order completed</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Order refunded</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>New customer</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Subscription started</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Subscription canceled</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>New review</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Cart abandoned</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list --></section>
-<!-- /wp:group -->
-
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">Webhooks</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Send event payloads to any URL. Each delivery is signed with an HMAC over a timestamp and the body, so your endpoint can verify it came from your store.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li>Order completed</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Order refunded</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Invoice issued</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Credit note issued</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>Subscription renewed</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list --></section>
-<!-- /wp:group -->
-
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">REST API</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>A REST API for your store, authenticated with API keys. Keys are stored hashed and shown only once, when you create them.</p>
-<!-- /wp:paragraph --></section>
-<!-- /wp:group -->
-
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">WP-CLI</h2>
-<!-- /wp:heading -->
-
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li><code>wp wopcart status</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart orders</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart subscriptions</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart licenses</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart license-extend</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart rates</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart cron</code></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><code>wp wopcart install</code></li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list -->
-
-<!-- wp:paragraph -->
-<p>Run <code>wp help wopcart</code> for the options of each command.</p>
-<!-- /wp:paragraph --></section>
-<!-- /wp:group -->
-
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">SEO plugins</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>WopCart detects Yoast SEO, Rank Math and All in One SEO and works with each of them:</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li>Adds Product and paywall markup to the SEO plugin's own schema graph</li>
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Adds Product, review and paywall markup to the SEO plugin's own schema graph instead of a second one</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
@@ -235,34 +280,46 @@
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Sets checkout, confirmation and account pages to noindex and removes them from the plugin's sitemap</li>
+<li>Sets checkout, confirmation and account pages to noindex and removes them from the sitemap</li>
 <!-- /wp:list-item --></ul>
-<!-- /wp:list --></section>
+<!-- /wp:list --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">Invoicing and AI</h2>
+<!-- wp:group {"className":"wc-release","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">Code</h2>
 <!-- /wp:heading -->
 
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
-<li><strong>InvoicesGenerator:</strong> optional connector that receives each invoice for hosted PDFs and bookkeeping, while WopCart keeps the numbering</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><strong>Anthropic Claude API:</strong> optional product recommendations, off until you add an API key</li>
-<!-- /wp:list-item --></ul>
-<!-- /wp:list --></section>
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">REST API, WP-CLI, templates</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">For theme and plugin developers</h2>
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">REST API</h3>
 <!-- /wp:heading -->
 
-<!-- wp:list -->
-<ul class="wp-block-list"><!-- wp:list-item -->
+<!-- wp:paragraph -->
+<p>Authenticated with API keys. Keys are stored hashed and shown once, when you create them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">WP-CLI</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><code>wp wopcart status</code>, <code>orders</code>, <code>subscriptions</code>, <code>licenses</code>, <code>license-extend</code>, <code>rates</code>, <code>cron</code> and <code>install</code>. Run <code>wp help wopcart</code> for each command's options.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">For developers</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
 <li>Override any template by copying it to <code>yourtheme/wopcart/</code></li>
 <!-- /wp:list-item -->
 
@@ -272,26 +329,31 @@
 
 <!-- wp:list-item -->
 <li>Ship the WopCart updater class with the plugins and themes you sell</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>MCP server and AI abilities, so an assistant can read and act on your store</li>
 <!-- /wp:list-item --></ul>
-<!-- /wp:list --></section>
+<!-- /wp:list --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></section>
 <!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"textColor":"contrast","backgroundColor":"accent-1","layout":{"type":"constrained"}} -->
-<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
-<h2 class="wp-block-heading">Start selling with WopCart</h2>
+<!-- wp:group {"tagName":"section","align":"full","className":"wc-final","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull wc-final"><!-- wp:group {"className":"wc-wrap wc-cta-inner","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-wrap wc-cta-inner"><!-- wp:heading -->
+<h2 class="wp-block-heading">Start selling with WopCart.</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>Install the plugin, choose a plan and publish your first product with the getting started guide.</p>
-<!-- /wp:paragraph -->
-
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<div class="wp-block-buttons"><!-- wp:button {"className":"wc-btn"} -->
+<div class="wp-block-button wc-btn"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started <span class="wc-arrow" aria-hidden="true">→</span></a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- wp:button {"className":"wc-btn wc-btn--ghost"} -->
+<div class="wp-block-button wc-btn wc-btn--ghost"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
 <!-- /wp:button --></div>
-<!-- /wp:buttons --></section>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></section>
 <!-- /wp:group -->

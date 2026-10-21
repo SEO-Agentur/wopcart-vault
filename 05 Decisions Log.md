@@ -165,3 +165,29 @@ weil Direct keine Funktion freischaltet.
 Die Plattformgebühr von 2 % bei Händlershops ist davon **nicht** betroffen: Sie läuft
 weiter über `Platform/ConnectClient.php` im Kern und das Plugin WopCart Platform auf dem
 Server. Siehe [[Deployment/WopCart Platform ausrollen]] und [[Components/Editions]].
+
+## Inhaltsseiten ins Markendesign, Karten statt Tabellen — DECIDED 2026-10-21
+Die sieben Inhaltsseiten waren im Rumpf ungestaltet. Sie sind in der Blockauszeichnung von
+Changelog und Roadmap neu geschrieben. Preise und Vergleiche stehen in Karten, nicht in
+Tabellen: `wc-price-card` und `wc-compare-table` sind im Stylesheet auf `.home`
+beschränkt, und Karten lesen auf dem Telefon besser. Im Menü gibt es zwei Dropdowns, Docs
+und Help; der Punkt „Checkout“ entfällt, weil er nur einen Abschnitt der Startseite
+ansprang. Siehe [[Website/Seiten-Redesign 2026-10-21]].
+
+## Design-Klasse über ein zweites mu-plugin — DECIDED 2026-10-21
+`body.wc-design` wird von `04-site-design.php` für die September-Seiten gesetzt; wie genau,
+ließ sich von hier aus nicht lesen. Statt die Logik zu erraten oder die Datei umzubauen,
+kommt `05-design-pages.php` mit einem eigenen `body_class`-Filter für die sieben Slugs
+daneben. Ein Filter fügt nur hinzu, WordPress entdoppelt, und das Löschen der einen Datei
+nimmt alles zurück. Siehe [[Website/Seiten-Redesign 2026-10-21]].
+
+## Lifetime bleibt unverändert — ERWOGEN UND VERWORFEN 2026-10-21
+Erwogen war, die Lifetime-Lizenz nur für die beim Kauf aktuelle Version gelten zu lassen.
+Vom Nutzer am selben Tag zurückgezogen. Es bleibt: einmal zahlen, keine Verlängerung,
+Updates solange WopCart angeboten wird. Die Fassung auf `/pricing/` und
+`/plan-changes-refunds/` bildet das so ab.
+
+## Vault kommt ins Git, privat — DECIDED 2026-10-21
+Die Dokumentation ist jetzt ein eigenes Repository (`SEO-Agentur/wopcart-vault`, privat),
+weil sie Betriebswissen enthält: VPS-Adresse, Containernamen, Ausroll-Abläufe. Geheimnisse
+stehen nicht darin und bleiben in `/opt/wopcart/.env`. Siehe [[Deployment/Git-Repositories]].

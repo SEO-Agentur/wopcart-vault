@@ -1,0 +1,133 @@
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">An Easy Digital Downloads alternative with licensing in the free plugin</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"fontSize":"large"} -->
+<p class="has-large-font-size">A factual comparison. WopCart's details come from its own code and documentation. Details about other products come from their published pages, with the date we checked them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">What WopCart offers</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>One GPL plugin with every feature, including software licensing, subscriptions and EU VAT</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Free plan: 2% WopCart platform fee per transaction, collected through Stripe Connect</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Paid plans: 0% WopCart fee and your own gateway accounts, from $50 per year or $80 once for a lifetime plan</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Plans differ only in the number of production domains: 1, 10 or 100</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Local and staging sites do not use a domain slot</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>VIES validation, reverse charge, location evidence, invoices and credit notes built in</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Compared with Easy Digital Downloads</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Source: <a href="https://easydigitaldownloads.com/pricing/">easydigitaldownloads.com/pricing</a>, checked on 14 September 2026. Plans and contents may have changed since, so please check the current page. We do not quote EDD's prices here because they were shown as discounted offers when we checked.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {"hasFixedLayout":true} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th></th><th>Easy Digital Downloads (pricing page, 14 Sep 2026)</th><th>WopCart</th></tr></thead><tbody><tr><td>Plans listing “No Platform Fees”</td><td>Extended, Professional and All Access. Not listed for Personal or the free Lite version.</td><td>All paid plans (0%). The free plan carries a 2% fee.</td></tr><tr><td>Plans listing “Software Licensing &amp; API”</td><td>Professional and All Access</td><td>Free plugin and every plan</td></tr><tr><td>Sites per plan</td><td>Personal 1, Extended 1, Professional 2, All Access 3</td><td>1, 10 or 100 production domains, each as a yearly or lifetime plan</td></tr><tr><td>Multi-vendor marketplace</td><td>Listed for Professional and All Access</td><td>Not available</td></tr><tr><td>Physical product shipping</td><td>Listed for Professional and All Access</td><td>Not available; WopCart is for digital products</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph {"textColor":"accent-4","fontSize":"small"} -->
+<p class="has-accent-4-color has-text-color has-small-font-size">Easy Digital Downloads is a trademark of its respective owner. WopCart is not affiliated with it.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">When another tool may fit better</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>You need a multi-vendor marketplace with commissions. WopCart does not offer one.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>You sell physical products that need shipping. WopCart is for digital products only.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>You want native integrations with specific mailing-list services. WopCart connects to them through Zapier or webhooks instead.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>You want no per-transaction fee without buying a plan. The free plan carries a 2% fee.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"accent-5","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-accent-5-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Check it yourself</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Every WopCart feature listed on this site is in the free plugin, so you can install it and test the complete feature set before deciding.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/features/">See all features</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"textColor":"contrast","backgroundColor":"accent-1","layout":{"type":"constrained"}} -->
+<section class="wp-block-group alignfull has-contrast-color has-text-color has-accent-1-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading -->
+<h2 class="wp-block-heading">Compare plans</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Install the plugin, choose a plan and publish your first product with the getting started guide.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/docs/">Get started</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/pricing/">See pricing</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></section>
+<!-- /wp:group -->

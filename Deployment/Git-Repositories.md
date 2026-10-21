@@ -55,3 +55,18 @@ cd <stage> && zip -qr wopcart-<version>.zip wopcart
 
 Stand 2026-10-21 gebaut: `wopcart-1.4.0.zip` (1,9 MB), `wopcart-direct-1.0.0.zip` (111 kB),
 `wopcart-platform-1.0.0.zip` (47 kB).
+
+### Eine alte Version bauen
+
+Für den Zwischenschritt beim Ausrollen (Kern 1.3.1, damit Direct installiert werden kann,
+bevor 1.4.0 die Tarif-Logik entfernt) wird aus dem Commit gebaut, nicht aus dem
+Arbeitsbaum:
+
+```
+git -C digital-cart worktree add --detach /tmp/wt a8d885a
+rsync -a --exclude-from=/tmp/wt/.distignore --exclude .git /tmp/wt/ <stage>/wopcart/
+cd <stage> && zip -qr wopcart-1.3.1.zip wopcart
+git -C digital-cart worktree remove --force /tmp/wt
+```
+
+Gebaut am 2026-10-21: `wopcart-1.3.1.zip` (1,97 MB).

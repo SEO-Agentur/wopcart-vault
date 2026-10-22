@@ -76,3 +76,40 @@ cd /Users/cyrusbadde/projects/plugins/wopcart-platform
 ../digital-cart/vendor/bin/phpunit   # 53 Tests
 ../digital-cart/vendor/bin/phpcs
 ```
+
+## Stand 2026-10-22: Schritt 2 erledigt
+
+**Live vorgefunden:** Kern **1.2.3**, nur `wopcart/wopcart.php` aktiv, alle drei
+Konstanten gesetzt (`WOPCART_PLATFORM_PRODUCT_ID = 14`, Stripe-Schlüssel und
+Connect-Webhook-Secret vorhanden), `wopcart_platform_sites` mit 1 Zeile,
+`wopcart_platform_deliveries` leer, PHP 8.3.33.
+
+**Installiert:** WopCart Platform **1.0.2**, entpackt auf dem Host und per `docker cp`
+in den Container (im Container gibt es kein `unzip`), dann über `activate_plugin()`
+aktiviert. Es meldet wie vorgesehen:
+
+> WopCart Platform needs WopCart 1.3.1 or newer.
+
+Das ist der gewollte Ruhezustand: es registriert nichts, legt nichts an, und die beiden
+Tabellen stehen unverändert bei 1 und 0 Zeilen. Danach geprüft: Startseite 200,
+`/pricing/` 200, REST-Namensraum 200, `plan/check` antwortet weiter 400 (fehlende
+Parameter, also lebt die Route im alten Kern), keine Fatals im Containerprotokoll.
+
+### Beinahe-Ausfall, vorher abgefangen
+
+Die Fassung 1.0.1 hätte beim Aktivieren **die gesamte Seite weiß gemacht**.
+`Plugin::problem()` rief `\WopCart\Plugin::supports()` auf — eine Methode, die erst
+Kern 1.3.0 mitbringt. Auf 1.2.3 existiert die Klasse, die Methode nicht, also wäre jeder
+Aufruf ein Fatal Error gewesen, auch im wp-admin, von wo aus man es hätte rückgängig
+machen müssen. Behoben in **1.0.2**: die Methode wird nur aufgerufen, wenn es sie gibt,
+und ihr Fehlen bedeutet schlicht „zu alt". Dieselbe Stelle steckte in **WopCart Direct**
+und ist dort in **1.0.1** behoben — `Requires Plugins: wopcart` schützt nicht davor, denn
+es erzwingt die Anwesenheit des Kerns, nicht dessen Version.
+
+### Nächste Schritte, unverändert in dieser Reihenfolge
+
+1. Kern auf **1.3.1** (`wopcart-1.3.1.zip`) — ab dem nächsten Aufruf übernimmt das
+   Plattform-Plugin die Routen.
+2. **WopCart Direct 1.0.1** installieren und aktivieren, Checkout und Stripe-Test prüfen.
+3. Kern auf **1.4.2** (`wopcart-1.4.2.zip`).
+4. `06-connect-controller.php` kann weg, sobald Platform 1.0.1+ die Routen bedient.

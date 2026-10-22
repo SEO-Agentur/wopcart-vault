@@ -121,3 +121,40 @@ anderer Schlüssel, zwei Seiten — nie derselbe Schlüssel.
 **Ausgerollt** auf wopcart.com am 2026-10-22, geprüft: Version 1.0.3 aktiv, Status
 „läuft", `connect/start` erreichbar, Schlüssel für dieselbe Domain jetzt
 `wopcart_account_d8f32072…` statt `wopcart_account_869462848…`.
+
+## Vierter Halt: Stripe sperrt Accounts v1 für neue Integrationen
+
+> Stripe no longer recommends Accounts v1 for new Connect integrations. Create
+> connected accounts with POST /v2/core/accounts instead. […] If your integration
+> requires v1 account creation for a supported compatibility scenario, enable
+> Accounts v1 support in the Dashboard.
+
+Kein Fehler im Code, sondern eine Richtlinie auf Stripe-Seite. Unsere Plattform legt
+Konten mit `POST /v1/accounts` an (`STRIPE_API = https://api.stripe.com/v1/`,
+`Stripe-Version` = `2024-06-20` aus dem Kern). Für ein Stripe-Konto, das noch nie ein
+Connect-Konto über v1 angelegt hat, ist dieser Weg jetzt zu.
+
+### Zwei Wege
+
+**Sofort: v1 im Dashboard freischalten.** Unter
+`https://dashboard.stripe.com/settings/developers/api-policies/feat_accounts_v1_support`
+lässt sich „Accounts v1 support" einschalten. Danach greift der vorhandene Code
+unverändert. Das muss der Kontoinhaber selbst tun.
+
+**Richtig: auf Accounts v2 wechseln.** Das ist kein Einzeiler. Betroffen sind
+mindestens:
+
+- der Endpunkt `POST /v2/core/accounts` statt `/v1/accounts`, also auch der feste
+  Basispfad in `ConnectServer::STRIPE_API`
+- eine neuere `Stripe-Version` als das gepinnte `2024-06-20`, und damit die Frage, ob
+  der Kern dieselbe Version weiterverwenden kann oder die Plattform eine eigene braucht
+- die Nutzlast: statt `controller` beschreiben `configuration`, `identity`, `defaults`
+  und `include` das Konto, inklusive der Frage, wer Gebühren und Verluste trägt
+- der Onboarding-Weg: ob `account_links` weiterhin passt oder v2 einen eigenen Weg
+  verlangt
+- die Folgeaufrufe: Status, Gebührenprüfung und die Weiterleitung der Ereignisse hängen
+  an Feldern, die v2 anders benennt
+
+**Entschieden ist davon nichts.** Bevor daran gebaut wird, gehört die aktuelle
+Stripe-Dokumentation gelesen, nicht die Erinnerung daran — v2 ist jung und die Felder
+ändern sich noch.

@@ -90,3 +90,34 @@ bis dahin genau dieselben Werte, schadet also auch nicht.
   und `slim-hreflang/v1` erreichbar bleiben, ohne die Sperre ganz aufzugeben.
 - Der erste echte Verbindungsversuch bleibt der Beweis: erst wenn ein Konto entsteht und
   der Onboarding-Link öffnet, ist Connect wirklich fertig.
+
+## Dritter Fehler: der Idempotenz-Schlüssel sperrte die Wiederholung
+
+Nach dem Beheben der Controller-Kombination meldete der nächste Versuch:
+
+> Keys for idempotent requests can only be used with the same parameters they were
+> first used with. Try using a key other than `wopcart_account_869462848de0e7a5…`
+
+**Ursache:** Der Schlüssel für `POST /v1/accounts` wurde allein aus dem Site-Key
+gebildet. Stripe merkt sich unter einem Idempotenz-Schlüssel das Ergebnis der ersten
+Anfrage — **auch eine Ablehnung** — und beantwortet 24 Stunden lang jede weitere Anfrage
+mit demselben Schlüssel entweder mit dem gespeicherten Ergebnis oder, bei abweichenden
+Parametern, mit genau diesem Fehler. Die gespeicherte Ablehnung war die Express-Absage
+von vorhin. Der reparierte Code kam also gar nicht erst bei Stripe an.
+
+**Behoben in Platform 1.0.3:** Der Schlüssel hasht jetzt den Site-Key **und die
+Parameter**. Gleiche Parameter geben weiter dasselbe Konto zurück, wenn eine Antwort
+unterwegs verloren ging; geänderte Parameter bekommen einen neuen Versuch, was eine
+korrigierte Anfrage auch verdient.
+
+Abgewogen: Ginge eine Kontoanlage verloren **und** änderte der Händler danach einen
+Parameter, entstünde ein zweites Konto. Dafür müssen beide Hälften zusammenkommen, und
+überhaupt hereingelassen wird eine Wiederholung nur, solange die Zeile kein `account_id`
+trägt. Der Preis ist kleiner als eine Sperre von 24 Stunden nach jedem Fehlversuch.
+
+Drei Tests halten das fest: gleiche Parameter — gleicher Schlüssel, geänderte Parameter —
+anderer Schlüssel, zwei Seiten — nie derselbe Schlüssel.
+
+**Ausgerollt** auf wopcart.com am 2026-10-22, geprüft: Version 1.0.3 aktiv, Status
+„läuft", `connect/start` erreichbar, Schlüssel für dieselbe Domain jetzt
+`wopcart_account_d8f32072…` statt `wopcart_account_869462848…`.

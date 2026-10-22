@@ -113,3 +113,38 @@ es erzwingt die Anwesenheit des Kerns, nicht dessen Version.
 2. **WopCart Direct 1.0.1** installieren und aktivieren, Checkout und Stripe-Test prüfen.
 3. Kern auf **1.4.2** (`wopcart-1.4.2.zip`).
 4. `06-connect-controller.php` kann weg, sobald Platform 1.0.1+ die Routen bedient.
+
+## Rollout abgeschlossen: 2026-10-22
+
+Alle drei Schritte in einem Durchgang, jeweils mit Prüfung dazwischen.
+
+**Vorher gesichert:** vollständiger Datenbank-Dump (`/opt/wopcart/backups/pre-rollout-20261022-115627.sql.gz`,
+885 kB) und das gesamte Plugin-Verzeichnis (`plugins-20261022-115627.tar.gz`, 1,7 MB).
+
+| Schritt | Ergebnis |
+|---|---|
+| Kern 1.2.3 → **1.3.1** | `WopCart\Platform\Server` ausgezogen, Plattform-Plugin meldet „läuft", `plan/check` weiter da, Cron `wopcart_platform_deliver` eingeplant, Tabellen 1 / 0 unverändert |
+| **WopCart Direct 1.0.1** installiert | aktiv, meldet „läuft", `wopcart_uses_own_gateway_credentials` = ja, eigener Stripe-Schlüssel für live und test vorhanden |
+| Kern 1.3.1 → **1.4.2** | drei Plugins aktiv, `PlanVerdict` wie erwartet weg, alle Plattform-Routen da (`plan/check`, `platform/connect/start`, `/link`, `/status`, `/disconnect`, `platform/stripe`), 9 Bestellungen und 4 Lizenzen unberührt |
+
+Die Reihenfolge hat sich bewährt: Direct war aktiv, **bevor** 1.4.2 die Tarif-Logik entfernt
+hat, weshalb der eigene Stripe-Schlüssel des Shops durchgehend gegriffen hat.
+
+**Rollback-Kopien** liegen im Container als `wopcart-prev` (1.3.1) und `wopcart-prev-131`
+(1.2.3). Beim nächsten Deploy räumt `deploy-plugin.sh` sie nach `/opt/wopcart/rollback/`.
+
+**Nach dem Deploy erledigt:**
+
+- Update-Metadaten für Produkt 14 geschrieben (`META_ONLY=1 bash deploy-plugin.sh`),
+  `_wopcart_software_version` steht auf 1.4.2.
+- Käuferdatei ausgetauscht: `wopcart-protected/wopcart-1.4.2.zip`, Produkt 14 zeigt darauf.
+- Website veröffentlicht (`push-pages.sh`): elf Seiten, Produktseite und Kopfmenü. Die
+  Produktseite heißt jetzt **WopCart Direct**, Changelog trägt 1.4.1 und 1.4.2, die Roadmap
+  den geklärten Stripe-Wortlaut.
+- `05-design-pages.php` auf die aktuelle Fassung gebracht — die vom Vortag kannte FAQ,
+  Lizenzseite und Produktseiten noch nicht, die drei standen deshalb kurz ohne Design da.
+  Jetzt tragen alle zehn Seiten die Klasse `wc-design`.
+
+**Offen:** Die SEO-Titel der Seiten stammen weiterhin aus dem Import vom September;
+`push-pages.sh` schreibt nur den Inhalt, nicht die Angaben aus `manifest.json`.
+`06-connect-controller.php` ist seit Platform 1.0.2 überflüssig, schadet aber nicht.

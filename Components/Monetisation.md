@@ -104,3 +104,54 @@ onboarding exists. That is the correct starting state, not a bug.
 ## See also
 
 [[Components/Payments]] · [[Components/Licensing]] · [[05 Decisions Log]]
+
+## Mindestlaufzeit (seit Kern 1.5.0)
+
+**Stand:** 2026-10-24 · **Asana:** [STORY] Mindestlaufzeit für Abos
+
+Eine Preisoption kann eine **Mindestlaufzeit in Abrechnungsperioden** tragen. Sie ist
+ausdrücklich **keine Vorauszahlung**: Abgerechnet wird weiter Periode für Periode, nur die
+Wirkung einer Kündigung verschiebt sich auf das Ende der Bindung. Anlass war der erste
+echte Händler mit Paketen zu 2.500 und 5.000 im Monat — quartalsweise Abrechnung hätte
+7.500 bis 15.000 im Voraus bedeutet und wäre unverkäuflich gewesen.
+
+### Wie es läuft
+
+1. `Price::minimum_term` am Preis, gedeckelt auf 10 Perioden (`wopcart_maximum_minimum_term`),
+   und nur bei wiederkehrenden Optionen.
+2. Beim Anlegen des Abos wird daraus das Datum `committed_until`, berechnet mit
+   `Price::commitment_ends_at()`. Es läuft **den Abrechnungskalender entlang**, landet also
+   immer auf einem Buchungstag: drei Monatsperioden ab dem 31. Januar enden am 28. April,
+   weil der Buchungstag im Februar auf die 28 klemmt und dort bleibt. Eine Testphase liegt
+   **vor** der Bindung, nicht darin.
+3. Kündigt der Kunde, während noch eine Buchung in die Bindung fällt, wird **das Gateway
+   nicht angefasst**. Es bekäme sonst „zum Ende dieser Periode beenden" — genau das, was
+   während einer Bindung nicht passieren darf. Stattdessen: Vermerk in den Meta-Daten,
+   `expiration` auf das Bindungsende.
+4. Nach der Buchung, die die letzte Periode der Bindung abdeckt, wird daraus eine ganz
+   gewöhnliche Kündigung zum Periodenende — und die endet auf den Tag genau mit der Bindung.
+   Die Übergabe sitzt dort, wo Verlängerungen verbucht werden, gilt also für Webhook-Gateways
+   und selbst abgerechnete gleichermaßen. Im Verlängerungslauf steht ein zweites Netz.
+5. Kündigung in der letzten Periode wird **nicht** aufgeschoben: Die normale Kündigung endet
+   ohnehin mit der Bindung.
+
+### Warum kein `cancel_at` bei Stripe
+
+Der erste Entwurf wollte Stripe ein absolutes Enddatum schicken und dafür die
+`ProxyPolicy` der Plattform öffnen. Nicht nötig: Die Übergabe nach der letzten Buchung
+benutzt den vorhandenen, erprobten Weg „zum Periodenende kündigen" und funktioniert für
+jedes Gateway gleich. Die Feldliste der Plattform bleibt damit so eng wie sie ist — sie
+existiert, weil `application_fee_percent` und `transfer_data` dort Geld umleiten könnten.
+
+### Wo es sichtbar ist
+
+Vor dem Kauf als Länge (Produktseite, Warenkorb, Kaufknopf), danach als Datum (Konto,
+Kündigungsdialog und -strecke, Adminliste, `committed_until` in Webhooks und MCP).
+Eine aufgeschobene Kündigung zählt sofort als Abwanderung im At-Risk-Bericht.
+
+### Grenzen
+
+Bestandsabos haben keine Bindung und bekommen keine. Upgrade, Erstattung und
+fehlgeschlagene Zahlung **innerhalb** der Bindung laufen wie bisher — dort ist noch nicht
+entschieden, ob die Bindung mitwandern soll. Der 14-Tage-Widerruf für Verbraucher bleibt
+unberührt und sticht jede Bindung.

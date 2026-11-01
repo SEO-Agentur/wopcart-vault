@@ -42,11 +42,22 @@ ssh -i "$KEY" "$HOST" 'docker exec -u www-data -w /var/www/html wopcart-web php 
   // never renders and a link to the checkout lands on an empty cart.
   \$settings[\"express_product\"] = 14;
 
+  // Owner decision, 1 November 2026: no upgrades and no plan changes. Working
+  // out what somebody already paid and how much of their year is left gives a
+  // different number for every customer, which cannot be printed on a page.
+  // Whoever wants more buys it. Stored explicitly because the plugin default
+  // only applies to a store that never saved its settings; this one has.
+  \$settings[\"allow_plan_change\"] = false;
+  \$settings[\"license_upgrades\"]  = false;
+
   if ( \$settings !== \$before ) {
     update_option( \"wopcart_settings\", \$settings );
   }
 
-  echo \"   express_product = \" . ( (array) get_option( \"wopcart_settings\", array() ) )[\"express_product\"] . PHP_EOL;
+  \$now = (array) get_option( \"wopcart_settings\", array() );
+  echo \"   express_product   = \" . \$now[\"express_product\"] . PHP_EOL;
+  echo \"   allow_plan_change = \" . var_export( \$now[\"allow_plan_change\"], true ) . PHP_EOL;
+  echo \"   license_upgrades  = \" . var_export( \$now[\"license_upgrades\"], true ) . PHP_EOL;
 
   // A purchase has to produce an account, or the buyer cannot reach the licence
   // they just paid for. 1.7.0 signs them in on their own receipt once it does.

@@ -69,6 +69,10 @@ add_action(
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item{justify-content:flex-start}
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content{display:flex;align-items:center;min-height:44px;width:100%}
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container{gap:2px;padding-left:16px;border-left:2px solid var(--wc-line,rgba(0,0,0,.12))}
+/* Zugeklappt, bis jemand es aufklappt. Ohne das standen 23 Zeilen in einem 812-px-Fenster. */
+.wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu:not(.wc-sub-open)>.wp-block-navigation__submenu-container{display:none}
+.wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu__toggle{min-height:44px;display:flex;align-items:center;gap:6px}
+.wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-submenu.wc-sub-open>.wp-block-navigation-submenu__toggle svg{transform:rotate(180deg)}
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content{font-size:1.05rem;font-weight:600}
 /* Der Kaufknopf als Menueintrag, nur im Overlay: auf dem Desktop traegt ihn der Kopfbereich. */
 /* Spezifitaet: Kern setzt .wp-block-navigation .wp-block-navigation-item{display:flex} (0,2,0) und schlaegt eine einzelne Klasse. Gemessen am 1. November 2026: computed display war flex, der Kaufknopf stand zweimal im Kopfbereich. */
@@ -296,6 +300,59 @@ add_action(
 /* WopCart site design: after the mobile menu overlay closes on a same-page anchor link, scroll to the target.
    Core locks page scrolling while the overlay is open and then returns focus to the menu toggle, which cancels
    the normal jump. So wait until that has happened and jump instantly (also fine for reduced motion). */
+/* WopCart site design: collapsible submenus in the mobile overlay.
+   Core renders every submenu expanded there and leaves aria-expanded at "true" whatever you click, so the
+   menu was 23 rows and 1330px tall in an 812px viewport (measured 1 November 2026). Collapse them when the
+   overlay opens and let the toggle actually toggle. Desktop is untouched: this only runs while .is-menu-open
+   is present, which core adds to the responsive container. */
+(function () {
+	var OPEN = 'wc-sub-open';
+
+	function overlay() {
+		return document.querySelector('.wc-header .wp-block-navigation__responsive-container.is-menu-open');
+	}
+
+	function collapseAll() {
+		var box = overlay();
+		if (!box) {
+			return;
+		}
+		box.querySelectorAll('.wp-block-navigation-submenu').forEach(function (item) {
+			item.classList.remove(OPEN);
+			var toggle = item.querySelector(':scope > .wp-block-navigation-submenu__toggle');
+			if (toggle) {
+				toggle.setAttribute('aria-expanded', 'false');
+			}
+		});
+	}
+
+	/* The overlay is created when the toggle is pressed, so collapse on the next frame rather than on load. */
+	document.addEventListener('click', function (event) {
+		if (event.target.closest('.wc-header .wp-block-navigation__responsive-container-open')) {
+			window.requestAnimationFrame(function () { window.setTimeout(collapseAll, 0); });
+		}
+	}, true);
+
+	document.addEventListener('click', function (event) {
+		var box = overlay();
+		if (!box) {
+			return;
+		}
+		var toggle = event.target.closest('.wp-block-navigation-submenu__toggle');
+		if (!toggle || !box.contains(toggle)) {
+			return;
+		}
+		var item = toggle.closest('.wp-block-navigation-submenu');
+		if (!item) {
+			return;
+		}
+		event.preventDefault();
+		event.stopPropagation();
+		var open = item.classList.toggle(OPEN);
+		toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+	});
+}());
+
 document.addEventListener('click', function (event) {
 	var link = event.target.closest('.wc-header .wp-block-navigation a[href*="#"]');
 	if (!link) {

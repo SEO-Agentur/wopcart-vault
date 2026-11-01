@@ -238,3 +238,32 @@ funktioniert.
 MX- und keinen A-Eintrag findet. Auf einem Host mit blockiertem DNS oder abgeschalteter
 Funktion wird jede Anmeldung durchgelassen, statt jeden Besucher abzuweisen. Antworten
 werden 12 Stunden pro Domain gecacht, damit ein beschossenes Formular keine DNS-Flut wird.
+
+## Lifetime gilt versionsunabhängig — DECIDED 2026-11-01
+Wer jetzt kauft, bekommt eine Lifetime-Lizenz **ohne Versionsbindung**: einmal zahlen,
+Updates solange WopCart angeboten wird. Das deckt sich mit dem, was auf `/pricing/` und
+`/plan-changes-refunds/` bereits steht — an der Website ist also nichts zu ändern.
+
+Die versionsgebundene Variante („du besitzt die Fassung, die du gekauft hast; eine neuere
+ist ein Neukauf zum normalen Preis, 50 € im Jahr bzw. 80 € einmalig") ist **verschoben**,
+nicht verworfen. Sie kommt später und gilt dann für die dann verkauften Lizenzen, nicht
+rückwirkend für die heutigen.
+
+Ein Modul dafür war am 2026-11-01 begonnen (`src/Downloads/VersionLock.php`:
+Versionsstempel am Auftrag bei der Fulfilment, Austausch der Versionsnummer im Dateinamen
+beim Download, Rückfall auf die aktuelle Datei bei fehlendem Stempel oder fehlendem
+Archiv) und wieder **entfernt**, weil eine stillgelegte halbe Funktion im Baum schlechter
+ist als keine. Der Entwurf steht hier, damit er beim Wiederaufnehmen nicht neu gedacht
+werden muss:
+
+- Ein Meta am Auftrag, `software_versions` als `produkt_id => fassung`, geschrieben genau
+  einmal bei `wopcart_order_complete` — später gelesen ergäbe es die dann aktuelle
+  Fassung, also genau das, was vermieden werden soll.
+- Ein Filter `wopcart_download_file` in `DownloadHandler`, der die Versionsnummer im
+  bereits konfigurierten Dateinamen ersetzt (`wopcart-1.8.1.zip` → `wopcart-1.7.0.zip`).
+  Nur eine versionsförmige Ziffernfolge zwischen Trenner und Endung wird ersetzt; ein
+  Name ohne Version bleibt unangetastet, sonst bekommt der Käufer einen 404.
+- Drei Rückfälle, damit niemand je ohne Download dasteht: kein Stempel (alle Altaufträge)
+  → aktuelle Datei; Stempel ohne Archiv → aktuelle Datei plus Logzeile; Dateiname ohne
+  Version → unverändert.
+- Die Archive liegen bereits versioniert unter `uploads/wopcart-protected/`.

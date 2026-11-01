@@ -24,6 +24,9 @@ else
 fi
 
 STAGE=$(mktemp -d)
+# The manifest travels with the pages: push-pages.php applies the SEO title,
+# the meta description and the design flag from it.
+cp "$WEB/pages/manifest.json" "$STAGE/manifest.json"
 for slug in "${SLUGS[@]}"; do
 	case "$slug" in
 		product:*)

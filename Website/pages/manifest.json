@@ -60,7 +60,8 @@
   "seo_title": "WordPress Software Licensing and Update Server | WopCart",
   "meta_description": "Sell WordPress plugins and themes with license keys, activation limits per price option, free staging activations and updates from your own store.",
   "excerpt": "Sell WordPress plugins and themes with license keys, activation limits and automatic updates served from your own WopCart store.",
-  "template": "page-no-title"
+  "template": "page-no-title",
+  "design": true
  },
  {
   "slug": "paywall-memberships",
@@ -123,7 +124,8 @@
   "seo_title": "WopCart FAQ: Fees, Plans, Domains and Data",
   "meta_description": "Answers on the 2% free-plan fee, paid plans, gateways, domain slots, staging sites, plan changes, what data leaves your site, GDPR and uninstalling.",
   "excerpt": "Answers to common questions about WopCart fees, plans, domains, payments, data and setup.",
-  "template": "page-no-title"
+  "template": "page-no-title",
+  "design": true
  },
  {
   "slug": "why-wopcart",
@@ -203,16 +205,17 @@
  {
   "slug": "product",
   "type": "wopcart_product",
-  "title": "WopCart Plan",
+  "title": "WopCart Direct",
   "status": "publish",
   "menu_order": 0,
   "in_primary_nav": false,
   "in_footer_nav": false,
-  "seo_title": "WopCart Plan: 0% Platform Fee and Your Own Gateways",
-  "meta_description": "A yearly or lifetime WopCart plan removes the 2% fee and unlocks your own Stripe, PayPal, Authorize.net and 2Checkout accounts on 1, 10 or 100 domains.",
+  "seo_title": "WopCart Direct: Your Own Gateways, 0% Platform Fee",
+  "meta_description": "WopCart Direct removes the 2% platform fee and charges through your own Stripe, PayPal, Authorize.net, Mollie or 2Checkout account. From $50 a year or $80 once.",
   "excerpt": "A yearly or lifetime WopCart plan removes the 2% platform fee and lets you use your own Stripe, PayPal, Authorize.net and 2Checkout accounts on 1, 10 or 100 production domains.",
   "source": "../product-wopcart.html",
-  "key": "product"
+  "key": "product",
+  "design": true
  },
  {
   "slug": "about",

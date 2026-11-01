@@ -21,6 +21,63 @@ require '/var/www/html/wp-load.php';
 kses_remove_filters();
 
 $dir     = '/tmp/wc-pages';
+
+/*
+ * manifest.json carried the SEO title, the meta description and the design flag
+ * for every page, and nothing ever applied them: the title and description are
+ * read from post meta by 03-site-seo.php, and no script wrote that meta. The
+ * product page therefore still called itself "WopCart Plan" eleven days after
+ * the product was renamed, and /direct/ went live with no description at all.
+ */
+$manifest = array();
+
+if ( is_readable( $dir . '/manifest.json' ) ) {
+	foreach ( (array) json_decode( (string) file_get_contents( $dir . '/manifest.json' ), true ) as $row ) {
+		if ( isset( $row['slug'] ) ) {
+			$manifest[ (string) $row['slug'] ] = $row;
+		}
+	}
+}
+
+/**
+ * Write the manifest's metadata onto a post.
+ *
+ * @param int                              $post_id  Post.
+ * @param string                           $slug     Manifest key.
+ * @param array<string,array<string,mixed>> $manifest Parsed manifest.
+ */
+function wc_push_manifest( int $post_id, string $slug, array $manifest ): void {
+	$row = $manifest[ $slug ] ?? null;
+
+	if ( null === $row ) {
+		echo '  (kein Manifest-Eintrag für ' . $slug . ")\n";
+		return;
+	}
+
+	$written = array();
+
+	foreach ( array( 'seo_title' => '_wopcart_site_seo_title', 'meta_description' => '_wopcart_site_meta_description' ) as $key => $meta ) {
+		$value = trim( (string) ( $row[ $key ] ?? '' ) );
+
+		if ( '' !== $value ) {
+			update_post_meta( $post_id, $meta, $value );
+			$written[] = $key;
+		}
+	}
+
+	// The design flag is what 04-site-design.php reads to add the wc-design body
+	// class, so a page the manifest calls designed gets the design.
+	if ( ! empty( $row['design'] ) ) {
+		update_post_meta( $post_id, '_wopcart_site_design', 1 );
+		$written[] = 'design';
+	}
+
+	if ( ! empty( $row['template'] ) ) {
+		update_post_meta( $post_id, '_wp_page_template', (string) $row['template'] );
+	}
+
+	echo '  Manifest: ' . ( array() === $written ? 'nichts zu schreiben' : implode( ', ', $written ) ) . "\n";
+}
 $entries = array_values( array_filter( array_map( 'trim', file( $dir . '/slugs.txt' ) ) ) );
 
 /**
@@ -104,6 +161,7 @@ foreach ( $entries as $entry ) {
 		}
 
 		echo $entry . ': angelegt #' . $new_id . ' (' . get_permalink( (int) $new_id ) . ")\n";
+		wc_push_manifest( (int) $new_id, $slug, $manifest );
 		continue;
 	}
 
@@ -122,6 +180,10 @@ foreach ( $entries as $entry ) {
 	$result = wp_update_post( $update, true );
 
 	echo $entry . ': ' . ( is_wp_error( $result ) ? 'FEHLER ' . $result->get_error_message() : 'aktualisiert #' . $post->ID ) . "\n";
+
+	// A product entry is written as product:<slug> but keyed `product` in the
+	// manifest, because there is one product and its slug is historical.
+	wc_push_manifest( $post->ID, str_starts_with( $entry, 'product:' ) ? 'product' : $slug, $manifest );
 }
 
 // The header template part carries the primary navigation.

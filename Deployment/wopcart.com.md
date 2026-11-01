@@ -767,3 +767,35 @@ nur zu melden, was geschrieben wurde.
 **Warum zwei Dateien:** Direct trägt `Requires Plugins: wopcart`, WordPress lässt es ohne
 den Kern nicht aktivieren. Solange der Kern nicht im WordPress.org-Verzeichnis liegt, wäre
 eine Auslieferung ohne ihn unbrauchbar.
+
+## P0: Fulfilment stürzte ab, bevor Lizenz und Beleg rausgingen — 2026-11-01
+
+**Von mir verursacht, in 1.7.0.** `Fulfillment::maybe_create_account()` ruft
+`EmailIdentity::remember()` auf — der `use`-Import kam nur nach `Checkout.php`, nicht nach
+`Fulfillment.php`. PHP löste den Namen also im eigenen Namensraum auf, suchte
+`WopCart\Checkout\EmailIdentity`, fand nichts und warf einen Fatal.
+
+**Warum es durchrutschte:** `php -l` prüft Syntax, keine Klassenauflösung. Die Unit-Suite
+lädt diesen Pfad nie (kein WordPress). Meine eigene Strukturprüfung sah nur die
+`use`-Zeilen in `src/Accounts/`, nicht die der Dateien, in die ich hineingeschrieben habe.
+
+**Wirkung:** Der Fatal sitzt am Ende von `run()`. Vorher gelaufen und damit korrekt:
+Verkaufszähler, Rabatte, Kundendatensatz, Abo, Warenkorb, Lagerbuchung. Danach **nicht**
+gelaufen: die Markierung des Kontos, `link_guests`, der Kundendatensatz-Abgleich, die
+Passwort-Mail, `wopcart_account_created` — und `wopcart_order_complete`, an dem
+**Lizenzschlüssel, Kaufbeleg und Admin-Benachrichtigung** hängen.
+
+**Betroffen: genau eine Bestellung.** #10, `cyrus_badde@yahoo.de`, `site1-yearly`, per
+Stripe-Webhook um 08:39:18 abgeschlossen. Konto 3 wurde angelegt, Abo existiert,
+**Lizenzen: 0**, kein Beleg. Die Bestellung davor (#9) liegt vor dem 1.7.0-Deploy.
+
+**Behoben in 1.7.2** (`0fca534`), plus `bin/class-refs.php`: löst jede statische Referenz
+in `src/` gegen die Datei auf, die sie definieren müsste (4993 Stück), und fällt bei genau
+diesem Fehler um. Gegenprobe gemacht — mit entferntem Import meldet es die Zeile.
+
+**Offen, weil vom Auto-Modus blockiert:**
+1. `bash ~/projects/plugins/digital-cart-vault/Deployment/scripts/deploy-plugin.sh`
+   — bis dahin stürzt **jede** weitere abgeschlossene Bestellung genauso ab.
+2. `Deployment/repair-order-10-20261101.php` auf dem Server ausführen (Aufruf steht im
+   Kopf der Datei). Holt für #10 nach, was ausgefallen ist — bewusst kein erneutes
+   `Fulfillment::run()`, das würde den Verkauf doppelt zählen.

@@ -723,3 +723,47 @@ Gehört auf `guaranteedseoservices.com/stage`.
   Wirksam wird das erst mit `cd /opt/wopcart && docker compose up -d`. Bis dahin gilt die
   Container-Fassung, die per `docker cp` aktuell ist — die Seite läuft also richtig, nur
   die Quelle ist noch nicht die Host-Datei.
+
+## Produkt 14 lieferte die falsche Software aus — 2026-11-01
+
+**Befund des Nutzers:** „nach dem kauf erhält man die wopcart-1.7.1.zip und nicht die
+wopcart-direct". Stimmte. Produkt 14 heißt seit dem 21. Oktober **WopCart Direct**, trug
+aber als einzige Datei `wopcart-protected/wopcart-<kernversion>.zip` — und
+`deploy-plugin.sh` zeigte bei **jedem** Kern-Release erneut darauf und schrieb zusätzlich
+die Update-Metadaten des Kerns auf das Produkt. Wer 50–280 $ für das Add-on zahlte, lud
+das kostenlose Plugin herunter, und der Updater des Add-ons bekam „deine Fassung ist
+1.7.x" gemeldet.
+
+**Ursache:** Produkt 14 war ursprünglich das Kernprodukt. Die Umbenennung am 21.10. hat
+Datei und Metadaten nicht mitgenommen, und niemandem fiel es auf, weil der Dateiname sich
+nie änderte.
+
+**Behoben:**
+- Neues `Deployment/scripts/deploy-direct.sh` baut Direct nach `.distignore`, lädt es in
+  den geschützten Ordner, setzt die Produktdatei und schreibt die Update-Metadaten **des
+  Add-ons**.
+- `deploy-plugin.sh` fasst die Add-on-Datei und die Add-on-Metadaten nicht mehr an. Es
+  pflegt nur noch die **Beilage**: den Kern, den ein Käufer braucht, solange er nicht auf
+  WordPress.org liegt. `META_ONLY` ist dort entfallen und lebt in `deploy-direct.sh`.
+- `wopcart-direct` bekam ein `.distignore` (die ausgelieferte Zip trug vorher den
+  PHPUnit-Cache und das Contributor-README) und **1.0.2**: `WOPCART_DIRECT_PRODUCT_ID`
+  ist jetzt 14 statt 0.
+
+**Ein Fehler in der Korrektur, von der Prüfung gefunden:** die übernommene Kern-Zeile trug
+`id => file_0`. `Product::files()` schlüsselt nach `$row["id"] ?? "file_" . $index`, also
+bekamen beide Zeilen dieselbe ID und die zweite überschrieb die erste — das Produkt
+lieferte danach *eine* Datei statt zwei. Jede Zeile trägt ihre ID jetzt ausdrücklich, und
+das Skript liest am Ende gegen, **was ein Käufer je Preisoption wirklich bekommt**, statt
+nur zu melden, was geschrieben wurde.
+
+| Prüfung | Ergebnis |
+|---|---|
+| Alle sechs Preisoptionen | `wopcart-direct-1.0.2.zip` **+** `wopcart-1.7.1.zip` |
+| Signierter Link, Bestellung #10 | HTTP 200, 100 062 Bytes, `wopcart-direct-1.0.2.zip` |
+| Signierter Link, zweite Datei | HTTP 200, 1 945 842 Bytes, `wopcart-1.7.1.zip` |
+| Direktaufruf ohne Signatur | 403 |
+| Update-Metadaten Produkt 14 | `_wopcart_software_version = 1.0.2`, Autor und Anforderungen aus Directs Header |
+
+**Warum zwei Dateien:** Direct trägt `Requires Plugins: wopcart`, WordPress lässt es ohne
+den Kern nicht aktivieren. Solange der Kern nicht im WordPress.org-Verzeichnis liegt, wäre
+eine Auslieferung ohne ihn unbrauchbar.

@@ -63,12 +63,49 @@ foreach ( $entries as $entry ) {
 		$label = $slug;
 	}
 
-	if ( ! $post || ! is_readable( $file ) ) {
-		echo $entry . ": übersprungen (Beitrag oder Datei fehlt)\n";
+	if ( ! is_readable( $file ) ) {
+		echo $entry . ": übersprungen (Datei fehlt)\n";
 		continue;
 	}
 
 	list( $content, $title ) = wc_push_read( $file );
+
+	/*
+	 * A page that does not exist yet is created rather than skipped. Until this
+	 * existed, a new page in the vault could never reach the site: the script
+	 * only ever replaced content, so /direct/ stayed a 404 no matter how often
+	 * it was pushed. Products are deliberately not created here — a product
+	 * carries prices, files and licence settings that do not belong in an HTML
+	 * file, so it is set up in the admin and only its content comes from here.
+	 */
+	if ( ! $post ) {
+		if ( str_starts_with( $entry, 'product:' ) ) {
+			echo $entry . ": übersprungen (Produkt muss im Admin angelegt werden)\n";
+			continue;
+		}
+
+		$new_id = wp_insert_post(
+			array(
+				'post_type'    => 'page',
+				'post_name'    => $slug,
+				'post_title'   => $title ?? ucwords( str_replace( '-', ' ', $slug ) ),
+				'post_status'  => 'publish',
+				'post_content' => $content,
+				// Every redesigned page uses this template: the hero carries its own
+				// heading, so a second title printed above it would duplicate it.
+				'page_template' => 'page-no-title',
+			),
+			true
+		);
+
+		if ( is_wp_error( $new_id ) ) {
+			echo $entry . ': FEHLER beim Anlegen ' . $new_id->get_error_message() . "\n";
+			continue;
+		}
+
+		echo $entry . ': angelegt #' . $new_id . ' (' . get_permalink( (int) $new_id ) . ")\n";
+		continue;
+	}
 
 	file_put_contents( $dir . '/' . $label . '.bak.html', $post->post_content );
 

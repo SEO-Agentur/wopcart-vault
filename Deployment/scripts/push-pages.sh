@@ -14,7 +14,7 @@ WEB=/Users/cyrusbadde/projects/plugins/digital-cart-vault/Website
 KEY=~/.ssh/seowebsitesbuilder_vps
 HOST=root@187.77.74.66
 
-DEFAULT=(pricing docs integrations why-wopcart support eu-vat plan-changes-refunds faq software-licensing roadmap changelog product:wopcart)
+DEFAULT=(pricing docs integrations why-wopcart support eu-vat plan-changes-refunds faq software-licensing roadmap changelog direct product:wopcart)
 if [ "$#" -gt 0 ]; then
 	SLUGS=("$@")
 	WITH_HEADER=0

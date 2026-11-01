@@ -1,6 +1,6 @@
 <?php
 /**
- * Put the inner pages into the site design.
+ * Two small site rules: the design class on the inner pages, and /pro/ → /direct/.
  *
  * The design CSS in 04-site-design.php is scoped to the wc-design body class,
  * which that file adds for the pages built in the September redesign. The docs,
@@ -29,6 +29,7 @@ add_filter(
 			'plan-changes-refunds',
 			'faq',
 			'software-licensing',
+			'direct',
 		);
 
 		// Product pages and the product archive carry the same content vocabulary.
@@ -41,4 +42,40 @@ add_filter(
 
 		return $classes;
 	}
+);
+
+/**
+ * Send /pro/ to /direct/.
+ *
+ * The edition was called "Pro" for a while. The name was dropped because it
+ * promises more features while the free plugin is complete, and because
+ * WordPress.org does not accept that story — but the address was published, so
+ * it has to lead somewhere rather than to a 404.
+ *
+ * It lives in this file instead of its own because every mu-plugin here is bind
+ * mounted into the container one file at a time; a new file means editing
+ * docker-compose.yml and recreating the web container, which is a poor trade for
+ * one redirect.
+ *
+ * 301 on purpose: the move is permanent, so search engines should forget /pro/.
+ * It runs on `template_redirect`, early, and only for a request that would
+ * otherwise 404 — a real page at that slug would always win.
+ */
+add_action(
+	'template_redirect',
+	static function (): void {
+		$path = (string) wp_parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );
+
+		if ( '/pro' !== untrailingslashit( $path ) ) {
+			return;
+		}
+
+		if ( ! is_404() ) {
+			return;
+		}
+
+		wp_safe_redirect( home_url( '/direct/' ), 301 );
+		exit;
+	},
+	1
 );

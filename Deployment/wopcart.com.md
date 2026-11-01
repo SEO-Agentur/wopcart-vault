@@ -695,3 +695,31 @@ Auf der Roadmap sind unter „Shipped" auch Mindestlaufzeiten (1.5.0) und Shop-S
 **Nicht auf dem Live-Shop getestet:** die echte Formularabsendung. Dafür müssten auf
 wopcart.com ein veröffentlichtes kostenloses Produkt und ein echter Benutzer entstehen.
 Gehört auf `guaranteedseoservices.com/stage`.
+
+## /direct/, /pro/ und die mu-Plugins — 2026-11-01
+
+**Gebaut und live:**
+- **`/direct/`** (Seite #133) ist angelegt, im Markendesign, mit sechs echten Kaufknöpfen
+  (Produkt 14, Preis-IDs `site1|site10|site100` × `yearly|lifetime`). Die Kaufknöpfe der
+  Preisseite, die seit dem Redesign ins Leere zeigten, landen jetzt dort.
+- **`/pro/` → `/direct/`**, 301. Liegt in `05-design-pages.php`, weil jedes mu-Plugin
+  einzeln per Bind-Mount eingehängt wird und eine eigene Datei einen Compose-Eingriff
+  bedeutet hätte. Greift nur, wenn die Anfrage sonst 404 wäre.
+
+**Zwei Funde am Werkzeug:**
+1. `push-pages.php` hat Seiten, die es noch nicht gab, **übersprungen** — deshalb konnte
+   `/direct/` nie entstehen, egal wie oft gepusht wurde. Es legt fehlende Seiten jetzt an
+   (Typ `page`, Status `publish`, Template `page-no-title`, Titel aus der
+   `<!-- wc:title -->`-Direktive). Produkte legt es bewusst **nicht** an: ein Produkt trägt
+   Preise, Dateien und Lizenzeinstellungen, die in keiner HTML-Datei stehen.
+2. **`04-site-design.php` existierte nur im Container** — nicht im Vault, nicht auf dem
+   Host. 25 KB, das komplette Seitendesign. Jetzt in beiden gesichert. (Die ursprüngliche
+   Sorge, ein Container-Neubau hätte sie gelöscht, war falsch: `/var/www/html` liegt auf
+   dem named volume `wopcart_wp_data`. Verloren wäre sie erst mit dem Volume.)
+
+**Offen, weil vom Auto-Modus als Produktions-Deploy blockiert:**
+- `docker-compose.yml` trägt bereits die drei neuen Bind-Mounts für `04`, `05` und `06`
+  (Backup: `docker-compose.yml.bak-20261101-muplugins`, `docker compose config -q` sauber).
+  Wirksam wird das erst mit `cd /opt/wopcart && docker compose up -d`. Bis dahin gilt die
+  Container-Fassung, die per `docker cp` aktuell ist — die Seite läuft also richtig, nur
+  die Quelle ist noch nicht die Host-Datei.

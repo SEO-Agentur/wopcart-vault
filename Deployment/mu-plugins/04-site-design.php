@@ -326,12 +326,24 @@ add_action(
 		});
 	}
 
-	/* The overlay is created when the toggle is pressed, so collapse on the next frame rather than on load. */
-	document.addEventListener('click', function (event) {
-		if (event.target.closest('.wc-header .wp-block-navigation__responsive-container-open')) {
-			window.requestAnimationFrame(function () { window.setTimeout(collapseAll, 0); });
-		}
-	}, true);
+	/* Core adds .is-menu-open to the container when the overlay opens. Watching for that is exact; guessing a
+	   delay after the click was not — measured on 1 November 2026 the collapse ran too early, so the CSS hid
+	   the submenus while aria-expanded still said "true" and a screen reader was told the opposite of the truth. */
+	var watcher = new MutationObserver(function (records) {
+		records.forEach(function (record) {
+			var target = record.target;
+			if (target.classList && target.classList.contains('is-menu-open')) {
+				collapseAll();
+			}
+		});
+	});
+
+	document.querySelectorAll('.wc-header .wp-block-navigation__responsive-container').forEach(function (box) {
+		watcher.observe(box, { attributes: true, attributeFilter: ['class'] });
+	});
+
+	/* And once on load, for a page that arrives with the overlay already open. */
+	collapseAll();
 
 	document.addEventListener('click', function (event) {
 		var box = overlay();

@@ -14,7 +14,23 @@ WEB=/Users/cyrusbadde/projects/plugins/digital-cart-vault/Website
 KEY=~/.ssh/seowebsitesbuilder_vps
 HOST=root@187.77.74.66
 
-DEFAULT=(pricing docs integrations why-wopcart support eu-vat plan-changes-refunds faq software-licensing roadmap changelog direct product:wopcart)
+# Every page the manifest knows about, read from the manifest rather than kept
+# here by hand. The hand-kept list had drifted: paywall-memberships, features,
+# home, about, affiliates, imprint, privacy and terms were in the vault and in
+# the manifest but never pushed, so a fix to any of them silently stayed local.
+# That is how the shortcode examples on paywall-memberships stayed broken on
+# 1 November 2026 while the same fix reached the other two pages.
+MANIFEST=$WEB/pages/manifest.json
+mapfile -t DEFAULT < <(python3 -c "
+import json, sys, pathlib
+raw = json.loads(pathlib.Path('$MANIFEST').read_text())
+rows = raw if isinstance(raw, list) else raw.get('pages', [])
+for r in rows:
+    slug = r.get('slug') if isinstance(r, dict) else None
+    if slug and pathlib.Path('$WEB/pages/%s.html' % slug).exists():
+        print(slug)
+")
+DEFAULT+=(product:wopcart)
 if [ "$#" -gt 0 ]; then
 	SLUGS=("$@")
 	WITH_HEADER=0

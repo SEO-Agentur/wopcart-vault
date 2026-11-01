@@ -653,3 +653,45 @@ Checkliste pro Release:
 7. Obsidian (Roadmap-Status) + Asana aktualisieren.
 
 Stand: live = **1.0.0** (enthält alle Deploys vom 2026-09-14 bis Welle 3). Nächste Version: **1.1.0** (Formulare, Integrations-Hub, Rechnungen, Memberships, Warenkorb-Seite, Redesign, WPML/Polylang, Divi/Bricks).
+
+## Kern 1.7.0 ausgerollt — 2026-11-01
+
+**Stand vorher:** Kern 1.6.0, Direct 1.0.1, Platform 1.0.4.
+**Stand nachher:** Kern **1.7.0**, Direct 1.0.1, Platform 1.0.4 (beide unverändert).
+
+Direct und Platform wurden **nicht** neu versioniert: an ihrem Code hat sich nichts
+geändert, `MIN_CORE` (1.3.0 bzw. 1.3.1) ist weiter erfüllt, und `Plugin::supports()` ist
+ein Versionsvergleich, keine Fähigkeitsliste — es gibt also nichts nachzuziehen. Eine
+Versionsnummer ohne Änderung wäre nur Rauschen in der Update-Historie der Händler.
+
+**Ausgerollt mit** `Deployment/scripts/deploy-plugin.sh` (Build nach `.distignore`,
+atomarer Ordnertausch, automatischer Rollback). In dem Skript stand ein fest verdrahteter
+Scratchpad-Pfad einer längst beendeten Sitzung; er ist jetzt `${DEPLOY_TMP:-$(mktemp -d)}`.
+
+| Prüfung | Ergebnis |
+|---|---|
+| Build | 602 Dateien, sha256 `5de4aebd…1723ce` |
+| Deploy | `deploy ok: 1.7.0 (20261101-073551)` |
+| Rollback-Kopie | `/opt/wopcart/rollback/wopcart-prev-20261101-073551` |
+| Käufer-Download | `uploads/wopcart-protected/wopcart-1.7.0.zip`, Produkt #14 zeigt darauf |
+| Update-Metadaten Produkt #14 | `_wopcart_software_version = 1.7.0` |
+| Geladene Fassungen im Container | core 1.7.0 \| direct 1.0.1 \| platform 1.0.4 |
+| Daten | 9 Aufträge, 4 Lizenzen, 2 Abos — unverändert |
+| DB_VERSION | 1.5.0 = gespeichert 1.5.0 (1.7.0 ändert kein Schema), `committed_until` vorhanden |
+| Shortcode / Block | `wopcart_account_signup` ja, `wopcart/account-signup` ja |
+| Formular gerendert | 2258 Zeichen, Nonce, admin-post.php, Telefonfeld, Honeypot-Markup vorhanden |
+| Neue Einstellungen im General-Tab | alle acht vorhanden |
+| Alias-Faltung live | `Name+394@GoogleMail.com` → `name@gmail.com` |
+| Rate Limit | `account_signup` = 5 / 3600 s |
+| REST | `/wopcart/v1/plan/check` vorhanden |
+| PHP-Log seit Deploy | keine Fatals, Parse-Fehler oder Warnungen |
+| Seiten | `/`, `/changelog/`, `/roadmap/`, `/pricing/`, `/products/wopcart/`, `/faq/`, `/software-licensing/`, `/docs/` → alle 200 |
+
+**Website** (Regel: jeder Deploy bringt eine neue Fassung und aktualisiert /changelog/ und
+/roadmap/): `push-release-pages.sh`, Changelog #83 und Roadmap #82 aktualisiert, beide 200.
+Auf der Roadmap sind unter „Shipped" auch Mindestlaufzeiten (1.5.0) und Shop-Seitentypen
+(1.6.0) nachgetragen worden — die waren beim letzten Mal nicht mitgezogen.
+
+**Nicht auf dem Live-Shop getestet:** die echte Formularabsendung. Dafür müssten auf
+wopcart.com ein veröffentlichtes kostenloses Produkt und ein echter Benutzer entstehen.
+Gehört auf `guaranteedseoservices.com/stage`.

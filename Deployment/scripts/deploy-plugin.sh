@@ -4,7 +4,10 @@
 set -euo pipefail
 
 SRC=/Users/cyrusbadde/projects/plugins/digital-cart
-S=/private/tmp/claude-502/-Users-cyrusbadde-projects-plugins/1dabc567-ff59-4374-9daf-3dddb49691d3/scratchpad
+# Build directory. A session's scratchpad path was hardcoded here once and went
+# stale the moment that session ended, so it is a fresh temp dir unless the
+# caller names one.
+S="${DEPLOY_TMP:-$(mktemp -d)}"
 KEY=~/.ssh/seowebsitesbuilder_vps
 HOST=root@187.77.74.66
 VERSION=$(grep -m1 "Version:" "$SRC/wopcart.php" | awk '{print $NF}')

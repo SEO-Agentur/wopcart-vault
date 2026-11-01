@@ -199,3 +199,42 @@ Statt nur die neuen Namen einzusetzen, hakt 1.4.1 **beide** Präfixe und erkennt
 Konstanten: ein Filter auf einen Haken, der nie feuert, kostet nichts, und eine
 Installation, die das Toolkit noch nicht aktualisiert hat, verliert nichts. Dieselbe Regel
 gilt künftig für Yoast, Rank Math und AIOSEO. Siehe [[Components/SEO und strukturierte Daten]].
+
+## Kostenlose Mitgliedschaft läuft nicht durch den Checkout — DECIDED 2026-11-01
+Ein Freiplan über den Checkout bedeutet Warenkorb, Adressformular, Steuerland und
+AGB-Häkchen vor etwas, das nichts kostet — vier Abbruchstellen. `[wopcart_account_signup]`
+fragt nur die E-Mail-Adresse. Trotzdem entsteht ein abgeschlossener Auftrag über 0 € mit
+Order-Meta `signup`, weil Mitgliedschaften, Lizenzen, Kundendatensatz und alle Reports an
+Aufträgen hängen: eine Anmeldung ohne Auftrag wäre ein Mitglied, das nichts sieht. Siehe
+[[Components/Konten und kostenlose Anmeldungen]].
+
+## Ein Postfach ist eine Identität, nicht eine Zeichenkette — DECIDED 2026-11-01
+`name+394@gmail.com`, `na.me@gmail.com` und `name@googlemail.com` sind bei Google ein
+Postfach und waren für WordPress drei Konten mit drei Freiplänen. Entschieden: `+`-Suffixe
+werden für **alle** Domains verworfen (nicht nur für Anbieter, die Plus-Aliasse offiziell
+führen), bei Google zusätzlich Punkte und die zweite Domain. Die kanonische Form steht auf
+jedem Konto (`wopcart_email_key`) und greift in beide Richtungen — egal ob Alias oder
+Klaradresse zuerst kam. Preis der strengen Lesart: wer eine Adresse mit echtem Plus hat,
+wird auf ein bestehendes Konto verwiesen. Preis der laxen: der Freiplan ist unbegrenzt für
+jeden, der es merkt. Abschaltbar über `signup_collapse_aliases`.
+
+## Missbrauchsschutz gilt nur für Verschenktes, nie für Bezahltes — DECIDED 2026-11-01
+Wegwerf-Adressen, nicht erreichbare Domains und Alias-Erkennung greifen am
+Anmeldeformular und an Aufträgen ohne Zahlbetrag. Ein bezahlter Auftrag wird **nie**
+abgelehnt, nur weil die Adresse ein Plus enthält: das würde den Händler Geld kosten, um
+nichts zu verhindern. Beim 0-€-Checkout greifen die Wegwerf- und DNS-Regeln, aber nicht
+„hat schon ein Konto" — erneut von derselben Adresse kaufen ist normales Kundenverhalten.
+
+## Ein Freiplan-Formular verschenkt niemals ein bezahltes Produkt — DECIDED 2026-11-01
+`[wopcart_account_signup product="…"]` prüft vor dem Anlegen des Kontos: existiert,
+veröffentlicht, nicht versteckt, im Verkaufsfenster, kostenlos, noch eins übrig. Ein
+Produkt, das Geld kostet, wird abgelehnt und geloggt — nicht stillschweigend ausgeliefert
+und nicht durch ein nacktes Konto ersetzt, das als Freiplan ausgegeben wird. Das
+Gesamtlimit des Produkts zählt als Lagerbestand, womit „die ersten hundert sind frei"
+funktioniert.
+
+## DNS-Prüfung lässt durch, wenn sie selbst scheitert — DECIDED 2026-11-01
+`signup_require_mx` weist eine Adresse nur ab, wenn die Abfrage **gelingt** und keinen
+MX- und keinen A-Eintrag findet. Auf einem Host mit blockiertem DNS oder abgeschalteter
+Funktion wird jede Anmeldung durchgelassen, statt jeden Besucher abzuweisen. Antworten
+werden 12 Stunden pro Domain gecacht, damit ein beschossenes Formular keine DNS-Flut wird.

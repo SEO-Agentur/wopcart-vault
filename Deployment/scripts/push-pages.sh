@@ -20,8 +20,13 @@ HOST=root@187.77.74.66
 # the manifest but never pushed, so a fix to any of them silently stayed local.
 # That is how the shortcode examples on paywall-memberships stayed broken on
 # 1 November 2026 while the same fix reached the other two pages.
+# Not mapfile: that is a bash 4 builtin and macOS ships bash 3.2, so the script
+# died on the first run. A while-read loop works on both.
 MANIFEST=$WEB/pages/manifest.json
-mapfile -t DEFAULT < <(python3 -c "
+DEFAULT=()
+while IFS= read -r wc_slug; do
+	[ -n "$wc_slug" ] && DEFAULT+=("$wc_slug")
+done < <(python3 -c "
 import json, sys, pathlib
 raw = json.loads(pathlib.Path('$MANIFEST').read_text())
 rows = raw if isinstance(raw, list) else raw.get('pages', [])

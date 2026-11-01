@@ -71,8 +71,9 @@ add_action(
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container{gap:2px;padding-left:16px;border-left:2px solid var(--wc-line,rgba(0,0,0,.12))}
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content{font-size:1.05rem;font-weight:600}
 /* Der Kaufknopf als Menueintrag, nur im Overlay: auf dem Desktop traegt ihn der Kopfbereich. */
-.wc-nav-buy{display:none}
-.wc-header .wp-block-navigation__responsive-container.is-menu-open .wc-nav-buy{display:block;margin-top:18px}
+/* Spezifitaet: Kern setzt .wp-block-navigation .wp-block-navigation-item{display:flex} (0,2,0) und schlaegt eine einzelne Klasse. Gemessen am 1. November 2026: computed display war flex, der Kaufknopf stand zweimal im Kopfbereich. */
+.wc-header .wp-block-navigation .wc-nav-buy{display:none}
+.wc-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation .wc-nav-buy{display:block;margin-top:18px}
 .wc-header .wp-block-navigation__responsive-container.is-menu-open .wc-nav-buy .wp-block-navigation-item__content{justify-content:center;background:var(--wc-ink);color:var(--wc-paper);border-radius:8px;padding:0 20px;font-weight:750}
 @media (max-width:850px){.wc-header .wc-nav-right,.wc-header .wp-block-navigation .wp-block-navigation__container{gap:18px}}
 /* Der Kaufknopf blieb unter 700px aus, und das Mobilmenue trug ihn nicht — auf jedem Telefon gab es damit keinen Kaufweg im Kopfbereich. Jetzt weicht die Wortmarke, nicht der Knopf. */@media (max-width:700px){.wc-header .wc-brand-name{display:none}.wc-header .wc-nav-cta .wp-block-button__link{padding:11px 15px;font-size:.9rem}.wc-header .wc-nav-cta .wc-arrow{display:none}}

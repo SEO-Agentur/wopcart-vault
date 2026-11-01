@@ -43,11 +43,31 @@ Layout genauso wertlos wie bei Preisen.
   Shortcode-Entschärfung auf `/paywall-memberships/` liegen, während sie die
   beiden anderen Seiten erreichte. Beide Listen kommen jetzt aus einer Quelle.
 
+**Eine ungültige Seitenvorlage blockiert jedes spätere Speichern.** Das Manifest
+führte `template: "page"` für imprint, privacy und terms. `page` ist keine
+registrierte Seitenvorlage; der erste Lauf schrieb sie in `_wp_page_template`,
+`WP_Post` gibt sie als `$post->page_template` zurück, `wp_update_post()` trägt
+sie in die nächste Aktualisierung, und `wp_insert_post()` weist den ganzen
+Beitrag ab. Danach liessen sich die drei Seiten gar nicht mehr speichern —
+sichtbar erst im zweiten Lauf, nicht im ersten, der den Schaden anrichtete.
+
+Behoben dreifach: aus dem Manifest entfernt, vor dem Speichern geräumt (das
+Aufräumen muss **vor** `wp_update_post()` laufen, sonst kommt es einen Lauf zu
+spät), und beim Schreiben gegen `wp_get_theme()->get_page_templates()` geprüft
+statt blind gesetzt. Gültig im Theme ist `page-no-title`, nicht `page`.
+
+**`mapfile` gibt es erst ab Bash 4.** macOS liefert 3.2, also starb das
+Seiten-Skript beim ersten Lauf an meiner eigenen Zeile. Ersetzt durch
+`while read`. Lehre: ein Skript für diesen Rechner muss auf diesem Rechner
+laufen, nicht auf dem, den ich im Kopf habe.
+
 ## Offen, nach Wirkung sortiert
 
-1. **1.12.3 und 1.12.4 ausrollen**, dann `push-site.sh` — der zweite Lauf trägt
-   die entschärften Shortcodes auf `/paywall-memberships/`, jetzt wo die Seite
-   in der Liste steht.
+1. **Erledigt am Abend:** 1.13.0 ist live, `push-site.sh` ist durchgelaufen, alle
+   20 Seiten geschrieben. Gegengeprüft: `/paywall-memberships/` zeigt die
+   Shortcode-Namen wieder im Satz, Mobilmenü 6 statt 23 Zeilen mit korrektem
+   `aria-expanded`, Versandtabelle mit echten Tabellenzellen und festen
+   Spaltenbreiten bei 492 px ohne Seitenüberlauf.
 2. **Google- und LinkedIn-App anlegen**, Schlüssel unter WopCart → Sign-in
    eintragen. Redirect-URIs: `https://wopcart.com/?wopcart_oauth=google` und
    `…=linkedin`. Ohne sie ist der Rundlauf ungetestet.

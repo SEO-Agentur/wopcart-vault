@@ -40,6 +40,34 @@ if ( is_readable( $dir . '/manifest.json' ) ) {
 }
 
 /**
+ * Clear a page template the theme does not offer.
+ *
+ * Has to run before wp_update_post(): WP_Post exposes _wp_page_template as
+ * $post->page_template, wp_update_post() carries it into the update, and
+ * wp_insert_post() then refuses the whole post with "Invalid page template."
+ * A bad value therefore blocks every later save of that page, not just the one
+ * that wrote it.
+ *
+ * @param \WP_Post $post Page.
+ */
+function wc_push_fix_template( \WP_Post $post ): void {
+	$current = (string) get_post_meta( $post->ID, '_wp_page_template', true );
+
+	if ( '' === $current || 'default' === $current ) {
+		return;
+	}
+
+	$offered = array_keys( (array) wp_get_theme()->get_page_templates( $post ) );
+
+	if ( in_array( $current, $offered, true ) ) {
+		return;
+	}
+
+	delete_post_meta( $post->ID, '_wp_page_template' );
+	echo '  Vorlage „' . $current . '" war keine des Themes — entfernt, damit die Seite wieder speicherbar ist' . "\n";
+}
+
+/**
  * Write the manifest's metadata onto a post.
  *
  * @param int                              $post_id  Post.
@@ -72,8 +100,36 @@ function wc_push_manifest( int $post_id, string $slug, array $manifest ): void {
 		$written[] = 'design';
 	}
 
-	if ( ! empty( $row['template'] ) ) {
-		update_post_meta( $post_id, '_wp_page_template', (string) $row['template'] );
+	/*
+	 * A page template has to be one the theme actually offers. Writing anything
+	 * else poisons the page for every later run: WP_Post reads _wp_page_template
+	 * back as $post->page_template, wp_update_post() carries it into the next
+	 * update, and wp_insert_post() then refuses the whole post with "Invalid
+	 * page template." That is what happened to imprint, privacy and terms on
+	 * 1 November 2026 — the manifest said "page", which is not a registered
+	 * page template, so the first run stored it and the second run could no
+	 * longer save those pages at all.
+	 *
+	 * So: "page" and "default" mean the theme's own default, which WordPress
+	 * records by having no template at all; anything the theme does not list is
+	 * refused here, out loud, rather than written and discovered a run later.
+	 */
+	$template  = trim( (string) ( $row['template'] ?? '' ) );
+	$offered   = array_keys( (array) wp_get_theme()->get_page_templates( get_post( $post_id ) ) );
+	$is_custom = '' !== $template && ! in_array( $template, array( 'page', 'default' ), true );
+
+	if ( $is_custom && ! in_array( $template, $offered, true ) ) {
+		echo '  Manifest: Vorlage "' . $template . '" kennt das Theme nicht — nicht gesetzt (vorhanden: ' . ( array() === $offered ? 'keine' : implode( ', ', $offered ) ) . ")\n";
+		$is_custom = false;
+		$template  = '';
+	}
+
+	if ( $is_custom ) {
+		update_post_meta( $post_id, '_wp_page_template', $template );
+		$written[] = 'template';
+	} else {
+		// Also clears a bad value an earlier run stored, so a poisoned page heals.
+		delete_post_meta( $post_id, '_wp_page_template' );
 	}
 
 	echo '  Manifest: ' . ( array() === $written ? 'nichts zu schreiben' : implode( ', ', $written ) ) . "\n";
@@ -176,6 +232,8 @@ foreach ( $entries as $entry ) {
 		$update['post_title'] = $title;
 		echo $entry . ': Titel „' . $post->post_title . '“ → „' . $title . "“\n";
 	}
+
+	wc_push_fix_template( $post );
 
 	$result = wp_update_post( $update, true );
 

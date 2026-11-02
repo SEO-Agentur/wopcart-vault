@@ -40,6 +40,80 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-15-0","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-15-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.15.0</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">2 November 2026 &middot; The mode was never the merchant&#8217;s to set</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>Stripe answers a live card paid against a test key with &#8220;your request was in test mode, but used a non test card&#8221;. The customer reads that as a problem with their card. The shop owner, meanwhile, is looking at a settings screen that says Live. Three separate ways a shop ended up there, none of them visible anywhere.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>A test key saved in a live field is no longer used. Stripe writes the mode into every key it issues and nothing checked that the key matched the box it was pasted into. Such a key is now refused when you save it, ignored if one is already stored, and named in a warning in the admin.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A shop on the free plan can see which mode its payments settle in. There the charge is made with WopCart&#8217;s key against your connected Stripe account, so the mode is ours &mdash; and your own &#8220;Test mode&#8221; box has never had any bearing on it, while looking exactly like a control. The Payments tab, the admin warning and the system report now say which mode is in force and who sets it.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A Stripe account connected in one mode is no longer used in the other. A test-mode account cannot be charged against with a live key, so the two have to be kept together; if they ever disagree, card payments switch off and the admin says to reconnect, rather than every checkout failing at the card.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A refused gateway key now actually tells you. The Mollie key check has written its refusal to a message store that the redirect after saving throws away, so not one of those refusals has ever reached a screen.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">New</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>A discount code says what it matches. The edit screen shows how many products a saved code applies to and names the first few. A code restricted to a product that has since been replaced matches nothing, and looked identical to a code with no restrictions at all.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"article","anchor":"1-14-2","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-14-2" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.14.2</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">2 November 2026 &middot; A warning that should never have shown</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>WordPress no longer warns that WopCart loads its translations too early. The languages directory is registered on <code>init</code> now, instead of while plugins are still loading.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-14-1","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-14-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->

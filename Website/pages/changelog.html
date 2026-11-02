@@ -40,6 +40,34 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-15-2","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-15-2" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.15.2</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">2 November 2026 &middot; The warning we fixed twice</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>WordPress no longer warns that WopCart loads its translations too early &mdash; this time at the cause. Version 1.14.2 moved where the languages folder is registered and the warning stayed, because that was never what triggered it. Since WordPress 6.7 the warning is about <em>asking</em> for a translation before the <code>init</code> action, and three parts of WopCart put a scheduled task in place while WordPress was still loading plugins. Setting up a task makes WordPress read its list of intervals, and WopCart&#8217;s own interval carries a translated name &mdash; so every page view of every shop asked too early.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>That interval name is now answered in plain English on any request that asks for it before <code>init</code>, whoever asks. It is only ever read on admin screens, long afterwards, so nothing visible changes &mdash; and another plugin can no longer cause this warning in WopCart&#8217;s name.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-15-1","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-15-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->

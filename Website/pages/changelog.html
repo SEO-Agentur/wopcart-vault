@@ -40,6 +40,38 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-15-1","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-15-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.15.1</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">2 November 2026 &middot; Three screens that contradicted themselves</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Private and draft products appear in the Products list again. It said &#8220;All (3)&#8221; above a table holding one row: two permissions were missing from the ones WopCart grants, and WordPress needs them before it will show you another author&#8217;s private product or let you delete one. The count came from a different query that applies no such permission, which is why the two disagreed.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A product can no longer be selected and excluded by the same discount code at once. The exclusion is tested first and wins, so a code whose products were all excluded this way applied to nothing &mdash; while both lists on screen read as though it were set up correctly. Saving such a code is now refused and names the product, and the edit screen says so for codes already stored that way.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>&#8220;Applies to&#8221; no longer contradicts the lists below it. It said &#8220;Whole cart&#8221; while the products chosen underneath restricted the code all the same. It follows them now. No code changes what it discounts.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-15-0","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-15-0" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->

@@ -40,6 +40,38 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-16-2","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-16-2" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.16.2</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">3 November 2026 &middot; Nothing left to argue about</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>WopCart now passes WordPress.org&#8217;s own review tooling with zero errors <em>and</em> zero warnings, across all 605 files. None of it changes how your store works.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The storefront and checkout scripts no longer hold up the page while they load. Both already loaded at the very end of the page; they are now also marked to run only once the page has been read, which is what the payment-form script has done since it was written. They do exactly what they did before &mdash; the storefront script already waited for the page before touching anything &mdash; but the browser can finish drawing before it stops for them.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Most of what the checker still flagged was a single pattern reported 258 times: a table name put together in PHP, which the tool cannot follow and therefore cannot confirm is safe, on queries whose every value was already handled safely. Each of those places now says so in the code, next to the query, rather than leaving the next reader to work it out.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-16-1","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-16-1" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->

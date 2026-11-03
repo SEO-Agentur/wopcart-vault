@@ -66,7 +66,21 @@
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<li>The plugin&#8217;s description in the WordPress.org directory has been rewritten: what WopCart is, what settlement costs and who pays it, stated before the feature list rather than left to the FAQ.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
 <li>Most of what the checker still flagged was a single pattern reported 258 times: a table name put together in PHP, which the tool cannot follow and therefore cannot confirm is safe, on queries whose every value was already handled safely. Each of those places now says so in the code, next to the query, rather than leaving the next reader to work it out.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>WopCart&#8217;s page in the WordPress.org directory would have been cut short. The directory does not publish the plugin&#8217;s readme as written &mdash; it publishes what its own parser makes of it, and that parser quietly trims any section that runs past a word budget. The changelog was well past it. Worse, the parser folds the list of outside services WopCart can contact into the description and counts both against the same budget, which left that list sixty-two words from being cut off mid-sentence &mdash; the one place a buyer or a reviewer would look to find out what leaves your site. The readme now carries the twelve most recent releases and points here for the rest, and the build measures both budgets from now on.</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:group --></article>

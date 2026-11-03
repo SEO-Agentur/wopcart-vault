@@ -80,6 +80,10 @@
 
 <!-- wp:list {"className":"wc-checklist"} -->
 <ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Every place in the code where a code-quality warning is switched off now says why, on the line it is switched off on &mdash; all 742 of them, where before 361 said nothing. A silenced security warning looks exactly the same whether somebody thought about the line or just wanted the red to go away, which is the whole problem. All of them were also re-examined against what each warning would have reported: no injectable query, no unescaped output, no admin action without both a permission and a nonce check, and no download, invoice or licence file reachable without a signed link or a check that it belongs to you.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
 <li>WopCart&#8217;s page in the WordPress.org directory would have been cut short. The directory does not publish the plugin&#8217;s readme as written &mdash; it publishes what its own parser makes of it, and that parser quietly trims any section that runs past a word budget. The changelog was well past it. Worse, the parser folds the list of outside services WopCart can contact into the description and counts both against the same budget, which left that list sixty-two words from being cut off mid-sentence &mdash; the one place a buyer or a reviewer would look to find out what leaves your site. The readme now carries the twelve most recent releases and points here for the rest, and the build measures both budgets from now on.</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>

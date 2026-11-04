@@ -267,3 +267,35 @@ werden muss:
   → aktuelle Datei; Stempel ohne Archiv → aktuelle Datei plus Logzeile; Dateiname ohne
   Version → unverändert.
 - Die Archive liegen bereits versioniert unter `uploads/wopcart-protected/`.
+
+## Visitor IP geolocation defaults to off — DECIDED 2026-11-04
+`geo_remote_lookup` ships `false`. The remote lookup is the only routine transfer
+the plugin makes that carries personal data about a visitor — an IP address, sent
+on a plain page view, before anyone has decided to buy anything. A store may well
+want it, because it is one of the two pieces of location evidence the EU VAT rules
+ask for, but that is the store's call and not a default to inherit. Four other
+sites named the old default and were corrected with it; two of them were dead code
+that still read as the truth. Pinned by `test_geo_remote_lookup_default` and
+`test_no_call_site_defaults_the_lookup_to_on`.
+
+A store that already saved its Taxes settings keeps what it chose. A store that
+never saved that tab inherits the new default, which is what the 1.16.3 upgrade
+notice exists for.
+
+## Own Stripe keys stay out of the free plugin's UI, for now — DECIDED 2026-11-04
+Not reopened before the WordPress.org submission. User's call, and it is a revenue
+question rather than a compliance one.
+
+What changed is the evidence, not the decision. The capability is already in the
+free plugin: one documented filter, `wopcart_uses_own_gateway_credentials`
+returning true, takes the platform out of the path and makes `Gateways\Stripe`
+charge with the store's own `stripe_live_secret`, straight to Stripe, at no fee.
+What the add-on sells is the settings screen and the other gateways. The free
+plugin reads those key options and renders no field for them, so it is a
+developer's route and not a merchant's — and the submission note says exactly
+that, so a reviewer who looks for the field and does not find one does not
+conclude the note overstated it.
+
+Earlier Asana wording ("`AbstractGateway::own_key()` always returns `''`, the
+options are inert") read as *impossible*. It is not; it is *unanswered*. Corrected
+in a comment on the task rather than by editing the record.

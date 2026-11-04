@@ -60,3 +60,24 @@ return: `dcart_calculate_totals`, `dcart_tax_rate`, `dcart_license_issued`.
 ```bash
 for f in $(find . -name "*.php" -not -path "./vendor/*"); do php -l "$f" > /dev/null || echo "FAIL $f"; done
 ```
+
+## A measuring harness is verified before its number is published
+
+Added 2026-11-04, after a real miss. The "zero errors and zero warnings on the
+WordPress.org review ruleset" figure had been produced by a run invoked with
+`--runtime-set installed_paths`. PHPCS applies that *after* it resolves the
+standard, so the `PluginCheck.*` sniffs the ruleset references were never
+registered — and the run loaded no sniffs at all and exited 0 rather than
+failing. An empty report and a clean codebase look identical.
+
+So: before a measurement goes into a changelog, a readme or anything a reviewer
+reads, plant a defect the harness must catch and confirm it catches it. Inside
+the tree being measured, not in `/tmp` — the bait has to travel the same path as
+the real files, or it only proves the tool runs.
+
+The same reasoning is why every test here is proven red against the real defect
+before it is trusted green. This is that rule, applied to tools rather than
+tests.
+
+Use `--config-set installed_paths` instead, **appending to the existing value**:
+overwriting it silently removes WPCS and every other registered standard.

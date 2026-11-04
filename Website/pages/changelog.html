@@ -40,6 +40,62 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-16-3","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-16-3" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.16.3</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">4 November 2026 &middot; Off until you ask for it</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>The one thing WopCart did routinely that sent personal data about a visitor anywhere is now off until you switch it on.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>Looking up a visitor&#8217;s country through an online IP service is off on a new install. It is the only thing WopCart does routinely that sends personal data about a visitor anywhere &mdash; an IP address, on an ordinary page view, before anyone has decided to buy something. A store may well want it, because it is one of the two pieces of location evidence the EU VAT rules ask for, but that is your decision and not a default to inherit. If your store already saved its Taxes settings it keeps whatever you chose; if it never did and you charge EU VAT, open that tab and tick the box.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Every PHP file in the plugin now refuses to do anything when it is opened directly instead of through WordPress. The files that produce pages always did. The 477 remaining ones only declared a class and so did nothing either way, which is why nothing was ever wrong &mdash; but somebody reading the plugin should not have to work that out for themselves.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Removed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>A setting that did nothing. It carried a value for how often exchange rates refresh, and nothing read it. Rates refresh twice a day, which is what the plugin has always actually done.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>The zero&#8209;errors&#8209;and&#8209;zero&#8209;warnings figure reported in 1.16.2 was produced by a run that, as it turns out, had quietly loaded no checks at all. It has been repeated with the checks properly registered, and verified by planting a deliberate mistake in the code, which it caught. The figure holds: zero of each, across all 605 files. We would rather tell you how a number was checked than ask you to take it.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Two numbers in the 1.16.2 entry below. The audit was recorded as 742 places where a code-quality warning is switched off, with 361 of them unexplained; the real figures are 739 and 359. The first pair came from a search that also counted sentences <em>mentioning</em> such a switch inside a longer comment, which is not one. What the audit found is unchanged.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-16-2","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-16-2" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->
@@ -80,7 +136,7 @@
 
 <!-- wp:list {"className":"wc-checklist"} -->
 <ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
-<li>Every place in the code where a code-quality warning is switched off now says why, on the line it is switched off on &mdash; all 742 of them, where before 361 said nothing. A silenced security warning looks exactly the same whether somebody thought about the line or just wanted the red to go away, which is the whole problem. All of them were also re-examined against what each warning would have reported: no injectable query, no unescaped output, no admin action without both a permission and a nonce check, and no download, invoice or licence file reachable without a signed link or a check that it belongs to you.</li>
+<li>Every place in the code where a code-quality warning is switched off now says why, on the line it is switched off on &mdash; all 739 of them, where before 359 said nothing. A silenced security warning looks exactly the same whether somebody thought about the line or just wanted the red to go away, which is the whole problem. All of them were also re-examined against what each warning would have reported: no injectable query, no unescaped output, no admin action without both a permission and a nonce check, and no download, invoice or licence file reachable without a signed link or a check that it belongs to you.</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->

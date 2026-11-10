@@ -40,6 +40,38 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-16-4","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-16-4" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.16.4</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">10 November 2026 &middot; The checker ran inside WordPress</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>Nothing here changes how your store works. It is the last finding from WordPress.org&#8217;s own checker, which we had until now only run as a code scan.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>One call the plugin did not need to make. It is a small helper that PHP has had since version 8.1 &mdash; which WopCart requires anyway, so it was never actually missing &mdash; but WordPress only provides it from 6.5, and the checker counts a function against the oldest WordPress a plugin supports without looking at which PHP it asks for. Written a different way it needs neither, and the same line now carries a test it never had.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Running that checker inside a real WordPress, rather than over the code alone, is what found it. There is a whole class of check that cannot work any other way: it has to ask a running WordPress what that WordPress provides. We had said this one was probably fine. It was not, and now it is measured rather than assumed. The report is empty.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-16-3","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-16-3" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->

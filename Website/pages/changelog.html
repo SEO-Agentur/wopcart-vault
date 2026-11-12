@@ -40,6 +40,48 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-16-6","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-16-6" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.16.6</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">12 November 2026 &middot; Taken back should undo more than given back</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>We shipped half of this two days ago. Here is the other half.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Fixed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>A chargeback now undoes the order as thoroughly as a refund does.</strong> Since 1.16.5 it ended memberships and blocked downloads &mdash; but the licence key stayed valid, the subscription kept billing and a plan upgrade stayed in place, because only a refund ever reached the code that undoes an order. The case where the money was taken from you undid <em>less</em> than the case where you chose to give it back. Licences, plan upgrades and course access now end either way.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>A licence revoked after a chargeback now says so, instead of recording that you refunded. Somebody will read that note later while deciding whether to reinstate it, and it should not be a small lie.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Deliberately unchanged</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li>A chargeback still does <strong>not</strong> issue a credit note, close a refund request, or tell your connected services that you refunded. None of that is true of a chargeback. A credit note is your own document for money you gave back; raising one because a bank took it is not a labelling problem, it is wrong in your books.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-16-5","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-16-5" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->

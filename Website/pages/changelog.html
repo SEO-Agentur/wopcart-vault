@@ -40,6 +40,52 @@
 <!-- /wp:group --></article>
 <!-- /wp:group -->
 
+<!-- wp:group {"tagName":"article","anchor":"1-16-5","className":"wc-release","layout":{"type":"default"}} -->
+<article id="1-16-5" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-meta"><!-- wp:heading -->
+<h2 class="wp-block-heading">1.16.5</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"wc-muted"} -->
+<p class="wc-muted">12 November 2026 &middot; When the money goes back, so does the access</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"wc-release-body","layout":{"type":"default"}} -->
+<div class="wp-block-group wc-release-body"><!-- wp:paragraph -->
+<p>A chargeback used to pass WopCart by entirely. It does not any more.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">New</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>A chargeback now stops delivery.</strong> Until now your store never heard about one: the bank pulled the money back, and the order sat there marked Complete &mdash; membership active, licence valid, download still working. From now on a chargeback revokes the order the moment Stripe reports it, which ends membership and course access at once, and the decision is recorded when the dispute closes.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Access is <em>not</em> handed back automatically if you win the dispute. That is a decision about a customer, and it should be yours rather than an incoming webhook&#8217;s. The outcome is recorded either way, so you can see what happened and act on it.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>If your store charges with its own Stripe keys, add <code>charge.dispute.created</code> and <code>charge.dispute.closed</code> to your Stripe webhook. Stores settling through the platform need to do nothing.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Changed</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"wc-checklist"} -->
+<ul class="wp-block-list wc-checklist"><!-- wp:list-item -->
+<li><strong>The terms checkbox is written onto the order now</strong>, with a timestamp, the way the withdrawal waiver already was. A box that was ticked and never stored proves nothing three months later. The waiver answers &#8220;I changed my mind&#8221;; the terms answer &#8220;this was not what I was promised&#8221;, and for anyone selling a service that is the harder of the two to argue. Asking for the terms at checkout is still a setting you turn on.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></article>
+<!-- /wp:group -->
+
 <!-- wp:group {"tagName":"article","anchor":"1-16-4","className":"wc-release","layout":{"type":"default"}} -->
 <article id="1-16-4" class="wp-block-group wc-release"><!-- wp:group {"className":"wc-release-meta","layout":{"type":"default"}} -->
 <div class="wp-block-group wc-release-meta"><!-- wp:heading -->
